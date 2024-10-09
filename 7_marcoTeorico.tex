@@ -1,0 +1,91 @@
+\section{Marco Teórico}
+
+\subsection{Validación de Modelos}
+Los modelos son representaciones matemáticas de los mecanismos que rigen los fenómenos naturales (Tedeschi, 2006) o como una construcción matemática diseñada para estudiar un sistema del mundo real o fenómeno (Giordano et al., 1997).
+\vspace{.5cm}
+
+Medina-Peralta et al. (2017) indican que la validación de un modelo en la predicción del sistema implica la comparación, por medio de algún método, de las predicciones del modelo con los valores observados del sistema real para determinar su capacidad predictiva.
+\vspace{.5cm}
+
+Mayer y Butler (1993), clasifican los métodos de validación de modelos en Evaluación Subjetiva, Técnicas Visuales, Medidas de Desviación y Pruebas Estadísticas; también señalan que debido a las complejidades y tipos de datos, no existe una combinación establecida de técnicas de validación que sea aplicable en todas las áreas.
+\vspace{.5cm}
+
+Halachmi et al. (2004), menciona que la validación determina si el modelo matemático es una representación exacta del sistema real, y una forma de validación es comparando los datos reales con los predichos por el sistema.
+\vspace{.5cm}
+
+Para la validación de un modelo se evalúan la exactitud y la precisión; la primera se refiere a la proximidad de las predicciones $( z )$  con los valores observados $( y )$, por ejemplo, sus diferencias $ ( d=y-z ) $ del cero y la segunda a la dispersión de los puntos $ (z, y) $; además, en presencia de exactitud la precisión se mide cuantificando la dispersión de dichos puntos respecto a una referencia, por ejemplo, la recta determinística  $ y=x $, o bien, evaluar la varianza de las diferencias $ (\sigma_{D}^{2}) $ alrededor del cero $ (\mu_{D}=0) $ (Medina-Peralta et al., 2017).
+\vspace{.5cm}
+
+En la Figura \ref{fig:etiqueta} se ilustra la diferencia entre la exactitud y precisión de un modelo de simulación. El caso 1 es inexacto e impreciso, el caso 2 es inexacto y preciso, el caso 3 es exacto e impreciso y el caso 4 es exacto y preciso. En un modelo de predicción lo ideal es que cumpla el caso 4. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=300px]{img/tadeshi_casos.png}
+	\caption{Esquematización de Exactitud y Precisión. Fuente: Tedeschi (2006).}
+	\label{fig:etiqueta}
+\end{figure}
+
+\subsection{Validación de Modelos con Regresión Lineal}
+
+
+\subsection{Regresión Lineal Robusta}
+\subsection{Wild Bootstrap}
+
+\subsubsection{Algoritmo de remuestreo básico}
+
+Se asume una muestra de $ x_{1}, x_{2}, ...,  x_{n}$ independiente e idénticamente distribuida.
+
+\begin{enumerate}
+		\item Se obtienen $B$ muestras de tamaño $n$ con reemplazo y con probabilidades iguales de la muestra original. La cardinalidad de este espacio muestra es $n^{n}$. Se denotan las muestras Bootstrap por $X^{*}_{1}, X^{*}_{2}, ..., X^{*}_{B}$
+		
+		\item 
+\end{enumerate}
+
+
+
+\subsubsection{Algoritmo de Remuestreo Balanceado}
+
+
+
+\subsubsection{Algoritmo Bootstrap de Residuales (Rosalinda)}
+
+Se asume que los $ \epsilon_{i} $ son independientes e idénticamente distribuidos. El algoritmo Bootstrap para generar muestras de $ R^{2} $ es el siguiente:
+
+\begin{enumerate}
+		\item Ajustar una regresión simple para el modelo $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i} $.
+		\item Obtener los residuales $ \epsilon_{i} = y - \hat{y}   $
+		, $i = 1,..., n $.
+		\item  Remuestrear con probabilidades iguales la muestra $ e_{1},...,e_{n} $, para obtener $e^{*}_{11},...,e^{*}_{1n}$.
+		\item Obtener $ y^{*}_{1i} = e^{*}_{1i} + \hat{y}_{1i}, i = 1, ..., n. $.
+		\item Correr una regresión simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
+		\item Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
+		\[
+		\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
+		\]
+\end{enumerate}
+
+
+\subsubsection{Algoritmo Bootstrap Pareado (Rosalinda)}
+
+Supóngase que los datos surgieron de un estudio observacional donde ambas variables, $Y$ y $X$ son medidas de una colección de individuos seleccionados aleatoriamente. Supongamos que los $e_{i}$ en el modelo
+$ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i}$,    $i=1,2,..., n$ , no tienen varianza constante, lo que implica que no son idénticamente distribuidos (Givens y Hoeting, 2005; Montgomery et al., 2006).
+
+\begin{enumerate}
+	\item Considere la muestra $ w_{1} = (y_{1}, x_{1}),  w_{2} = (y_{2}, x_{2}), ..., w_{n} = (y_{n}, x_{n})$ como una muestra independiente e idénticamente distribuida donde la distribución es la conjunta $ F_{Y|X} $.
+	\item  Tomar una muestra Bootstrap  $ w^{*}_{1}, w^{*}_{2},...,  w^{*}_{n} $ de $w_{1}, w_{2},...,  w_{n} $. Se obtienen la muestras  $y_{1}, y_{2},...,  y_{n} $ y  $x_{1}, x_{2},...,  x_{n} $.
+	\item Correr una regresión lineal $ y^{*}_{i} = \beta_{i0} +\beta_{i1}x_{i}^{*} + \epsilon_{i} $.
+	\item Estimar  $ \hat{R}^{2*}_{1} $.
+	\item  Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
+	\[
+	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
+	\]
+\end{enumerate}
+
+
+
+
+
+
+\subsection{Simulación de Modelos}
+
+\subsection{Diseño Factorial}

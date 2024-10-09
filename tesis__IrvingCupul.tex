@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym,amsmath,amssymb,amsfonts}
+\usepackage[spanish]{babel} 
+\usepackage{time}
+\usepackage{setspace}          % Para manejar el espacio interlineal
+\usepackage{fancyhdr}          % Para personalizar encabezados y pies de página
+\usepackage{graphicx}
+% Configuración de la sangría
+\setlength{\parindent}{5ex}   % Sangría de 5 espacios (aproximadamente 5ex)
+
+% Configuración del espacio interlineal
+\onehalfspacing               % 1.5 espacios entre líneas
+
+\geometry{
+	paperwidth=21.59cm,
+	paperheight=27.94cm,
+	left=4.0cm,
+	right=1.5cm,
+	top=3cm,
+	bottom=3cm,
+}
+\parindent = 0mm 
+\begin{document}
+	
+	\thispagestyle{empty}
+	\hskip-2.15cm
+	\begin{minipage}[c][1\totalheight][s]{3.5cm} 
+		\begin{center}
+			\includegraphics[height=2.5cm]{img/uady.png}\\[10pt]
+		\end{center}
+	\end{minipage}\begin{minipage}[c][1\totalheight][s]{12cm} 
+		\begin{center}
+			{\fontfamily{phv}\selectfont\Large\textbf {UNIVERSIDAD AUTÓNOMA DE YUCATÁN}}
+			\vspace{0.3cm}
+			\hrule height1.5pt
+			\vspace{.3cm}
+			{{\fontfamily{phv}\selectfont FACULTAD DE MATEMÁTICAS\\UNIDAD MULTIDISCIPLINARIA TIZIMÍN}}
+		\end{center}
+	\end{minipage}\begin{minipage}[c][1\totalheight][s]{3cm} 
+		\begin{center}
+			\includegraphics[height=2.5cm]{img/matem.png}\\[10pt]
+		\end{center}
+	\end{minipage}\quad
+	\vspace{.01cm}
+	
+	\hskip -0.9cm
+	\begin{minipage}[c][1\totalheight][s]{1cm}
+		\begin{center}
+			\hskip2pt\vrule width3.5pt height19.5cm\hskip1mm
+			\vrule width0.5pt height19.5cm\\[10pt]
+		\end{center}
+	\end{minipage}\hspace{0.5cm}\begin{minipage}[c][1\totalheight][s]{14cm}
+		\begin{center}
+			\vspace{1.5cm}
+			
+			{\fontfamily{phv}\selectfont\Large\textbf{Una propuesta basada en estimadores bootstrap robustos para la evaluación de la precisión de un modelo con la técnica de regresión lineal}}
+			
+			\vspace{1cm}
+			{{\fontfamily{phv}\selectfont\large Tesis presentada por el:}}\\
+			
+			\vspace{0.5cm}
+			
+			{{\fontfamily{phv}\selectfont\large Br. Irving Geyler Cupul Uc}}\\
+			
+			\vspace{1.5cm}
+			
+			{\fontfamily{phv}\selectfont\large En su examen profesional en opción al título de:}
+			
+			\vspace{0.5cm}
+			
+			{\fontfamily{phv}\selectfont\large Licenciado en Ingeniería de Sofware}
+			
+			\vspace{1.2cm}
+			
+			{\fontfamily{phv}\selectfont\large Asesores:}
+			
+			\vspace{0.5cm}
+			
+			{\fontfamily{phv}\selectfont\large M.C. Luis Colorado Martínez\\M.C. Salvador Medina Peralta}
+			
+			\vspace{4cm}
+			{{\fontfamily{phv}\selectfont Tizimín, Yucatán, Diciembre 2024}}
+		\end{center}
+	\end{minipage}
+	\newpage
+	
+	\input{2_agradecimientos-dedicacion.tex}
+	\input{3_resumen.tex}
+	\newpage
+	\input{4_contenido-listas.tex}
+	\newpage
+	\input{5_introduccion.tex}
+	\newpage
+	\input{6_objetivos.tex}
+	\newpage
+	\input{7_marcoTeorico.tex}
+	\newpage
+	\input{8_metodologia.tex}
+	\newpage
+	\input{9_resultados.tex}
+	\newpage
+	\input{10_conclusiones.tex}
+	\newpage
+	\input{11_anexos.tex}
+\end{document}
