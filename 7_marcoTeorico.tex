@@ -33,17 +33,57 @@ En la Figura \ref{fig:etiqueta} se ilustra la diferencia entre la exactitud y pr
 
 \subsubsection{Algoritmo de remuestreo básico}
 
-Se asume una muestra de $ x_{1}, x_{2}, ...,  x_{n}$ independiente e idénticamente distribuida.
+Se asume una muestra de $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida.
 
 \begin{enumerate}
-		\item Se obtienen $B$ muestras de tamaño $n$ con reemplazo y con probabilidades iguales de la muestra original. La cardinalidad de este espacio muestra es $n^{n}$. Se denotan las muestras Bootstrap por $X^{*}_{1}, X^{*}_{2}, ..., X^{*}_{B}$
+		\item Se obtienen $B$ muestras de tamaño $n$ con reemplazo y con probabilidades iguales de la muestra original. La cardinalidad de este espacio muestra es $n^{n}$. Se denotan las muestras Bootstrap por $X^{*}_{1}, X^{*}_{2},  \dots, X^{*}_{B}$ donde cada $X^{*}_{i}$ es un vector de tamaño $n$.
 		
-		\item 
+		\item Se obtienen las muestras, $\hat{\theta}^{*}_{1} = T (X^{*}_{1}) , \hat{\theta}^{*}_{2} = T (X^{*}_{2}), \dots,\hat{\theta}^{*}_{B} = T (X^{*}_{B})$.
+		
+		\item Se usa la distribución empírica $\hat{F}_{\hat{\theta}^{*}}$ de la muestra $\hat{\theta}^{*}_{1},\hat{\theta}^{*}_{2},  \dots, \hat{\theta}^{*}_{B}$ para estimar $F_{\hat{\theta}} $.
+\end{enumerate}
+
+En la practica, se usa una $B$ grande para disminuir el error de simulación al evitar el calculo de todo el espacio muestra Bootstrap.
+
+Las estimaciones para  $F_{\hat{\theta}}, \theta^{*}$ y $ \sigma_{\theta^{*}} $ están dadas respectivamente por:
+
+\[
+\hat{F}_{\hat{\theta}^{*}} \approx F_{\hat{\theta}}, 
+ \hspace{.5cm} \hat{\theta}^{*} = \frac{1}{B} \sum_{i=1}^{B}  \hat{\theta}^{*}_{i} \approx \theta,
+ \hspace{.5cm} Var(\hat{\theta}^{*}) = \frac{1}{B-1} \sum_{i=1}^{B}(\hat{\theta}^{*}_{i}-\hat{\theta}^{*})^2
+\]
+
+
+\subsubsection{Algoritmo de Remuestreo Balanceado}
+
+Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida y supongamos que se desean obtener $B$ muestras Bootstrap.
+
+\begin{enumerate}
+	\item  Considere el vector $ X=(x_{1}, x_{2},  \dots,  x_{n}) $.
+	
+	\item  Generar un vector $ N= (1,2,\dots,n,1,2,\dots,n,1,2,\dots,n)$ de longitud $nB$.
+	
+	\item Generar una permutación aleatoria $N^{*}$ del vector $N$.
+	
+	\item La muestra Bootstrap haciendo lo siguiente:
+	
+	$X^{*}_{1}$ =  Los elementos de $X$ comprendidos desde la primera hasta la posición $n$ de $N^{*}$.\linebreak
+	$X^{*}_{2}$ =  Los elementos de $X$ comprendidos desde la posición $n + 1$ hasta la posición $2n$ de $N^{*}$.\linebreak
+	.\linebreak\
+	.\linebreak
+	.\linebreak
+	$X^{*}_{B}$ =  Los elementos de $X$  cuyas posiciones son las ultimas $n$ posiciones de $N^{*}$.
+	
+	\item  Se obtienen las muestras, $\hat{\theta}^{*}_{1} =T (X^{*}_{1}), \hat{\theta}^{*}_{2} =T (X^{*}_{2}), \dots, \hat{\theta}^{*}_{B} =T (X^{*}_{B})$.
+	
+	\item  Se usa la distribución empírica $\hat{F}_{\hat{\theta}^{*}}$ de la muestra $\hat{\theta}^{*}_{1},\hat{\theta}^{*}_{2}, \dots, \hat{\theta}^{*}_{B}$ para estimar $F_{\hat{\theta}}$
+	
+	
 \end{enumerate}
 
 
 
-\subsubsection{Algoritmo de Remuestreo Balanceado}
+
 
 
 
@@ -53,11 +93,15 @@ Se asume que los $ \epsilon_{i} $ son independientes e idénticamente distribuid
 
 \begin{enumerate}
 		\item Ajustar una regresión simple para el modelo $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i} $.
+		
 		\item Obtener los residuales $ \epsilon_{i} = y - \hat{y}   $
 		, $i = 1,..., n $.
+		
 		\item  Remuestrear con probabilidades iguales la muestra $ e_{1},...,e_{n} $, para obtener $e^{*}_{11},...,e^{*}_{1n}$.
 		\item Obtener $ y^{*}_{1i} = e^{*}_{1i} + \hat{y}_{1i}, i = 1, ..., n. $.
+		
 		\item Correr una regresión simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
+		
 		\item Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
 		\[
 		\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
@@ -72,9 +116,13 @@ $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i}$,    $i=1,2,..., n$ , no tien
 
 \begin{enumerate}
 	\item Considere la muestra $ w_{1} = (y_{1}, x_{1}),  w_{2} = (y_{2}, x_{2}), ..., w_{n} = (y_{n}, x_{n})$ como una muestra independiente e idénticamente distribuida donde la distribución es la conjunta $ F_{Y|X} $.
+	
 	\item  Tomar una muestra Bootstrap  $ w^{*}_{1}, w^{*}_{2},...,  w^{*}_{n} $ de $w_{1}, w_{2},...,  w_{n} $. Se obtienen la muestras  $y_{1}, y_{2},...,  y_{n} $ y  $x_{1}, x_{2},...,  x_{n} $.
+	
 	\item Correr una regresión lineal $ y^{*}_{i} = \beta_{i0} +\beta_{i1}x_{i}^{*} + \epsilon_{i} $.
+	
 	\item Estimar  $ \hat{R}^{2*}_{1} $.
+	
 	\item  Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
 	\[
 	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
