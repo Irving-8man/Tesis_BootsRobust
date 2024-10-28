@@ -31,7 +31,7 @@ En la Figura \ref{fig:etiqueta} se ilustra la diferencia entre la exactitud y pr
 \subsection{Regresión Lineal Robusta}
 \subsection{Wild Bootstrap}
 
-\subsubsection{Algoritmo de remuestreo básico}
+\subsubsection{Algoritmo de remuestreo básico (Rosalinda)}
 
 Se asume una muestra de $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida.
 
@@ -54,7 +54,7 @@ Las estimaciones para  $F_{\hat{\theta}}, \theta^{*}$ y $ \sigma_{\theta^{*}} $ 
 \]
 
 
-\subsubsection{Algoritmo de Remuestreo Balanceado}
+\subsubsection{Algoritmo de Remuestreo Balanceado (Rosalinda)}
 
 Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida y supongamos que se desean obtener $B$ muestras Bootstrap.
 
@@ -84,9 +84,6 @@ Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticam
 
 
 
-
-
-
 \subsubsection{Algoritmo Bootstrap de Residuales (Rosalinda)}
 
 Se asume que los $ \epsilon_{i} $ son independientes e idénticamente distribuidos. El algoritmo Bootstrap para generar muestras de $ R^{2} $ es el siguiente:
@@ -95,10 +92,10 @@ Se asume que los $ \epsilon_{i} $ son independientes e idénticamente distribuid
 		\item Ajustar una regresión simple para el modelo $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i} $.
 		
 		\item Obtener los residuales $ \epsilon_{i} = y - \hat{y}   $
-		, $i = 1,..., n $.
+		, $i = 1,2,\dots, n $.
 		
-		\item  Remuestrear con probabilidades iguales la muestra $ e_{1},...,e_{n} $, para obtener $e^{*}_{11},...,e^{*}_{1n}$.
-		\item Obtener $ y^{*}_{1i} = e^{*}_{1i} + \hat{y}_{1i}, i = 1, ..., n. $.
+		\item  Remuestrear con probabilidades iguales la muestra $ e_{1},\dots,e_{n} $, para obtener $e^{*}_{11},...,e^{*}_{1n}$.
+		\item Obtener $ y^{*}_{1i} = e^{*}_{1i} + \hat{y}_{1i}, i = 1,2, \dots, n. $.
 		
 		\item Correr una regresión simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
 		
@@ -131,7 +128,129 @@ $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i}$,    $i=1,2,..., n$ , no tien
 
 
 
+\subsubsection{Algoritmo Bootstrap Robusto Simple (Zacarias)}
+El algoritmo Bootstrap para generar muestras Bootstrap robustas para $\hat{R}^{2}$ es el siguiente:
 
+\begin{enumerate}
+	\item Obtener el MM-Estimador $\hat{B}^{MM}$ de $B$ ... y con este  obtener los ajustados $ \hat{y}^{MM}_{i} = z_{i}B^{MM},i=1,2,..., n$.
+	
+	\item Obtener los residuales del modelo robusto $ e^{MM}_{i} = y_{i}-\hat{y}^{MM}_{i},i = 1,2, \dots, n$.
+	
+	\item Remuestrea con reemplazo y con probabilidades la muestra robusta $ e^{MM}_{1},\dots, e^{MM}_{n}$ para obtener $ e^{*MM}_{1},\dots, e^{*MM}_{n}$.
+	
+	\item Obtener $y^{*MM}_{i} = e^{*MM}_{i} + \hat{y}^{MM}_{i},i=1,2,..., n  $.
+	
+	\item Ajustar una regresión simple $ y^{*MM}_{i} = \beta_{0}^{*MM}+\beta_{1}^{*MM}z_{i} + e^{*MM}_{1i}$ y obtener $\hat{R}^{2*MM}_{1}$
+	
+	\item Repetir los pasos 3 a 5, $(B-1)$ veces para obtener las muestras Bootstrap:
+	
+	\[
+	\hat{R}^{2*MM}_{1} \hspace{.5cm} \hat{R}^{2*MM}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*MM}_{B}
+	\]
+\end{enumerate}
+
+
+\subsubsection{Técnica Robusta Basada en el Esquema Wild Bootstrap de Wu (Zacarias)}
+
+\textbf{Algoritmo - Esquema Bootstrap de Wu 1}
+
+\begin{enumerate}
+	\item  Ajustar un modelo $y_{i} = \beta_{0} +\beta_{1}z_{i} + \epsilon_{i}$  mediante el MM-estimador de la muestra original de observaciones para obtener los parámetros robustos $\hat{B}^{MM}$ y, obtener los ajustados $\hat{y}_{i}=z_{i}\hat{\beta}_{MM}$.
+	
+	\item  Calcular los residuales $ \hat{e}^{MM}_{i} = y_{i}-\hat{y}_{i},i = 1,2, \dots, n$, y obtener los residuales ponderados
+	\begin{center}
+	\[
+	\hat{e}^{WMM}_{i} =
+	\begin{cases}
+		e^{MM}_{i}, & \text{si } \frac{|e^{MM}_{i}|}{\sigma_{MM}} \leq c \\ \\
+		\frac{c \times e^{MM}_{i}}{ | \hat{e}^{MM}_{i} | /\sigma_{MM}},     & \text{si } \frac{|e^{MM}_{i}|}{\sigma_{MM}} > c
+	\end{cases}
+	\]
+	\end{center} 
+	donde $c$ es una constante arbitraria que se elige entre 2 y 3; mientras que $\sigma_{MM}$ es la
+	raíz cuadrada del cuadrado medio del error del modelo robusto $\sigma_{MM} = \sqrt{CME}$.
+
+	\item Obtener una muestra Bootstrap $y^{*}_{i}$, tal que 
+	\begin{center}
+		$y^{*}_{i} =z_{i}\hat{\beta}_{MM} + \frac{t^{*}_{i}\hat{e}^{WMM}_{i}}{\sqrt{1-h_{ii}}} $,
+	\end{center}
+	donde $h_{ii}$ es el i-ésimo elemento de la matriz diag$(Z(Z^{T}Z)^{-1} Z^{T})$ y el valor $t^{*}_{i}$ es el
+	i-ésimo elemento de una muestra aleatoria de tamaño $n$ de una $N(0,1)$.
+	
+	\item  Ajustar una regresion simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
+	
+		\item Repetir $B - 1$ veces veces los pasos 3 y 4 para obtener las muestras:
+	\[
+	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
+	\]
+\end{enumerate}
+
+
+\textbf{Algoritmo - Esquema Bootstrap de Wu 2}
+
+\begin{enumerate}
+	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
+	
+	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
+	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra con reemplazo con probabilidades iguales de los residuos normalizados $a_{1},a_{2}, \dots,a_{n}$, donde
+	
+	\begin{center}
+		$a_{i} = \frac{\hat{e}_{i}-\bar{\hat{ e}}_{i}}{ \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (\hat{e}_{i}-\bar{\hat{e}})^{2} } }$ con $ \bar{\hat{e}}= \frac{1}{n} \sum_{i=1}^{n} \hat{e}_{i} $.
+	\end{center}
+	
+	\item Repetir los pasos 4 y 5 del Algoritmo Wu 1.
+\end{enumerate}
+
+
+
+\textbf{Algoritmo - Esquema Bootstrap de Wu 3}
+
+\begin{enumerate}
+	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
+	
+	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
+	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra con reemplazo con probabilidades iguales del vector de residuales transformado:
+	
+	\begin{center}
+		$R_{ai} = \frac{\hat{e}^{WMM}_{i} - Mediana(\hat{e}^{WMM}_{i})}{ NMAD(\hat{e}^{WMM}_{i})  }$ ,
+	\end{center}
+	donde $NMAD = \frac{1}{0.6745} Mediana\{ | \hat{e}^{WMM}_{i} - Mediana(\hat{e}^{WMM}_{i}) | \}$.
+	
+	\item Repetir los pasos 4 y 5 del Algoritmo Wu 1.
+\end{enumerate}
+
+
+\textbf{Algoritmo - Esquema Bootstrap de Liu 1}
+
+\begin{enumerate}
+	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
+	
+	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
+	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra aleatoria de tamaño $n$ de una distribución Gamma$(\alpha = 4,\beta = 1/2)$ con función de densidad $ gz(x) = [\frac{2^{4}}{3!}]x^{3}e^{-2x}I_{(x>0)}$ 
+
+	
+	\item Repetir los pasos 4 y 5 del Algoritmo Wu 1.
+\end{enumerate}
+
+
+
+\textbf{Algoritmo - Esquema Bootstrap de Liu 2}
+
+\begin{enumerate}
+	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
+	
+	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
+	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra aleatoria de tamaño $n$ obtenida por 
+	
+	\begin{center}
+		$t^{*}_{i} = H_{i}D_{i}- E(H_{i})E(D_{i})$,\hspace{.5cm} $i = 1,2, \dots, n$
+	\end{center}
+	
+	donde$ H_{1},H_{2}, \dots,H_{n}$ son variables aleatorias independientes, idénticamente normalmente distribuidas con media $(1/2)( \sqrt{17/6})+ \sqrt{1/6}$ y varianza $1/2$. De igual manera,$ D_{1},D_{2}, \dots,D_{n}$ también se distribuyen normal, son independientes e idénticamente
+	distribuidas con media $(1/2)( \sqrt{17/6})- \sqrt{1/6}$ y varianza  $1/2$. Tanto $ H_{i}$ y las $ D_{i}$ son independientes entre sí.
+	
+	\item Repetir los pasos 4 y 5 del Algoritmo Wu 1.
+\end{enumerate}
 
 
 \subsection{Simulación de Modelos}

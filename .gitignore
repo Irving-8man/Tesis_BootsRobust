@@ -9,3 +9,4 @@
 # Ignorar otros archivos generados por LaTeX
 *.bbl
 *.blg
+*.zip
