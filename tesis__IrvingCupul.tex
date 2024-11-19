@@ -11,13 +11,31 @@
 \usepackage{amsmath}
 \usepackage{float}
 \usepackage{placeins}
+\usepackage[autostyle]{csquotes}
+\usepackage[backend=biber,style=apa,sorting=nyt]{biblatex}
+\addbibresource{referencias/Referencias.bib}
 \spanishdecimal{.}
+\usepackage{makecell} % para permitir saltos de línea en una celda
+
+\usepackage{cellspace} % Para agregar padding vertical a las celdas
+
+% Configuración de padding
+\setlength{\tabcolsep}{5pt} % Padding horizontal
+\setlength\cellspacetoplimit{10pt} % Padding vertical superior
+\setlength\cellspacebottomlimit{10pt} % Padding vertical inferior
 
 % Configuración de la sangría
 \setlength{\parindent}{2ex}   % Sangría de 5 espacios (aproximadamente 5ex)
 
 % Configuración del espacio interlineal
-\onehalfspacing               % 1.5 espacios entre líneas
+\onehalfspacing
+\usepackage{enumitem} % Paquete para personalizar listas
+ 
+\usepackage{array} % Para personalizar el estilo de las celdas
+ 
+ % Configuración de padding
+ \renewcommand{\arraystretch}{1.6} % Padding vertical (1.5 es el factor de espaciado)       
+        
 
 \geometry{
 	paperwidth=21.59cm,
@@ -110,4 +128,5 @@
 	\input{10_conclusiones.tex}
 	\newpage
 	\input{11_anexos.tex}
+	\printbibliography
 \end{document}
