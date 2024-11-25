@@ -1,0 +1,22 @@
+
+Determinar la precisión de un modelo con la técnica de regresión lineal por medio de intervalos de confianza basado en diferentes esquemas de remuestreo Bootstrap y medir sus eficacias a través de un estudio de simulación.
+\vspace{.5cm}
+\subsection{Objetivos específicos}
+\begin{enumerate}
+	\item Desarrollar la metodología para medir la precisión de un modelo con la técnica de regresión lineal por medio de intervalos de confianza basado en diferentes esquemas de remuestreo Bootstrap.
+	\item Determinar la precisión de un modelo cuando se cumplan los supuestos de normalidad y varianza constante.
+	\item Determinar la precisión de un modelo cuando no se cumplan los supuestos de normalidad y/o varianza constante.
+	\item Diseñar e implementar un estudio de simulación para evaluar la eficacia de la metodología propuesta.
+	\item Simular modelos exactos-precisos (EP) y modelos exactos-imprecisos (EI) mediante la propuesta de \textcite{febles-2014} y \textcite{zacarias-2023}; cuando se cumplan o no los supuestos de normalidad e igualdad de varianzas.
+	\item Determinar la eficacia de los esquemas Bootstrap propuestos para medir la precisión de un modelo.
+\end{enumerate}
+
+
+
+\section{Conclusiones}
+
+%Las conclusiones son respuesta a mis objetivos
+
+Cuando se tenga NVC, NNVC o NVD y se evalué la precisión, con base en al menos 95\% de eficiencia promedio, el ICB a utilizar sería Percentil con esquema de remuestreo Liu2.
+
+Cuando se tenga NNVD y se evalué la precisión, el ICB a utilizar sería BCa con esquema de remuestreo ParBal. Cabe indicar que la eficiencia promedio fue de 88.8\% y sólo no identificó el tipo de modelo EI para tamaño de muestra “pequeño” n=10, 15, 20.

@@ -1,6 +1,16 @@
 \section{Metodología}
 
-En esta sección se presenta como determinar la precisión $(R^{2})$ de modelos con la técnica de regresión lineal con estimadores Bootstrap robustos. Para ello se simularon 2,500 modelos para tipos de modelo Exacto-Preciso (EP) y Exacto-Impreciso (EI) con su muestra de estimaciones de $R^{2}$ respectivo para cada caso: Normalidad - Varianza Constante (NVC), No normalidad - Varianza Constante (NNVC), Normalidad - Varianza Distinta (NVD) y No normalidad - Varianza Distinta (NNVD), divididas en 5 replicas y por tamaño de muestra  = 
+
+
+En esta sección se presenta como determinar la precisión $(R^{2})$ de modelos con la técnica de regresión lineal con estimadores Bootstrap robustos. Con modelos Exactos-Precisos (EP) y Exactos-Imprecisos (EI) con su muestra de estimaciones de $R^{2}$ respectivo para cada caso: Normalidad - Varianza Constante (NVC), No normalidad - Varianza Constante (NNVC), Normalidad - Varianza Distinta (NVD) y No normalidad - Varianza Distinta (NNVD). Utilizando diversos esquemas de remuestreo Bootstrap para la construir un intervalo de confianza para la $R^{2}$.\\
+
+
+Para ello se simularon apriori 2,500 modelos para tipos de modelo Exacto-Preciso (EP) y Exacto-Impreciso (EI) con su muestra de estimaciones de $R^{2}$ respectivo para cada caso: Normalidad - Varianza Constante (NVC), No normalidad - Varianza Constante (NNVC), Normalidad - Varianza Distinta (NVD) y No normalidad - Varianza Distinta (NNVD), divididas en 5 replicas y por tamaño de muestra  = 
+
+
+
+
+
 
 
  una muestra de tamaño 2500 estimaciones de $R^{2}$ con los diferentes esquemas de remuestreo Bootstrap propuestos en Rana et al. (2012), tomando en consideración cuando se cumplan los supuestos de normalidad y/o igualdad de varianzas en el modelo de regresión lineal entre los valores reales $( y_{i} )$  y los simulados $( z_{i} )$ por el modelo matemático a evaluar. Posteriormente se determinarán intervalos de confianza Bootstrap para la  $R^{2}$.
@@ -75,8 +85,9 @@ Desarrollar la metodología para medir la precisión de un modelo con la técnic
 	 	 
 	 	 
 	 	 
-	 \subsection{Análisis estadísticos}
-	 Determinar la eficacia de los esquemas Bootstrap propuestos para medir la precisión de un modelo.
+\subsection{Análisis estadísticos}
+Para cada supuesto (NVC, NNVC, NVD, NNVD) se utilizó ANOVA en un arreglo factorial de tres factores seguido de la comparación múltiple de Tukey (Montgomery, 2017), para determinar el comportamiento de la eficacia de dos ICB en la evaluación de la precisión, bajo ocho esquemas de remuestreo, seis tamaños de muestra y dos tipos de modelo. Cabe señalar que, en cuatro de los ocho análisis de varianza realizados se eliminaron valores atípicos para el logro del cumplimiento de los supuestos del ANOVA.
+Las pruebas estadísticas se consideraron significativas cuando  y se utilizó el paquete estadístico STATGRAPHICS Centurion 19 (Statgraphics, 2024).
 
 
 

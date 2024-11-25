@@ -43,7 +43,7 @@ Por su parte, \textcite{mayer-butler-1993} indican que la prueba $t$ paramétric
 
 
 
-\subsection{Validación de Modelos con Regresión Lineal}
+\subsection{Regresión Lineal Simple}
 Una de las técnicas mas comunes en la validación de modelos es la de Regresión Lineal Simple de los observados sobre los predichos (Mayer et al., 1994; Analla, 1998; Tedeschi, 2006).
 \vspace{.5cm}
 
@@ -53,79 +53,135 @@ El análisis de regresión lineal tiene como objetivo modelar en forma matemáti
 \vspace{.5cm}
 
 
-\textcite{zacarias-2023}, menciona que una parte importante del método de regresión lineal, es que estudia si dicha relación permite realizar estimaciones con una precisión aceptable; por lo que también se considera como un criterio cuantitativo relevante para evaluar la calidad de ajuste de la regresión, el coeficiente de determinación $R^{2}$, que en general se interpreta como la proporción de la variabilidad en los datos observados $y_{i}$, que es explicada por el modelo.
-\vspace{.5cm}
-
-En este contexto \textcite{febles-2014} presenta la validación de modelos con la técnica de regresión lineal simple basándose en el trabajo previo de \textcite{balam-2012}, quien describe el proceso de validación de modelos utilizando la técnica.
+Esta técnica se encuentra principalmente sujeta al cumplimiento de sus supuestos. Cuando los residuales son independientes, se ajustan a una distribución normal y tienen varianza común, se aplican pruebas de hipótesis estadísticas para evaluar la exactitud, intercepto cero y pendiente uno, ya sea mediante pruebas t de Student, o bien, mediante una prueba F para determinar si el intercepto y la pendiente son simultáneamente cero y uno respectivamente \parencite{balam-2012}.
 
 
-\subsubsection{Validación de modelos con la técnica de regresión lineal simple \parencite{febles-2014}}
 
-Sea el modelo $Y = H( )$, donde representa un vector de parametros desconocidos.
-Suponga que se desea validar este modelo con la tecnica de regresion lineal simple; para
-ello se requiere de una muestra pareada (z1 y1) (z2 y2)
-(zn yn) de valores observados
-y predichos respectivamente por el modelo Y = H( ). Bajo estas condiciones, se considera
-el modelo de regresion lineal: $y_{i}= \beta_{0} + \beta_{1}z_{i}$ y esta dado por:
+
+\subsubsection{Validación de Modelos con la Técnica de Regresión Lineal Simple \parencite{febles-2014}}
+
+\textcite{febles-2014}, describe la validación de modelos con la técnica de regresión lineal simple que se centra en determinar el grado de exactitud y precisión del modelo basándose en el trabajo previo de \textcite{balam-2012}.\\
+
+Sea un modelo $Y = H(\Theta )$, con una muestra pareada $(z_{1}, y_{1}), (z_{2}, y_{2}) , \dots , (z_{n}, y_{n})$ de valores observados y predichos respectivamente por el modelo. Bajo estas condiciones, se considera el modelo de regresión lineal: $y_{i}= \beta_{0} + \beta_{1}z_{i}$, donde $ 1 \leq i \leq n$. Donde  los estimadores de mínimos cuadrados para $\beta_{0}$,  $\beta_{1}$ y el coeficiente de determinación $R^{2}$ son respectivamente: \\
+
+\begin{center}
+	$\hat{\beta_{0}} = \hat{y} - \hat{\beta_{1}} \bar{z} $, \\
+\end{center}
+
+\begin{center}
+	$ \hat{\beta_{1}} = \frac{\sum_{i=1}^{n} (z_{i} - \bar{z} ) (y_{i} - \bar{y})} {  \sum_{i=1}^{n} (z_{i} - \bar{z} )^{2} }$, \\
+\end{center}
+
+\begin{center}
+	$R^{2} = \frac{ \sum_{i=1}^{n} ( \hat{y}_{i} - \bar{y})^{2}} { \sum_{i=1}^{n} ( y_{i} - \bar{y})^{2}  }$  y  $ 0 \leq R^{2} \leq 1$,
+\end{center}
+
+
+Donde $ \bar{z}$ y $ \bar{y}$ son las medias muéstrales de los valores observados y predichos respectivamente por el modelo; la evaluación estadístico de la exactitud y precisión depende del cumplimiento de los supuestos de normalidad y de varianza constante de los errores i en el modelo. \\
+
+
+Los residuales $\epsilon_{i} = y_{i} - \bar{y}_{i}$ son estimaciones de los errores $i$ en el modelo, verificando el  supuesto de normalidad en los residuales $\epsilon_{1}, \epsilon_{2} , \dots, \epsilon_{n} $, con pruebas de bondad de ajuste, como la de Kolmogorov-Smirnov y Shapiro Wilk. El supuesto de varianza constante se verifica con el grafico de dispersión entre los predichos $y_{i}$ y los residuales $\epsilon_{i}$ del modelo. Con todas las combinaciones de los supuestos de normalidad y varianza constante, la evaluación de la exactitud y precisión del modelo $Y = H(\Theta )$ se analizan en los siguientes tres casos: cuando la muestra de residuales es independiente con distribución normal y varianza constante (NVC); cuando la muestra de residuales es independiente con distribución no normal y varianza constante (NNVC) y cuando la muestra
+de residuales es independiente con varianza no constante (NVD - NNVD).
+
+\subsubsection{Evaluación de la Exactitud de un Modelo}
+
+Cuando se cumplen los supuestos de la Regresión, la verificación de la exactitud de un modelo puede llevarse a cabo vía dos pruebas t de Student, o bien, mediante una prueba F \parencite{balam-2012}.\\
+
+La Prueba F Conjunta que considera el intercepto y la pendiente de manera conjunta, ambos valores agrupados en un vector de dimensión dos, a diferencia del caso anterior, se compara que el vector de parámetros  sea  contra que no lo sea. Bajo la premisa de que los residuales del modelo entre los observados y predichos cumplen los supuestos de normalidad y varianza constante,la prueba de hipótesis conjunta permite obtener una región de confianza para el vector de parámetros ,en este caso,se dice que el modelo ese exacto cuando la región de confianza conjunta contiene al punto $(0,1)$. \parencite{zacarias-2023}.\\
+
+Para la aplicación de la F conjunta se ajusta el modelo de regresión lineal a simple con los supuestos de que los residuos ajustados se distribuyan normal, son independientes y tienen varianza constante (Ayala,2024).\\
+
+Para la prueba de exactitud mediante la prueba de F conjunta se toma en cuenta lo siguiente \parencite{montgomery-2012}: 
+
+\begin{center}
+	$S_{zz} = \sum_{i=1}^{n}z_{i}^{2} - \frac{( \sum_{i=1}^{n} z_{i})^{2}}{n} \;$ ,
+	$S_{zy} = \sum_{i=1}^{n}z_{i} y_{i} - \frac{ \sum_{i=1}^{n} z_{i} \sum_{i=1}^{n} y_{i} }{n} \;$,\\
+\end{center}
+
+\begin{center}
+	$SS_{T} = \sum_{i=1}^{n}y_{i}^{2} - \frac{( \sum_{i=1}^{n} y_{i})^{2}}{n} \;$, $\bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_{i} \; $, $\bar{z} = \frac{1}{n} \sum_{i=1}^{n} z_{i} $ \\
+\end{center}
 
 
 \begin{center}
-	$R^{2} = \frac{ \sum_{i=1}^{n} ( \hat{y}_{i} - \bar{y})^{2}} { \sum_{i=1}^{n} ( y_{i} - \bar{y})^{2}  }$  y  $ 0 \leq R^{2} \leq 1$.
+	$ \hat{\beta_{1}} = \frac{S_{zy}}{S_{zz}}  \;$, $\hat{\beta_{0}} =  \bar{y} - \hat{\beta_{a}} \bar{z}  \; $, $\hat{y} = \hat{\beta_{0}}  + \hat{\beta_{1}}z $ \\
+\end{center}
+
+\begin{center}
+	$ CME =  \frac{SCE}{n-2} = \frac{ \sum_{i=1}^{n} (y_{i} - \hat{y_{i}} )^{2} }{n - 2 } =  \frac{SS_{T} - \hat{\beta_{1}} S_{zy}}{n -2} $ \\
 \end{center}
 
 
+La Prueba F Conjunta considera un sólo procedimiento que nos permite establecer si un modelo es exacto considerando simultáneamente el intercepto \(\beta_0\) y la pendiente \(\beta_1\), es decir, se prueba si $\bigl(\begin{smallmatrix} \beta_{0} \\ \beta_{1} \end{smallmatrix}\bigr) = \bigl(\begin{smallmatrix}0  \\  1\end{smallmatrix}\bigr) $ estadísticamente. flata qui \\
+
+\textcite{zacarias-2023}, para evaluar la exactitud de un modelo ante los escenarios NNVC, NVD y NNVD, implemento un método que consiste en estimar la distribución de la estadística F a través de muestras Bootstrap robustas propuestas en \textcite{rana-2012}, en donde dependiendo del caso que se presente se implementan los distintos tipos de remuestreos propuestos por \textcite{wu-1986} y \textcite{liu-1988} y a partir de estas construir una región de confianza para el vector de parámetros $ \mathbf{\beta} = (\beta_{0}, \beta_{1})$.\\
+
+
+\subsubsection{Evaluación de la Precisión de un Modelo}
+
+\textcite{zacarias-2023}, menciona que una parte importante del método de regresión lineal, es que estudia si dicha relación permite realizar estimaciones con una precisión aceptable; por lo que también se considera como un criterio cuantitativo relevante para evaluar la calidad de ajuste de la regresión, el coeficiente de determinación $R^{2}$, que en general se interpreta como la proporción de la variabilidad en los datos observados $y_{i}$, que es explicada por el modelo.\\
+
+
+\textcite{balam-2012}, utilizó un intervalo de confianza Bootstrap para medir la precisión de un modelo, donde el esquema de remuestreo propuesto depende del cumplimiento o no del supuesto de varianza constante. Cuando se cumple dicho supuesto se emplea un intervalo de confianza Bootstrap de residuales balanceado por el método percentil con sesgo corregido acelerado para evaluar la precisión de un modelo; y cuando no se cumple el supuesto de varianza constante se emplea un intervalo de confianza Bootstrap pareado balanceado por el método percentil con sesgo corregido acelerado.\\
+
+\subsubsection{El Coeficiente de Determinación $R^{2}$}
+
+El coeficiente de determinación $R^{2}$ se utiliza cuando las variables de estudio son cuantitativas y están medidas en una escala de intervalo o razón, siendo una herramienta común para medir el ajuste del modelo a los datos. El valor de $R^{2}$
+se interpreta frecuentemente como la proporción de la variación de la variable dependiente explicada por el modelo de regresión lineal simple \parencite{balam-2012}. Sin embargo, es importante señalar que $R^{2}$
+presenta varias limitaciones y características que deben ser tomadas en cuenta al evaluar su utilidad.\\
+
+
+Según lo señalado por \textcite{balam-2012}, algunos puntos clave sobre $R^{2}$:\\
+
+\begin{enumerate} 
+	\item $R^{2}$ no mide la magnitud de la pendiente de la recta de regresión ajustada, ni implica que una pendiente grande se corresponda con un valor grande de $R^{2}$. 
+	
+	\item Es posible obtener un valor grande de $R^{2}$ agregando términos adicionales al modelo, lo que puede no reflejar una mejora real en la calidad del modelo.
+	
+	\item El valor de $R^{2}$  no mide adecuadamente la relación entre las variables si no existe una relación lineal, por lo que puede ser grande aunque 
+	y no tengan una relación lineal significativa. 
+	
+	\item Un valor elevado de $R^{2}$ no necesariamente implica que el modelo sea un buen predictor, ya que puede estar influenciado por factores no realistas en los datos.
+	
+	\item En algunos casos, $R^{2}$ puede ser pequeño si el intervalo de las $z$  es demasiado estrecho para detectar una relación significativa con $y$. 
+	
+	\item En presencia de valores atípicos o agrupamientos (clustering) en los datos, $R^{2}$ puede ser engañoso, pues un valor grande podría ser el resultado de estos factores, en lugar de un ajuste verdadero. \\
+\end{enumerate}
+
+
+A pesar de sus limitaciones,  $R^{2}$ tiene ciertas ventajas, como cuando su valor es cercano a cero, lo que indica que el modelo no se ajusta bien a los datos. Sin embargo, si no hay puntos repetidos, es posible construir un modelo polinómico de grado $n-1$ que ofrezca un ajuste perfecto, lo que también pone en evidencia la necesidad de interpretar  $R^{2}$ con cautela.\\
+
+Entre otras características, se destaca que el valor esperado de  $R^{2}$ puede aumentar o disminuir dependiendo de la variabilidad de la variable independiente 
+$z$, y que, debido a la falta de conocimiento sobre su distribución exacta,  $R^{2}$  no debe usarse para hacer predicciones directas.\\
+
+
+Dadas estas limitaciones, es importante considerar estudios adicionales que profundicen en las propiedades de $R^{2}$. \textcite{Ohtani-2004}, mencionan que para medir la precisión de un modelo de regresión lineal simple, al utilizarse tradicionalmente el coeficiente de determinación  \( R^2 \) y el coeficiente de determinación ajustado, se han presentado estudios sobre las propiedades de muestras pequeñas de \( R^2 \) y \( \overline{R}^2 \) como lo son \textcite{barten-1962} que sugiere una versión modificada de \( R^2 \) para reducir su sesgo, y la propuesta de \textcite{crammer-1987} al derivar las fórmulas exactas para los dos primeros momentos de \( R^2 \) y \( \overline{R}^2 \), quien muestra que \( R^2 \) está seriamente sesgado hacia arriba en muestras pequeñas, mientras que \( \overline{R}^2 \) es más inestable que \( R^2 \) en términos de desviación estándar.\\
+
+
+Por lo cual, en \textcite{Ohtani-2004} deriva las fórmulas exactas para la función de densidad, la función de distribución y el momento \(m\)-ésimo, realizando un análisis numéricos basados en las fórmulas exactas, todo esto considerando un modelo de regresión lineal donde los términos de error obedecen a una distribución \(t\) multivariada, examinando los efectos del alejamiento de la normalidad de los términos de error en las distribuciones exactas de \(R^2\) y \(\bar{R}^2\). Con intervalos de confianza de \(R^2\) y \(\bar{R}^2\), muestran que el sesgo hacia arriba de \(R^2\) se vuelve significativo y que el error estándar de \(R^2\) aumenta a medida que los grados de libertad de la distribución de error \(t\) multivariada (\(\nu_0\)) disminuyen. También se muestra que, cuando los valores de \(\nu_0\) y el coeficiente de determinación de la población (\(\Phi\)) son pequeños, los límites superiores de confianza de \(R^2\) y \(\bar{R}^2\) son muy grandes.\\
+
+Adicionalmente, \textcite{christou-2005} explica la distribución del coeficiente de determinación muestral en el caso de regresión simple utilizando su relación con la distribución \(F\) no central. Introduce el concepto de coeficiente de determinación verdadero, el cual es útil en estudios de simulación donde la varianza del término de error es conocida, permitiendo construir relaciones con una fuerza predeterminada.\\
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-\subsubsection{Coeficiente de Determinación (Balam, 2012) }
-
-Se utiliza cuando las variables de estudio son cuantitativas medidas en escala de intervalo o de razón para medir el ajuste del modelo a los datos. El valor de $R^{2}$ frecuentemente es considerado como la proporción de la variación explicada por el modelo de regresión $y_{i}= \beta_{0} + \beta_{1}z_{i}$ y esta dado por:
-
-
-	\begin{center}
-	$R^{2} = \frac{ \sum_{i=1}^{n} ( \hat{y}_{i} - \bar{y})^{2}} { \sum_{i=1}^{n} ( y_{i} - \bar{y})^{2}  }$  y  $ 0 \leq R^{2} \leq 1$.
-\end{center}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsubsection{Verificación de los Supuestos de Normalidad y Varianza constante}
 
 
 
 
 \subsection{Regresión Lineal Robusta}
-Los estimadores de regresión robusta son una alternativa a los estimadores de mínimos cuadrados cuando no se cumplen los supuestos de normalidad y el de varianza constante en un modelo de regresión lineal, ya que están diseñados para no ser afectados por valores atópicos o por alguna discrepancia en las hipótesis del modelo. La regresión robusta tiene como objetivo derivar métodos que produzcan inferencias confiables para los parámetros del modelo. Existe una gran variedad de estimadores robustos para los coeficientes de regresión, por lo que al elegir uno de ellos se toma en cuenta que tenga ciertas propiedades deseables como son e ciencia alta, varianza mínima, punto de ruptura alto y un mayor
-ajuste exacto mínimo. El punto de ruptura es una medida de la robustez del estimador y se define para muestras finitas como la mínima fracción de datos anómalos que puede causar que el estimador no sea útil. El ajuste exacto mínimo se refiere ere al porcentaje mínimo de observaciones que se ajustan exactamente al modelo de regresión. \\
+En un modelo de regresión lineal, los supuestos de normalidad y homocedasticidad son fundamentales para garantizar la validez de los estimadores obtenidos por mínimos cuadrados ordinarios (OLS). Sin embargo, en la práctica, estos supuestos rara vez se cumplen debido a la presencia de valores atípicos, heterocedasticidad o discrepancias en las hipótesis del modelo. En estos casos, los estimadores de regresión robusta se presentan como una alternativa confiable, ya que están diseñados para ser menos sensibles a dichas anomalías y proporcionar inferencias más confiables sobre los parámetros del modelo \parencite{zacarias-2023}.\\
+
+\textcite{annalisa-2024}, menciona que la regresión robusta ofrece ventajas significativas frente a métodos como la regresión ponderada basada en mínimos cuadrados iterativamente reponderados (IRWLS), especialmente en contextos con patrones heterocedásticos en los residuos. No solo permite gestionar de manera óptima los valores atípicos, sino que también proporciona un enfoque más eficaz para manejar la heterocedasticidad y las desviaciones de los supuestos clásicos del modelo.\\
 
 
-En un principio, el uso de los estimadores robustos era limitado ya que su computo requería de métodos iterativos que son mas complicados que el computo de los estimadores de mínimos cuadrados, pero con el tiempo el uso fue cada vez mayor debido a nuevos algoritmos rápidos de computo y al desarrollo de resultados teóricos que permitieron mejorar la eficacia e incrementar el punto de ruptura, a tal grado de pasar del 0\% al 50\%. Los primeros estimadores robustos propuestos fueron el L1-Estimador y el M-Estimador (Huber, 1973), aunque estos en teoría eran mas apropiados que los estimadores de mínimos
-cuadrados cuando no se cumplan los supuestos del modelo de regresión, tenían el mismo punto de ruptura que los mínimos cuadrados, es decir, $1/n$, el cual convergía a cero cuando $ n \rightarrow \infty$. El GM-Estimador se propuso para incrementar el punto de ruptura alcanzando un máximo del 30\% para modelos de regresión simple, aunque para modelos de regresión múltiple su punto de ruptura converge a cero. Adicionalmente, se propusieron estimadores robustos con punto de ruptura máximo del 50\%; como el propuesto por Siegel (1982)
-basado en la minimización de la mediana repetida (RM); y los propuestos por Rousseeuw (1984), uno basado en la mínima mediana de los cuadrados de los residuos (LMS) y el otro basado en los mínimos cuadrados recortados de los residuos (LTS). Rousseeuw y Yohai (1984) propusieron los S-Estimadores basados en la minimización de un M-Estimador de la escala residual; sin embargo, todos estos estimadores robustos no son muy eficientes. Actualmente, se cuenta con estimadores robustos de regresión que se construyen por etapas, cuyo computo es mas demandante, sin embargo, logran alcanzar un punto de ruptura
-máximo del 50\% y una e ciencia asintótica mayor al 85\%, uno de los mas utilizados es el MM-Estimador.\\
+El objetivo principal de la regresión robusta es desarrollar métodos que produzcan estimaciones precisas y resistentes a influencias indebidas en los datos. Una de las métricas clave para evaluar la robustez de un estimador es el punto de ruptura, definido como la mínima fracción de datos atípicos necesarios para invalidar completamente el estimador. Mientras que los estimadores clásicos como OLS tienen un punto de ruptura bajo que converge a cero a medida que aumenta el tamaño de la muestra, los estimadores robustos modernos pueden alcanzar un punto de ruptura de hasta el 50\%, lo que los hace altamente resistentes ~\parencites{siegel-1982,rousseeuw-1984}. \\
 
-\subsubsection{MM-Estimador (Yohai, 1987)}
+Entre los estimadores robustos más avanzados se encuentra el MM-Estimador, introducido como una combinación de alta eficiencia y robustez.El MM-Estimador es especialmente útil en contextos donde los datos contienen una proporción significativa de valores atípicos, ya que logra una eficiencia asintótica superior al 85\% y un punto de ruptura máximo del 50\% \parencite{rousseeuw-yohai-1984}. Este balance lo convierte en una herramienta clave para análisis estadísticos robustos, asegurando un ajuste confiable incluso en condiciones adversas.\\
+
+
+
+\subsubsection{MM-Estimador \parencite{yohai-1987}}
 El estimador MM tiene las siguientes propiedades: (i) es altamente eficiente cuando los errores tienen una distribución normal y (ii) su punto de ruptura es 0.5.\\
 
 El estimador MM se define en un procedimiento de tres etapas. En la primera etapa, se calcula una estimación de regresión inicial que es consistente, robusta y con un alto punto de ruptura, pero no necesariamente eficiente. En la segunda etapa, se calcula un estimador M de la escala de errores utilizando residuos basados en la estimación inicial. Finalmente, en la tercera etapa se calcula un estimador M de los parámetros de regresión basada en una función $\psi$ descendente.\\
@@ -135,7 +191,7 @@ Considerando el modelo de regresión lineal simple:
 $y_{i}= \beta_{0} + \beta_{1}z_{i}$, $1 \leq i \leq n, $
 \end{center}
 
-Huber (1981) de ne los estimadores M de la siguiente manera: Sea una función real que satisfaga los siguientes supuestos (A1):
+\textcite{huber-1981} define los estimadores M de la siguiente manera: Sea una función real que satisfaga los siguientes supuestos (A1):
 
 \begin{enumerate}[label=\roman*.]
 	\item $\rho(0) = 0$.
@@ -152,7 +208,7 @@ Dada una muestra de tamaño $n$, $ \mathbf{u} = (u_{1}, u_{2}, \dots , u_{n})$, 
 	$\frac{1}{n} \sum_{i=1}^{n} \rho( \frac{u_{i}}{s}) = b$,\\
 \end{center}
 
-donde$ b$ puede de definirse como $E_{\Phi}(\rho(u)) = b$, donde $\Phi$ denota la distribución normal estándar.\\
+donde $b$ puede de definirse como $E_{\Phi}(\rho(u)) = b$, donde $\Phi$ denota la distribución normal estándar.\\
 
 Se cumple que si $c(\mathbf{u}) = \#\{i : 1 \leq i \leq n, u_{i}=0\} / n < 1- (b/a) $, entonces la sumatoria previa tiene solución única y esta solución es diferente de 0. Si $c(\mathbf{u}) \geq 1 -  (b/a)$, se define $s(\mathbf{u}) = 0$. \\
 
@@ -165,60 +221,73 @@ Luego, el estimador MM se define en tres etapas de la siguiente manera:\\
 		 $ \epsilon_{i} = y_{i} -\beta_{0}^{'} -\beta_{1}^{'} z_{i}  $, $1 \leq i \leq n $.\\
 	\end{center}
 	
-	y calcular $s_{n} = s(\epsilon_{i})$, el estimador M de nido previamente, usando una función $\rho_{0}$ que satisface los supuestos (A1) y considerando una constante $b$ tal que $b/a = 0.5$, donde$ a = $ máx $ \rho_{0}(u)$, lo cual implica que para esta escala la estimación tiene un
+	y calcular $s_{n} = s(\epsilon_{i})$, el estimador M definido previamente, usando una función $\rho_{0}$ que satisface los supuestos (A1) y considerando una constante $b$ tal que $b/a = 0.5$, donde$ a = $ máx $ \rho_{0}(u)$, lo cual implica que para esta escala la estimación tiene un
 	punto de ruptura igual a 0.5.
 	
 	\item  Sea $\rho_{1}$ otra función que satisfaga los supuestos (A1) y tal que\\
-	$\rho_{1}(u) \leq \rho_{0}(u)$\\
-	sup $\rho_{1}(u)$  = sup $ \rho_{0}(u) = a$\\
+	\begin{center}
+		$\rho_{1}(u) \leq \rho_{0}(u)$\\
+		sup $\rho_{1}(u)$  = sup $ \rho_{0}(u) = a$\\
+	\end{center}
+
 	
 	Sea $\psi_{1} = \rho_{1}^{'}$. Entonces el estimador MM, se define como cualquier solución de\\
-	
-	$\sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i} = 0$\\
+	\begin{center}
+		$\sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i} = 0$\\
+	\end{center}
+
 \end{enumerate}
 
 
-\subsubsection{ Algoritmo MM-Estimador  \parencite{zacarias-2023} }
+\subsubsection{ Algoritmo MM-Estimador \parencite{zacarias-2023} }
+Como se presenta en la tesis de \textcite{zacarias-2023}, el algoritmo MM-Estimador es un enfoque robusto que mejora la estimación de los coeficientes en presencia de valores atípicos. A continuación, se describe el algoritmo:\\
 
 Sea\\
-
+\begin{center}
  $ y_{i} = \beta_{0} -\beta_{1}z_{i} + \epsilon_{i} $, $1 \leq i \leq n $,\\
+\end{center}
 
 una muestra de tamaño $n$ y suponga dadas las estimaciones iniciales $\beta_{0}^{'}$ y $\beta_{0}^{'}$, además del estimador M definido en la Etapa 2 como $s_{n}$. Para cada $t \: \in  \: \mathbb{R} $ se definen los pesos
 $w_{i}(t) = \psi_{1} (\epsilon_{i} /s_{n}) /(\epsilon_{i} /s_{n})$. También se definen \\
 
 
-$g(t) = \frac{1}{s_{n}^{2}} \sum_{i=1}^{n} w_{i}( t )\epsilon_{i} z_{i} =  \frac{1}{s_{n}}  \sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i} $\\
+\begin{center}
+	$g(t) = \frac{1}{s_{n}^{2}} \sum_{i=1}^{n} w_{i}( t )\epsilon_{i} z_{i} =  \frac{1}{s_{n}}  \sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i} $, y \\	
+\end{center}
 
-y \\
+\begin{center}
+	$ M(t) = \frac{1}{s_{n}^{2}}  \sum_{i=1}^{n}  w_{i}( t ) z_{i}^{2} $.\\
+\end{center}
 
 
-$ M(t) = \frac{1}{s_{n}^{2}}  \sum_{i=1}^{n}  w_{i}( t ) z_{i}^{2} $.\\
 
 
 
-Si $t^{(i)}$ es el valor de la estimación en la j-esima iteración, entonces $t^{(j+1)}$ está definido por\\
+Si $t^{(i)}$ es el valor de la estimación en la j-esima iteración, entonces $t^{(j+1)}$ está definido por $t^{(j+1)} = t^{(j)} + \Delta ( t^{(j)})$, donde,\\
 
-$t^{(j+1)} = t^{(j)} + \Delta ( t^{(j)})$,\\
-
-donde ,\\
-
-$\Delta ( t) = M^{-1}(t)g(t)$.\\
+\begin{center}
+	$\Delta ( t) = M^{-1}(t)g(t)$.\\
+\end{center}
 
 Sea $0< \delta  < 1$  y $-g(t)$ el gradiente de $S(t)$, donde \\
 
-$S(t) = \sum_{i=1}^{n} \rho_{1} ( \frac{\epsilon_{i}}{s_{n}})$. \\
+\begin{center}
+	$S(t) = \sum_{i=1}^{n} \rho_{1} ( \frac{\epsilon_{i}}{s_{n}})$. \\
+\end{center}
 
 
-Es posible encontrar un entero k (Yohai, 1987) tal que\\
+Es posible encontrar un entero $k$ \parencite{yohai-1987} tal que\\
 
-$ S(t^{(j)} + \Delta(t^{(j)} )/2^{k}) \leq S(t^{(j)}) - \delta( \Delta(t^{(j)} )/2^{k} ) g(t^{(j)})$. \\
+\begin{center}
+	$ S(t^{(j)} + \Delta(t^{(j)} )/2^{k}) \leq S(t^{(j)}) - \delta( \Delta(t^{(j)} )/2^{k} ) g(t^{(j)})$. \\
+\end{center}
 
 
 Sea $k_{1,j}$ el mínimo de dichas $k$ y sea $k_{2,j}$ el valor de $k, 0 \leq k  \leq k_{1,j}$, lo que da el mínimo de $S(t^{(j)} + \Delta(t^{(j)} )/2^{k})$. Entonces se define el paso recursivo mediante\\
 
-$ t^{(t+1)} = (t^{j} + (1/2^{k_{2,j}}) \Delta(t^{(j)} )$.\\
-
+\begin{center}
+	$ t^{(t+1)} = (t^{j} + (1/2^{k_{2,j}}) \Delta(t^{(j)} )$.\\
+\end{center}
 
 comenzando $t_{(0)} $ las estimaciones de los parámetros de regresión $\beta_{0}$ y $\beta_{1}$.\\
 
@@ -246,56 +315,69 @@ que corresponde a la función $\psi$ bicuadrada
 
 
 
+\subsection{La Técnica Bootstrap}
+
+La Técnica Bootstrap es un método computacional intensivo que permite simular la distribución de una estadística. La idea es maestrear repetidamente los datos observados, produciendo cada vez una función de distribución empírica a partir de los datos remuestreo dos \parencite{zacarias-2023}. El Bootstrap se desarrollo por primera vez para datos independientes y distribuidos de manera idéntica, pero esta suposición se puede relajar para que sea posible realizar
+estimaciones de Bootstrap a partir de datos dependientes, como los residuos de regresión o los datos de series de tiempo (Givens y Hoeting, 2013).\\
 
 
+El enfoque Bootstrap esta especialmente indicado en los casos en donde los datos no siguen una distribución normal, hecho que es común a la mayor parte de las medidas utilizadas habitualmente en las ciencias del comportamiento (Micceri, 1989).\\
 
 
+El Bootstrap constituye una variedad de técnicas para la inferencia estadística denominadas genéricamente métodos de remuestreo entre las que se encuentran la permutación estocástica, el Jacknife y la validación cruzada (Balam, 2012). Con los métodos de remuestreo nos permiten cuantificar la incertidumbre calculando errores estándar e intervalos de confianza y realizando pruebas de significancia.Requieren menos suposiciones que los métodos tradicionales y generalmente dan respuestas precisas (Hesterberg et al. , 2003).\\
 
 
+Segun Hesterberg et al., (2003) las ventajas del bootstrap son:
+
+\begin{enumerate}
+	\item  Pocos supuestos. No requiere que la muestra sea modelada con la distribución normal o que el tamaño de muestra sea grande.
+	
+	\item Mayor precisión. Algunos métodos Bootstrap son mas precisos en la practica que los métodos clásicos.
+	
+	\item Generalidades. Los métodos de remuestreo son notablemente similares para una amplia gama de estadísticos y no requieren de nuevas formulas para cada estadístico. No es necesario memorizar o buscar formulas especiales para cada procedimiento.
+\end{enumerate}
 
 
+\subsubsection{El Principio Bootstrap}
+Sea $\theta =T(F)$ una característica de interés de una distribución $F$ desconocida. Sea $x_{1}, x_{2}, \dots, x_{n}$ aleatoria independiente e idénticamente distribuida de la distribución $F$, sea $\chi =\{ x_{1}, x_{2}, \dots, x_{n} \}$ junto de datos y sea $\hat{F}(x) = \frac{1}{n} \sum_{i=1}^{n} I _{(-\infty, x)} (x_{i})$ la distribución empírica de la muestra. Entonces un estimador de $\theta$ es $\hat{\theta} = T(\hat{F})$ (Givens y Hoeting, 2005).\\
 
+Suponga que se desea estimar la distribución $F$ de $\hat{\theta}$ la distribución $F_{R}$ de algún estadístico de prueba $R( \chi, F)$. Por ejemplo, un estadístico de prueba es\\
 
+\begin{center}
+	$ R( \chi, F) = [T(\hat{F}) - T(F)/S(\hat{F})]$\\
+\end{center}
 
-\subsection{Wild Bootstrap}
+donde $S(\hat{F})$ estima la desviación estándar de $T(\hat{F})$. La distribución de la variable aleatoria $R( \chi, F)$ puede ser intratable o completamente desconocida. Esta distribución también puede depender de la distribución desconocida de $F$. Ante esta situación, la metodología Bootstrap proporciona una aproximación a la distribución de $R( \chi, F)$ derivada de la función de distribución empírica de los datos observados de manera numérica \parencite{balam-2012}.\\
 
+A continuación, se detallan algoritmos Bootstrap implementados por \textcite{balam-2012}:\\
 
-
-
-
-
-
-
-
-
-
-
-
-
-\subsubsection{Algoritmo de remuestreo básico (Rosalinda)}
+\subsubsection{Algoritmo de Remuestreo Básico \parencite{balam-2012}}
 
 Se asume una muestra de $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida.
 
 \begin{enumerate}
-		\item Se obtienen $B$ muestras de tamaño $n$ con reemplazo y con probabilidades iguales de la muestra original. La cardinalidad de este espacio muestra es $n^{n}$. Se denotan las muestras Bootstrap por $X^{*}_{1}, X^{*}_{2},  \dots, X^{*}_{B}$ donde cada $X^{*}_{i}$ es un vector de tamaño $n$.
-		
-		\item Se obtienen las muestras, $\hat{\theta}^{*}_{1} = T (X^{*}_{1}) , \hat{\theta}^{*}_{2} = T (X^{*}_{2}), \dots,\hat{\theta}^{*}_{B} = T (X^{*}_{B})$.
-		
-		\item Se usa la distribución empírica $\hat{F}_{\hat{\theta}^{*}}$ de la muestra $\hat{\theta}^{*}_{1},\hat{\theta}^{*}_{2},  \dots, \hat{\theta}^{*}_{B}$ para estimar $F_{\hat{\theta}} $.
+	\item Se obtienen $B$ muestras de tamaño $n$ con reemplazo y con probabilidades iguales de la muestra original. La cardinalidad de este espacio muestra es $n^{n}$. Se denotan las muestras Bootstrap por $X^{*}_{1}, X^{*}_{2},  \dots, X^{*}_{B}$ donde cada $X^{*}_{i}$ es un vector de tamaño $n$.
+	
+	\item Se obtienen las muestras, $\hat{\theta}^{*}_{1} = T (X^{*}_{1}) , \hat{\theta}^{*}_{2} = T (X^{*}_{2}), \dots,\hat{\theta}^{*}_{B} = T (X^{*}_{B})$.
+	
+	\item Se usa la distribución empírica $\hat{F}_{\hat{\theta}^{*}}$ de la muestra $\hat{\theta}^{*}_{1},\hat{\theta}^{*}_{2},  \dots, \hat{\theta}^{*}_{B}$ para estimar $F_{\hat{\theta}} $.
 \end{enumerate}
 
-En la practica, se usa una $B$ grande para disminuir el error de simulación al evitar el calculo de todo el espacio muestra Bootstrap.
+En la practica, se usa una $B$ grande para disminuir el error de simulación al evitar el calculo de todo el espacio muestra Bootstrap.\\
 
 Las estimaciones para  $F_{\hat{\theta}}, \theta^{*}$ y $ \sigma_{\theta^{*}} $ están dadas respectivamente por:
 
 \[
 \hat{F}_{\hat{\theta}^{*}} \approx F_{\hat{\theta}}, 
- \hspace{.5cm} \hat{\theta}^{*} = \frac{1}{B} \sum_{i=1}^{B}  \hat{\theta}^{*}_{i} \approx \theta,
- \hspace{.5cm} Var(\hat{\theta}^{*}) = \frac{1}{B-1} \sum_{i=1}^{B}(\hat{\theta}^{*}_{i}-\hat{\theta}^{*})^2
+\hspace{.5cm} \hat{\theta}^{*} = \frac{1}{B} \sum_{i=1}^{B}  \hat{\theta}^{*}_{i} \approx \theta,
+\hspace{.5cm} Var(\hat{\theta}^{*}) = \frac{1}{B-1} \sum_{i=1}^{B}(\hat{\theta}^{*}_{i}-\hat{\theta}^{*})^2
 \]
 
 
-\subsubsection{Algoritmo de Remuestreo Balanceado (Rosalinda)}
+
+
+\subsubsection{Algoritmo de Remuestreo Balanceado \parencite{balam-2012}}
+\textcite{balam-2012}, menciona que el Bootstrap Balanceado al ser una modificación a la forma del muestreo del Bootstrap básico garantiza que los datos correspondientes a cada individuo de la muestra aparezcan el mismo numero de veces, incrementando con esto la eficiencia.\\
 
 Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida y supongamos que se desean obtener $B$ muestras Bootstrap.
 
@@ -309,48 +391,51 @@ Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticam
 	\item La muestra Bootstrap haciendo lo siguiente:
 	
 	$X^{*}_{1}$ =  Los elementos de $X$ comprendidos desde la primera hasta la posición $n$ de $N^{*}$.\linebreak
-	$X^{*}_{2}$ =  Los elementos de $X$ comprendidos desde la posición $n + 1$ hasta la posición $2n$ de $N^{*}$.\linebreak
-	.\linebreak\
-	.\linebreak
-	.\linebreak
+	$X^{*}_{2}$ =  Los elementos de $X$ comprendidos desde la posición $n + 1$ hasta la posición $2n$ de $N^{*}$.\\
+	\vdots\\
 	$X^{*}_{B}$ =  Los elementos de $X$  cuyas posiciones son las ultimas $n$ posiciones de $N^{*}$.
 	
 	\item  Se obtienen las muestras, $\hat{\theta}^{*}_{1} =T (X^{*}_{1}), \hat{\theta}^{*}_{2} =T (X^{*}_{2}), \dots, \hat{\theta}^{*}_{B} =T (X^{*}_{B})$.
 	
 	\item  Se usa la distribución empírica $\hat{F}_{\hat{\theta}^{*}}$ de la muestra $\hat{\theta}^{*}_{1},\hat{\theta}^{*}_{2}, \dots, \hat{\theta}^{*}_{B}$ para estimar $F_{\hat{\theta}}$
 	
-	
 \end{enumerate}
 
 
 
+\subsubsection{Bootstrap en Regresión Lineal}
 
-\subsubsection{Algoritmo Bootstrap de Residuales (Rosalinda)}
+Sea $(y_{i}, z_{i}),  1 \leq  i \leq n$; una muestra pareada entre observados y predichos, se define el modelo de regresión lineal, $ y_{i} = \beta_{0} + \beta_{1}z_{i} +\epsilon $, teniendo con Bootstrap la idea de  estimar la distribución de la estadística $R( \chi, \theta)$ que esta en función de $\theta = (\beta_{0}, \beta_{1}) $ y de $\hat{\theta}$ \parencite{zacarias-2023}. Hay dos maneras de aplicar el Bootstrap
+en un modelo de regresión: aplicando Bootstrap a la muestra de residuales o aplicando Bootstrap a la muestra Pareada entre Y y Z \parencite{balam-2012}.\\
+
+
+\subsubsection{Algoritmo Bootstrap de Residuales}
 
 Se asume que los $ \epsilon_{i} $ son independientes e idénticamente distribuidos. El algoritmo Bootstrap para generar muestras de $ R^{2} $ es el siguiente:
 
 \begin{enumerate}
-		\item Ajustar una regresión simple para el modelo $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i} $.
-		
-		\item Obtener los residuales $ \epsilon_{i} = y - \hat{y}   $
-		, $i = 1,2,\dots, n $.
-		
-		\item  Remuestrear con probabilidades iguales la muestra $ e_{1},\dots,e_{n} $, para obtener $e^{*}_{11},...,e^{*}_{1n}$.
-		\item Obtener $ y^{*}_{1i} = e^{*}_{1i} + \hat{y}_{1i}, i = 1,2, \dots, n. $.
-		
-		\item Correr una regresión simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
-		
-		\item Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
-		\[
-		\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
-		\]
+	\item Ajustar una regresión simple para el modelo $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i} $.
+	
+	\item Obtener los residuales $ \epsilon_{i} = y - \hat{y}   $
+	, $i = 1,2,\dots, n $.
+	
+	\item  Remuestrear con probabilidades iguales la muestra $ e_{1},\dots,e_{n} $, para obtener $e^{*}_{11},...,e^{*}_{1n}$.
+	\item Obtener $ y^{*}_{1i} = e^{*}_{1i} + \hat{y}_{1i}, i = 1,2, \dots, n. $.
+	
+	\item Correr una regresión simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
+	
+	\item Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
+	\[
+	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
+	\]
 \end{enumerate}
 
 
-\subsubsection{Algoritmo Bootstrap Pareado (Rosalinda)}
 
-Supóngase que los datos surgieron de un estudio observacional donde ambas variables, $Y$ y $X$ son medidas de una colección de individuos seleccionados aleatoriamente. Supongamos que los $e_{i}$ en el modelo
-$ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i}$,    $i=1,2,..., n$ , no tienen varianza constante, lo que implica que no son idénticamente distribuidos (Givens y Hoeting, 2005; Montgomery et al., 2006).
+\subsubsection{Algoritmo Bootstrap Pareado}
+
+Se asume que los los $e_{i}$ en el modelo
+$ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i}$, $i=1,2,..., n$ , no tienen varianza constante, lo que implica que no son idénticamente distribuidos (Givens y Hoeting, 2005; Montgomery et al., 2006).
 
 \begin{enumerate}
 	\item Considere la muestra $ w_{1} = (y_{1}, x_{1}),  w_{2} = (y_{2}, x_{2}), ..., w_{n} = (y_{n}, x_{n})$ como una muestra independiente e idénticamente distribuida donde la distribución es la conjunta $ F_{Y|X} $.
@@ -368,8 +453,7 @@ $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i}$,    $i=1,2,..., n$ , no tien
 \end{enumerate}
 
 
-
-\subsubsection{Algoritmo Bootstrap Robusto Simple (Zacarias)}
+\subsubsection{Algoritmo Bootstrap Robusto Simple}
 El algoritmo Bootstrap para generar muestras Bootstrap robustas para $\hat{R}^{2}$ es el siguiente:
 
 \begin{enumerate}
@@ -391,7 +475,25 @@ El algoritmo Bootstrap para generar muestras Bootstrap robustas para $\hat{R}^{2
 \end{enumerate}
 
 
-\subsubsection{Técnica Robusta Basada en el Esquema Wild Bootstrap de Wu (Zacarias)}
+
+\subsection{Wild Bootstrap}
+El Wild Bootstrap es una técnica útil cuando no se cumplen los supuestos de homocedasticidad en modelos de regresión. \textcite{wu-1986} demostró que, en presencia de heterocedasticidad, las estimaciones de mínimos cuadrados son inconsistentes y asintóticamente sesgadas. Para abordar este problema, propuso un esquema Bootstrap basado en tres métodos de remuestreo de residuales, mejorando así la precisión de las estimaciones de los parámetros del modelo. Posteriormente, \textcite{liu-1988} amplió el trabajo de Wu al desarrollar dos alternativas adicionales para generar remuestras de residuales. \\
+
+
+\textcite{russell-2008} en su estudió sobre el Wild Bootstrap en modelos de regresión con perturbaciones heterocedásticas, demostraron que en casos específicos, puede lograrse una inferencia perfecta. Aunque ciertas versiones carecen de corrección de asimetría, han mostrado reducciones significativas en errores de probabilidad de rechazo en pruebas Bootstrap, incluso en muestras pequeñas o medianas.\\
+
+Estudios posteriores, como el de \textcite{rana-2012}, implementaron algunos de los esquemas de Wu y Liu; y demostraron que ofrecen un rendimiento superior en comparación con métodos tradicionales como el Bootstrap clásico, especialmente cuando existen valores atípicos. La asignación de pesos a los residuales estabiliza la varianza de las estimaciones, lo que resulta crucial para obtener inferencias más confiables.\\
+
+
+Finalmente, \textcite{zacarias-2023} aplicó estos esquemas de Wild Bootstrap para evaluar la exactitud de modelos de regresión lineal en situaciones donde los supuestos de normalidad o varianza constante no se cumplen. Con una metodología inédita que utilizó los tres esquemas propuestos por \textcite{wu-1986} y las dos variantes de \textcite{liu-1988} para construir regiones de confianza robustas, adaptándose a diferentes escenarios de residuales.\\
+
+
+En los apartados siguientes, se detallarán los algoritmos del Bootstrap robusto propuesto \textcite{rana-2012} con las tres diferentes maneras de remuestreo propuesto en \textcite{wu-1986} y con las dos formas
+propuestas en \textcite{liu-1988}.
+
+
+
+\subsubsection{Técnica Robusta Basada en el Esquema Wild Bootstrap}
 
 \textbf{Algoritmo - Esquema Bootstrap de Wu 1}
 
@@ -494,11 +596,102 @@ El algoritmo Bootstrap para generar muestras Bootstrap robustas para $\hat{R}^{2
 \end{enumerate}
 
 
+
+\subsection{Intervalos de Confianza Bootstrap}
+Las muestras Bootstrap se pueden utilizar para calcular intervalos de confianza mas aproximados. Cuando $n \rightarrow \infty$, el Bootstrap y el intervalo estándar convergen el uno al otro; en algunas situaciones se pueden hacer correcciones al sesgo. Estas correcciones pueden significativamente mejorar la exactitud inferencial de la estimación de un intervalo \parencite{efron-tibs-1993}.\\
+
+
+\textcite{good-2005}, determina que el Bootstrap puede ayudarnos a obtener una estimación del intervalo para cualquier aspecto de la distribución si las observaciones son independientes y todos provienen de una distribución con el mismo valor del parámetro que se estima.El Bootstrap es particularmente valioso cuando se trata de obtener una estimación del intervalo para una proporción o para la media y la varianza de una distribución no simétrica.\\
+
+
+Según \textcite{balam-2012}, desafortunadamente, tales intervalos tienen las siguientes de ciencias:\\
+
+\begin{enumerate}
+\item Son sesgados, esto es, es mas probable que contengan ciertos valores falsos del parámetro que se estiman que el verdadero.
+
+\item Son mas anchos y menos eficientes de lo que podrán ser.
+\end{enumerate}
+
+Motivos por los que en \textcite{balam-2012} se implementa dos métodos para corregir estas de ciencias, el primero es el método Percentil con sesgo corregido y el segundo es el Bootstrap con sesgo corregido acelerado BCa.\\
+
+Se recomienda que el número de remuestras Bootstrap este entre 2000 y 4000 en orden para la construcción de intervalos de confianza, especialmente para los percentiles mas bajos. Meeker y Escobar (1998).\\
+
+A continuación se presentan los algoritmos para al construcción de intervalos de confianza Bootstrap con el método Percentil de \textcite{efron-1982} y Bootstrap con sesgo corregido acelerado BCa implementado en \textcite{balam-2012}.\\
+
+\subsubsection{Algoritmo Intervalo de Confianza Bootstrap Método Percentil}
+
+Para calcular un intervalo de confianza Bootstrap Percentil de $\hat{\theta}$ a partir de un muestra $x_{1}, x_{2}, \dots, x_{n}$ con probabilidad $(1-\alpha)$\% y con $B$ muestras.
+
+
+\begin{enumerate}
+\item Se obtienen $B$ muestras de tamaño $n$ con reemplazo y con probabilidades iguales de la muestra original. Se denotan las muestras Bootstrap por $X^{*}_{1}, X^{*}_{2},  \dots, X^{*}_{B}$ donde cada $X^{*}_{i}$ es un vector de tamaño $n$.
+
+\item Se obtienen las muestras, $\hat{\theta}^{*}_{1} = T (X^{*}_{1}) , \hat{\theta}^{*}_{2} = T (X^{*}_{2}), \dots,\hat{\theta}^{*}_{B} = T (X^{*}_{B})$.
+
+\item Las $B$ muestras $\hat{\theta}^{*}_{1}, \hat{\theta}^{*}_{2},\dots, \hat{\theta}^{*}_{B} $ se ordenan de manera ascendente, tal que $\hat{\theta}^{*}_{1} \leq \hat{\theta}^{*}_{2} \leq \dots \leq \hat{\theta}^{*}_{B} $.
+
+\item Determinar los cuantiles $LI$ y $LS$, para el nivel de confianza del $(1-\alpha)$\% en la muestra Bootstrap ordenada, con $LI = \hat{\theta}^{*}_{ ( \alpha/2 ) \: \times \: B} $ y $LS = \hat{\theta}^{*}_{ (1 - \alpha/2) \: \times \: B} $.
+
+\item El intervalo de confianza esta dado por: $[LI, LS]$.
+\end{enumerate}
+
+
+
+
+
+\subsubsection{Algoritmo Intervalo de Confianza Bootstrap BCa}
+
+Para calcular un intervalo de confianza Bootstrap BCa de $\hat{\theta}$ a partir de un muestra $x_{1}, x_{2}, \dots, x_{n}$ con probabilidad $(1-\alpha)$\% y con $B$ muestras.
+
+
+\begin{enumerate}
+ \item Obtener una estimación $\hat{\theta}$ a partir de los datos originales.
+ 
+\item Se obtienen $B$ muestras de tamaño $n$ con reemplazo y con probabilidades iguales de la muestra original. Se denotan las muestras Bootstrap por $X^{*}_{1}, X^{*}_{2},  \dots, X^{*}_{B}$ donde cada $X^{*}_{i}$ es un vector de tamaño $n$.
+
+\item Se obtienen las muestras, $\hat{\theta}^{*}_{1} = T (X^{*}_{1}) , \hat{\theta}^{*}_{2} = T (X^{*}_{2}), \dots,\hat{\theta}^{*}_{B} = T (X^{*}_{B})$.
+
+\item Se determina la proporción $p$ de las  $\hat{\theta}^{*}_{i}$ que son mayores o iguales a $\hat{\theta}$.
+
+\item  Determinar $Z_{0} = Z_{p}$ donde $Z_{p}$ es el cuantil en la distribución normal estándar tal que $P(Z > Z_{p}) = p$.
+
+\item  Obtener la constante de aceleración $a$ dada por:
+\begin{center}
+ \Large $ a = \frac{\sum_{i=1}^{n}  (\hat{\theta}_{-iprom}  - \hat{\theta}_{-i})^{3} }{ 6 \; (\; \sum_{i=1}^{n}  ( \hat{\theta}_{-iprom}  - \hat{\theta}_{-i})^{2} \; )^{3/2}} $
+\end{center}
+
+ donde: $\hat{\theta}_{-i}$ es la estimación con los datos originales quitando la $i$-esima observación y {\normalsize $\hat{\theta}_{-iprom} = \frac{1}{n} \sum_{i=1}^{n}\hat{\theta}_{-i}$}
+ 
+ \item Obtener {\large $Z_{L} = \frac{Z_{0} - Z_{\alpha/2}}{ 1- \alpha ( Z_{0} - Z_{\alpha/2})} + Z_{0}  $}   y {\large $Z_{U} = \frac{Z_{0} + Z_{\alpha/2}}{ 1- \alpha ( Z_{0} - Z_{\alpha/2})} + Z_{0}  $}  donde: $Z_{\alpha /2}$ es el cuantil en la
+ distribución normal estándar tal que $P(Z > Z_{\alpha / 2}) = \frac{\alpha}{2}$.
+ 
+ 
+ \item Encontrar $LI = INVCDF( \Phi(Z_{L}))$ y $LS = INVCDF( \Phi(Z_{U}))$ donde $INVCDF$ es el cuantil en la muestra bootstrap con probabilidad $ \Phi(Z_{L})$ y $ \Phi(Z_{U})$ respectivamente y $\Phi$ es la distribución acumulada de la normal estándar, siendo $P(\hat{\theta}^{*} < LI) = \Phi(Z_{L})$ y$P(\hat{\theta}^{*} < LS) = \Phi(Z_{U})$.
+ 
+\item El intervalo de confianza esta dado por: $[LI, LS]$.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Simulación de Modelos}
-
-
-
-
 
 
 
