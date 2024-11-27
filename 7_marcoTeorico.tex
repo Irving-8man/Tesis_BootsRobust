@@ -408,49 +408,51 @@ Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticam
 Sea $(y_{i}, z_{i}),  1 \leq  i \leq n$; una muestra pareada entre observados y predichos, se define el modelo de regresión lineal, $ y_{i} = \beta_{0} + \beta_{1}z_{i} +\epsilon $, teniendo con Bootstrap la idea de  estimar la distribución de la estadística $R( \chi, \theta)$ que esta en función de $\theta = (\beta_{0}, \beta_{1}) $ y de $\hat{\theta}$ \parencite{zacarias-2023}. Hay dos maneras de aplicar el Bootstrap
 en un modelo de regresión: aplicando Bootstrap a la muestra de residuales o aplicando Bootstrap a la muestra Pareada entre Y y Z \parencite{balam-2012}.\\
 
+Los siguientes algoritmos son adaptaciones de los propuestos por \textcite{balam-2012}, específicamente el Bootstrap de Residuales Balanceados y el Bootstrap Pareado Balanceado. Ambas técnicas emplean el \textbf{Algoritmo de Remuestreo Balanceado} para controlar la aleatoriedad en el proceso de remuestreo, asegurando que cada observación aparezca el mismo número de veces en todas las muestras.\\
 
-\subsubsection{Algoritmo Bootstrap de Residuales}
 
-Se asume que los $ \epsilon_{i} $ son independientes e idénticamente distribuidos. El algoritmo Bootstrap para generar muestras de $ R^{2} $ es el siguiente:
+\subsubsection{Algoritmo Bootstrap de Residuales Balanceado}
+
+Se asume que los \( \epsilon_{i} \) son independientes e idénticamente distribuidos. El algoritmo Bootstrap para generar muestras de \( R^{2} \) es el siguiente:
 
 \begin{enumerate}
-	\item Ajustar una regresión simple para el modelo $ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i} $.
+	\item Ajustar una regresión simple para el modelo \( y_{i} = \beta_{0} + \beta_{1}z_{i} + \epsilon_{i} \).
 	
-	\item Obtener los residuales $ \epsilon_{i} = y - \hat{y}   $
-	, $i = 1,2,\dots, n $.
+	\item Obtener los residuales \( \mathbf{e}_{i} = y_{i} - \hat{y}_{i} \), para \( i = 1, 2, \dots, n \).
 	
-	\item  Remuestrear con probabilidades iguales la muestra $ e_{1},\dots,e_{n} $, para obtener $e^{*}_{11},...,e^{*}_{1n}$.
-	\item Obtener $ y^{*}_{1i} = e^{*}_{1i} + \hat{y}_{1i}, i = 1,2, \dots, n. $.
+	\item Aplicar el \textit{Algoritmo de Remuestreo Balanceado} para generar \( B \) muestras de residuales balanceados \( \mathbf{e}^{*}_{1}, \mathbf{e}^{*}_{2}, \dots, \mathbf{e}^{*}_{B} \), donde cada \( \mathbf{e}^{*}_{i} \) es un vector de tamaño \( n \) generado a partir de los residuales \( \mathbf{e}_{i} \).
 	
-	\item Correr una regresión simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
+	\item Generar las nuevas observaciones \( \mathbf{y}^{*}_{1}, \mathbf{y}^{*}_{2}, \dots, \mathbf{y}^{*}_{B} \), donde cada \( \mathbf{y}^{*}_{i} \) es un vector de tamaño \( n \) tal que \( \mathbf{y}^{*}_{i} = \hat{y}_{i} + \mathbf{e}^{*}_{i} \).
 	
-	\item Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
+	\item Ajustar una regresión simple entre los vectores \( \mathbf{y}^{*}_{i} \) y \( z_{i} \), y calcular \( \hat{R}^{2*}_{b} \), para \( b = 1, 2, \dots, B \).
+	
+	\item Obtener las muestras Bootstrap:
 	\[
 	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
 	\]
 \end{enumerate}
 
 
+\subsubsection{Algoritmo Bootstrap Pareado Balanceado}
 
-\subsubsection{Algoritmo Bootstrap Pareado}
-
-Se asume que los los $e_{i}$ en el modelo
-$ y_{i} = \beta_{0} +\beta_{1}x_{i} + \epsilon_{i}$, $i=1,2,..., n$ , no tienen varianza constante, lo que implica que no son idénticamente distribuidos (Givens y Hoeting, 2005; Montgomery et al., 2006).
+Se asume que los errores \( \epsilon_{i} \) en el modelo 
+\( y_{i} = \beta_{0} + \beta_{1}z_{i} + \epsilon_{i} \), \( i = 1, 2, \dots, n \), no tienen varianza constante, lo que implica que no son idénticamente distribuidos (Givens y Hoeting, 2005; Montgomery et al., 2006).
 
 \begin{enumerate}
-	\item Considere la muestra $ w_{1} = (y_{1}, x_{1}),  w_{2} = (y_{2}, x_{2}), ..., w_{n} = (y_{n}, x_{n})$ como una muestra independiente e idénticamente distribuida donde la distribución es la conjunta $ F_{Y|X} $.
+	\item Considere la muestra de pares \( \mathbf{w}_{1} = (y_{1}, z_{1}), \mathbf{w}_{2} = (y_{2}, z_{2}), \dots, \mathbf{w}_{n} = (y_{n}, z_{n}) \).
 	
-	\item  Tomar una muestra Bootstrap  $ w^{*}_{1}, w^{*}_{2},...,  w^{*}_{n} $ de $w_{1}, w_{2},...,  w_{n} $. Se obtienen la muestras  $y_{1}, y_{2},...,  y_{n} $ y  $x_{1}, x_{2},...,  x_{n} $.
+	\item Aplicar el \textit{Algoritmo de Remuestreo Balanceado} para generar \( B \) muestras pareadas balanceadas \( \mathbf{w}^{*}_{1}, \mathbf{w}^{*}_{2}, \dots, \mathbf{w}^{*}_{B} \), donde cada \( \mathbf{w}^{*}_{i} \) es un vector de tamaño \( n \) (conjunto de pares \( (y_{i}^{*}, z_{i}^{*}) \)), generado a partir de los pares \( \mathbf{w}_{1}, \mathbf{w}_{2}, \dots, \mathbf{w}_{n} \).
 	
-	\item Correr una regresión lineal $ y^{*}_{i} = \beta_{i0} +\beta_{i1}x_{i}^{*} + \epsilon_{i} $.
+	\item Para cada muestra \( \mathbf{w}^{*}_{i} \), donde \( i = 1, 2, \dots, B \), obtener los vectores de observados \( \mathbf{y}^{*}_{i} \) y predichos \( \mathbf{z}^{*}_{i} \), de manera que \( \mathbf{w}^{*}_{i} = (\mathbf{y}_{i}^{*}, \mathbf{z}_{i}^{*}) \); obteniendo así las secuencias \( \mathbf{y}_{1}^{*}, \mathbf{y}_{2}^{*}, \dots, \mathbf{y}_{B}^{*} \) y \( \mathbf{z}_{1}^{*}, \mathbf{z}_{2}^{*}, \dots, \mathbf{z}_{B}^{*} \).
 	
-	\item Estimar  $ \hat{R}^{2*}_{1} $.
+	\item Ajustar una regresión simple entre los vectores \( \mathbf{y}^{*}_{i} \) y \( \mathbf{z}_{i}^{*} \), y calcular \( \hat{R}^{2*}_{b} \) para \( b = 1, 2, \dots, B \).
 	
-	\item  Repetir los pasos 3 al 5, $B - 1$ veces para obtener las muestras: 
+	\item Obtener las muestras Bootstrap:
 	\[
 	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
 	\]
 \end{enumerate}
+
 
 
 \subsubsection{Algoritmo Bootstrap Robusto Simple}
