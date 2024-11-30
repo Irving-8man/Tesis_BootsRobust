@@ -56,6 +56,147 @@ El análisis de regresión lineal tiene como objetivo modelar en forma matemáti
 Esta técnica se encuentra principalmente sujeta al cumplimiento de sus supuestos. Cuando los residuales son independientes, se ajustan a una distribución normal y tienen varianza común, se aplican pruebas de hipótesis estadísticas para evaluar la exactitud, intercepto cero y pendiente uno, ya sea mediante pruebas t de Student, o bien, mediante una prueba F para determinar si el intercepto y la pendiente son simultáneamente cero y uno respectivamente \parencite{balam-2012}.
 
 
+\subsubsection{Verificación de los Supuestos de Normalidad, Varianza constante e independencia para los residuales de un modelo de regresión}
+
+
+\textbf{Supuesto de normalidad}\\
+
+Para la verificación del supuesto de normalidad de los residuales $\epsilon_i$ del modelo de regresión se requiere una muestra de los residuales $e_1, e_2, \cdots, e_n$ y de su distribución empírica:\\
+
+
+\begin{center}
+	$$\hat{F}(x)=\frac{\sum_{i=1}^n I_{(- \infty,x)}(e_i)}{n}  \;\; \forall \;\; x \;\; \in \Re$$.
+\end{center}
+
+Se contrastan las siguientes hipótesis:\\
+
+$H_0:$ Los $\epsilon_i$ tienen distribución normal vs. $H_a:$ Los $\epsilon_i$ no tienen distribución normal.\\
+
+El estadístico de Shapiro-Wilk es uno de los más consolidados y con mayor potencia estadística entre las estadísticas existentes (Arcones \& Wang, 2006); este estadístico ha demostrado de manera general, resultados adecuados en comparación a las pruebas clásicas (Arcones \& Wang, 2006), pero especialmente cuando se trabaja con distribuciones de colas cortas (Thadewald \& Buning, 2007) y con un tamaño muestral inferior a 30, ya que muestra una alta variabilidad cuando se modifican tanto la simetría como el tamaño muestral de la distribución, especialmente entre 20 y 50 datos (Yazici \& Yolacan, 2007).\\
+
+La estadística de Lilliefors (1967) consiste en una mejora de la estadística de Kolmogorov- Smirnov (K-S), sustentada sobre los mismos principios estadísticos, pero específica para aquellos casos en donde la media y la varianza son desconocidas. De este modo, se evita el efecto que provoca, como ocurre en el caso de K-S, la estimación de los parámetros de la muestra (Steinskog, et al., 2007) y se recomienda, por tanto, como el estadístico más apropiado para dichos casos (Oztuna, Elhan y Tuccar, 2006); esta estadística está indicada para muestras grandes.\\
+
+
+\textbf{Estadístico de Shapiro-Wilk}
+
+
+\begin{center}
+ $$SW=\frac{1}{^{max}_{i\leq i \leq n} \mid \Phi (e_i) \mid}[\sum_{i=1}^k a_i(e_{(n-i+1)-e_(i)})]^2$$
+\end{center}
+
+
+Donde:\\
+$\Phi (x) =$ Es la función acumulada de la distribución Normal Estándar.\\
+$k =$ Es el menor de los enteros mayor o igual a $n/2$.\\
+$a_i =$ Coeficientes que son calculados para un tamaño de muestra $n$ y se obtienen de la tabla A17: Coeficientes de la prueba de Shapiro-Wilk (Conover, 1999).\\
+$e_{(i)} =$ Es el i-ésimo menor de la muestra $e_1, e_2, \cdots , e_n$.\\\\
+Se rechaza la hipótesis de normalidad $H_0$ con nivel de significancia $\alpha$ si $SW$ es mayor que el cuantil $W_{\alpha}$ correspondiente al tamaño de muestra $n$ y al nivel de significancia $\alpha$ proporcionado en la tabla A17 (Conover, 1999), o bien, si $p-valor \leq \alpha$.\\
+
+
+
+\textbf{Estadístico de Lilliefors}
+
+\begin{center}
+	$$D = ^{max}_{1\leq i \leq n}\lbrace ^{max}_{1\leq i \leq n} \lbrace \frac{1}{n} - \Phi (e_{(i)}) \rbrace , ^{max}_{1 \leq i \leq n} \lbrace \Phi (e_{(i)}) - \frac{i-1}{n} \rbrace   \rbrace$$
+\end{center}
+
+
+
+Donde:
+$\Phi (x) =$  Es la función acumulada de la distribución Normal Estándar.\\
+$e_{(i)} =$ Es el i-ésimo menor de la muestra $e_1, e_2, \cdots , e_n$.\\
+
+Se rechaza a hipótesis de normalidad $H_0$ con nivel de significancia $\alpha$ si $D$ es mayor que el cuantil $D_\alpha$ correspondiente al tamaño de muestra $n$ y al nivel de significancia $\alpha$ proporcionado en la tabla A.19(a), A.19(b), o bien, A.19(c) de Daniel (1990) dependiendo si únicamente $E(\epsilon)$ es desconocida, sólo $\sigma ^2$ o ambos parámetros son desconocidos, o bien, si $p-valor \leq \alpha$. El supuesto de normalidad también se verifica con el gráfico de probabilidad normal, si los puntos en dicha gráfica mantienen una forma semejante a una línea recta, entonces el supuesto de normalidad se cumple.\\
+
+
+
+\textbf{Supuesto de varianza constante}\\\\
+Para la verificación del supuesto de varianza constante en los residuales $\epsilon_i$, se requiere una muestra de los residuales $e_1, e_2, \cdots , e_n$ y se contrastan las siguientes hipótesis:\\
+
+$H_0: V(\epsilon_i) = V(\epsilon_j) \;\; \forall \;\; i \neq j$   vs.   $H_a: V(\epsilon_i) \neq V(\epsilon_j)$ para alguna $i \neq j$. \\
+
+Existe una variedad de pruebas estadísticas que contrastan hipótesis semejantes y que permiten evaluar el supuesto de homocedasticidad, las pruebas más utilizadas son la de Breusch-Pagan, la de White, la de Score (Taboga, 2017), la de Goldfeld-Quandt (Goldfeld- Quandt Test s.f.) y la de Harrison-McCabe (Harrison y McCabe, 1979).\\
+
+A continuación, se describen las pruebas de Breusch-Pagan y la de White.\\
+
+
+
+
+\textbf{Prueba de Breush-Pagan (Breusch y Pagan, 1979; Verbeek, 2004)}\\\\
+
+La prueba de Breusch-Pagan sólo detecta formas lineales de heterocedasticidad; por lo que consiste en ajustar el modelo de regresión lineal entre los residuales al cuadrado y las variables independientes:
+
+\begin{center}
+	$${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _k X_k  + u$$
+\end{center}
+
+Se contrastan las hipótesis:\\
+
+\begin{center}
+	$H_0: \delta _0 = \delta _1 = \cdots =\delta _k=0 $  vs.  $H_a: \delta_i \neq 0$ para alguna $i$.
+\end{center}
+
+
+En $H_0$ se establece que los residuales no son función de las covariables del modelo; el estadístico de prueba está dado por:
+
+
+\begin{center}
+	$$B=n R ^2 \sim \chi_k ^2$$
+\end{center}
+
+
+Donde $R^2$ es el coeficiente de determinación del modelo de regresión en ${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _k X_k  + u$ y la estadística $B$ se distribuye asintóticamente Ji-cuadrada con $k$ grados de libertad.\\
+
+Si el estadístico de prueba $B$ tiene un valor $p-valor$  por debajo del valor $\alpha$ establecido, entonces se rechaza la hipótesis nula de homocedasticidad y se asume heterocedasticidad; esta prueba solo detecta formas lineales de heterocedasticidad. Algunos autores (incluidos Bickel (1978) y Koenker (1981)) han sugerido que la prueba estadística de Breusch-Pagan puede no ser precisa para datos no normales.\\
+
+
+\textbf{Prueba White (Verbeek, 2004)}\\\\
+A diferencia de la prueba de Breush-Pagan que sólo detecta formas lineales de heterocedasticidad, la prueba de White (1980) permite contrastar no linealidades, ajustando un modelo de regresión lineal entre los residuales al cuadrado y los productos cruzados de todos los regresores:
+
+
+\begin{center}
+	$${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _{k} X_k + \delta _{k+1} X_1 X_2+ \cdots +\delta _l X_{k-1} X_k+  \delta _{l+1} X_1 ^2 + \cdots  + \delta _{l+k} X_k ^2 + u(i)$$
+\end{center}
+
+
+donde  $l=\frac{k(k-1)}{2}$.\\
+Se contrastan las hipótesis:\\
+$H_0: \delta _1 =  \cdots =\delta _k=\delta _{k+1} =  \cdots =\delta _l= \cdots=\delta_{l+k} =0 $  vs.  $H_a: \delta_i \neq 0$ para alguna $i$.\\
+
+El estadístico de prueba dado por:
+
+\begin{center}
+	$$W=n R^2 \sim \chi_r ^2$$
+\end{center}
+
+
+donde $R^2$ es el coeficiente de determinación del modelo de regresión en (i); y la estadística $W$ se distribuye asintóticamente Ji-cuadrada con $r=(3k + k^2)/2$ grados de libertad. Si el estadístico de prueba $W$  tiene un valor p-valor por debajo del valor $\alpha$ establecido, entonces se rechaza la hipótesis nula de homocedasticidad y se asume heterocedasticidad.\\
+
+
+La prueba de White es extremadamente general y su potencia puede ser bastante baja frente a ciertas alternativas, particularmente si el número de observaciones es pequeño; en esta prueba se relaja la suposición de normalidad. \\
+El supuesto de homocedasticidad también se verifica mediante el grafico de dispersión entre los valores predichos  contra los residuales ; y se utiliza el siguiente criterio:\\
+
+\begin{itemize}
+	\item[a)] Si los puntos forman algo similar a un cono o embudo, la varianza no es constante.
+	
+	\item[b)] Si los puntos sugieren algún patrón, no se asegura que la varianza sea constante.
+	
+	\item[c)] Los puntos permanecen dentro de una banda horizontal (sugeridas por los datos), o bien, los puntos se encuentran en posiciones al azar, se dice que la varianza es constante. 
+\end{itemize}
+
+
+
+\textbf{Supuesto de independencia}\\
+
+Para la verificación de este supuesto se contrastan las hipótesis:\\
+
+$H_0:\;$ Los $e_i$ no están correlacionados vs. $H_1:\;$ Los $e_i$ sí están correlacionados.\\
+
+Los estadísticos más utilizados para contrastar estas hipótesis son el de Durbin-Watson y el de Breusch-Godfrey. Si no se rechaza la hipótesis $H_0$ para un nivel de significancia $\alpha$ se dice que se cumple este supuesto. La verificación de este supuesto también se realiza con el gráfico de dispersión entre el orden de entrada de los datos y los residuales; si en este gráfico es posible identificar alguna relación entre el orden de entrada y los residuales, se dice que el supuesto de independencia no se cumple, mientras que, si se observa que los puntos están distribuidos al azar, esto indica que hay independencia entre los residuales.
+
+
+
+
 
 
 \subsubsection{Validación de Modelos con la Técnica de Regresión Lineal Simple \parencite{febles-2014}}
@@ -163,7 +304,6 @@ Adicionalmente, \textcite{christou-2005} explica la distribución del coeficient
 
 
 
-\subsubsection{Verificación de los Supuestos de Normalidad y Varianza constante}
 
 
 
@@ -673,28 +813,50 @@ Para calcular un intervalo de confianza Bootstrap BCa de $\hat{\theta}$ a partir
 \end{enumerate}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \subsection{Simulación de Modelos}
 
+En \textcite{febles-2014} se hizo una propuesta para simular modelos que cumplen ciertos supuestos establecidos de manera \textit{a priori}. Se crearon los siguientes 4 simuladores: $ModNVC()$, $ModNNVC()$, $ModNNVD()$ y$ ModNVD()$, los cuales en su versión actual contienen las mejoras realizadas en \textcite{zacarias-2023}; dichos simuladores están implementados en el lenguaje R y dependen de los siguientes cinco argumentos que el usuario deberá especificar de manera a priori: n el tamaño de la muestra deseada, b0 y b1 el intercepto y la pendiente deseada respectivamente del modelo de regresión entre los reales y los predichos, R2 el coeficiente de determinación deseado para el modelo de regresión entre los reales y los predichos, y muz la media deseada para los predichos. \\
 
+A continuación, se hace una descripción de la funcionalidad de los simuladores sobre como garantizan el cumplimiento o no de los supuestos de normalidad y de varianza constante en los residuales del modelo de regresión entre los reales simulados y los predichos simulados para los diferentes tipos de modelos que se utilizaron en este trabajo.\\
+
+
+
+
+
+\subsubsection{Simulador de modelos que cumplen el supuesto normalidad y varianza constante (NVC)}
+
+Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad y varianza constante se utilizó el simulador ModNVC(n,b0,b1,R2,muz), el cual implementa dos funciones principales para la simulación de dichos modelos, la función Datoszy(n,R2,SCE,muz) y la función PruebaVarIndep(Datos). La función Datoszy() implementa el método de la transformación para retornar un vector normal bi-variado $(z_i,y_i)$ de tamaño $n$, cuyos residuales $e_i$ del  modelo de regresión  entre $y_i$ y $z_i$ cumplen el supuesto de normalidad con las estadística de Shapiro-Wilk y con Lilliefors al 5\%; siempre que los valores a priori determinados generen una matriz de varianzas y covarianzas positiva definida (PD), en caso de que no la función retorna un vector nulo.\\
+
+
+La función PruebaVarIndep() implementa el método propuesto en Febles (2014) para lograr el cumplimiento de varianza constante y verifica que se cumpla dicho supuesto con la estadística de Breusch-Pagan y también se verifica el supuesto de independencia con la estadística de Durbin-Watson ambas pruebas al 5\%. Para garantizar el supuesto de varianza constante, en Febles (2014) se consideró como criterio que los puntos entre los ajustados y los residuales del modelo simulado deberán estar distribuidos aleatoriamente en una banda horizontal, donde el ancho de la banda está determinado por $a=2*sqrt(SCE/(n-2))$, de tal forma que para que las observaciones $(z_i, y_i)$ simuladas caigan dentro de la banda deberán cumplir la condición $\hat{y}_i – a \leq y_i \leq \hat{y}_i + a $, donde $\hat{y}_i=\hat{\beta}_0+\hat{\beta}_1 z_i$ . La función PruebaVarIndep () llama tantas veces como sea necesario a la función Datoszy() hasta que el simulador ModEPNVC()  retorna un vector bi-variado simulado cuyos residuales del modelo de regresión entre los simulados reales y los simulados predichos cumplen con los supuestos de normalidad, varianza constante e independencia con nivel de significancia del 5\%.\\ 
+
+\subsubsection{Simulador de modelos que no cumplen el supuesto de normalidad, pero sí el de varianza constante (NNVC)}
+
+
+Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad, pero sí el de varianza constante se utilizó el simulador ModNNVC(n,b0,b1,R2,muz), el cual implementa dos funciones principales para la simulación de dichos modelos, la función Datoszy(n,R2,SCE,muz) y la función PruebaVarIndep(Datos). La función Datoszy() implementa el método de simulación propuesto por Cheng et al. (2010), el cual se encuentra descrito en Febles (2014); con este método se genera un vector aleatorio $(z_i, y_i)$ con distribución Gamma bivariada de tamaño $n$; este vector se genera con cuatro valores a priori: las medias $\mu_z$ y $\mu_y$; y las desviaciones estándar $\sigma_z$ y $\sigma_y$; con este método se resuelve un polinomio cúbico cuya incógnita es el coeficiente de correlación $\rho$ entre $z$ y $y$, los coeficientes del polinomio dependen a su vez de los coeficientes de asimetría $\gamma_z=2\sigma_z/ \mu_z$ y $\gamma_y=2\sigma_y/ \mu_y$. Este método se aplica hasta que el vector generado no cumple el supuesto de normalidad con las estadísticas de Shapiro-Wilk y con Lilliefors al 5\%.\\
+
+
+La función PruebaVarIndep() garantiza el cumplimiento de varianza constante y verifica que se cumpla dicho supuesto con la estadística de Breusch-Pagan y también el supuesto de independencia con la estadística de Durbin-Watson ambas pruebas al 5\%. La descripción y el funcionamiento de PruebaVarIndep() es exactamente igual al caso NVC para garantizar varianza constante; con la diferencia de que la función PruebaVarIndep() llama tantas veces como sea necesario a la función Datoszy() hasta que el simulador ModNNVC()  retorna un vector bi-variado simulado cuyos residuales del modelo de regresión entre los simulados reales y los simulados predichos no cumplen con el supuesto de normalidad pero sí con el de varianza constante e independencia con un nivel de significancia del 5\%.\\ 
+
+\subsubsection{Simulador de modelos que cumplen el supuesto normalidad, pero no el de varianza constante (NVD)}
+
+Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad, pero no el de varianza constante se utilizó el simulador ModNVD(n,b0,b1,R2,muz), el cual implementa la función Datoszy(n,R2,SCE,muz) que garantiza el supuesto de normalidad y verifica que se cumpla dicho supuesto con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento del script Datoszy(n,R2,SCE,muz) es exactamente igual al caso NVC para garantizar normalidad.\\
+
+
+Para garantizar el incumplimiento del supuesto de varianza constante, en el simulador ModNVD(n,b0,b1,R2,muz), se consideró como criterio que los puntos entre los ajustados y los residuales del modelo simulado deberán estar distribuidos aleatoriamente en un cono, de tal manera que las fronteras del cono estén limitadas por una recta superior $l_1$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_1$ y una recta inferior $l_2$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_2$, donde  $\alpha_1$ y $\alpha_2$, son respectivamente, los ángulos de inclinación de $l_1$ y $l_2$. Por lo tanto, si el residual $e_i=y_i - \hat{y}_i > 0$ , entonces $y_i$ y $\hat{y}_i$ deben cumplir la condición $\hat{y}_i \leq y_i \leq \hat{y}_i (1+tan \alpha_1)$ para que el punto $(z_i,y_i)$ simulado caiga dentro del cono; de igual forma, si $e_i=y_i - \hat{y}_i < 0$ , se debe garantizar la condición $\hat{y}_i (1+tan \alpha_2) \leq y_i \leq \hat{y}_i $ para que el punto simulado correspondiente caiga dentro del cono. Para la simulación de estos tipos de modelos se consideró un cono simétrico determinado por $\alpha_1=\pi / 9$ y $\alpha_2=\pi/9$ radianes. \\
+
+
+El simulador ModNVD(n,b0,b1,R2,muz) realiza el proceso iterativamente hasta que el vector bi-variado, cuyos residuales del modelo de regresión entre los reales simulados y los predichos simulados cumplen el supuesto de normalidad con las estadísticas de Shapiro-Wilk y Lilliefors, el de independencia con la estadística de Durbin-Watson, pero no cumplen el supuesto de varianza constante con la estadística de Breusch-Pagan; todas las pruebas son realizadas al 5\%. 
+
+\subsubsection{Simulador de modelos que no cumplen los supuestos normalidad y varianza constante (NNVD)}
+
+Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad ni tampoco el de varianza constante se utilizó el simulador ModNNVD(n,b0,b1,R2,muz), el cual implementa la función Datoszy(n,R2,SCE,muz) que garantiza el incumplimiento del supuesto de normalidad y lo verifica con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento de la función Datoszy(n,R2,SCE,muz) es exactamente igual al caso NNVC donde se garantiza el incumplimiento del supuesto de normalidad por medio del método de simulación de Gammas bivariadas propuesto por Cheng et al. (2010).\\
+
+
+Para garantizar el incumplimiento del supuesto de varianza constante, el simulador ModNVD(n,b0,b1,R2,muz), realiza el proceso iterativo equivalente al descrito en el caso NVD hasta que el vector bi-variado, cuyos residuales del modelo de regresión entre los reales simulados y los predichos simulados cumplen el supuesto de independencia con la estadística de Durbin-Watson, pero no cumplen los supuestos de normalidad con las estadísticas de Shapiro-Wilk y Lilliefors, ni tampoco el de varianza constante con la estadística de Breusch-Pagan; todas las pruebas se realizan al 5\%.\\ 
+
+
+Todos los simuladores generan un vector bivariado, donde la primera columna corresponden a los valores predichos del modelo simulado y la segunda columna a los valores reales del modelo simulado.\\
 
 \subsection{Diseño factorial con tres factores de efectos fijos}
 Cuando se quiere investigar la influencia de tres factores $(A, B$ y $C)$ sobre una o más variables de respuesta, y el número de niveles de prueba en cada uno de los factores es $a, b$ y $c$, respectivamente, se puede construir el arreglo factorial $a \times b \times c$, que consiste en $a \times b \times c$ tratamientos o puntos experimentales.

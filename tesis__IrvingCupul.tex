@@ -10,13 +10,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{relsize}
-
-
-
-
-
-
-
+\hyphenation{Mod-NVD}
 \usepackage{float}
 \usepackage{placeins}
 \usepackage[autostyle]{csquotes}
@@ -53,7 +47,9 @@
 	top=3cm,
 	bottom=3cm,
 }
-\parindent = 0mm 
+
+\parindent = 0mm
+ 
 \begin{document}
 	
 	\thispagestyle{empty}
@@ -121,6 +117,8 @@
 	\input{2_agradecimientos-dedicacion.tex}
 	\input{3_resumen.tex}
 	\newpage
+	\tableofcontents
+	\newpage
 	\input{4_contenido-listas.tex}
 	\newpage
 	\input{5_introduccion.tex}
@@ -136,6 +134,7 @@
 	\input{10_conclusiones.tex}
 	\newpage
 	\printbibliography
+	\newpage
 	\input{11_anexos.tex}
 	
 \end{document}

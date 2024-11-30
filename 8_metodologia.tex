@@ -1,7 +1,15 @@
 \section{Metodología}
-En esta sección presenta una propuesta para evaluar la precisión de modelos de regresión lineal mediante intervalos de confianza para el coeficiente de determinación \(R^2\). Se consideran modelos Exactos-Precisos (EP) y Exactos-Imprecisos (EI) bajo diferentes supuestos: Normalidad-Varianza Constante (NVC), No Normalidad-Varianza Constante (NNVC), Normalidad-Varianza Distinta (NVD) y No Normalidad-Varianza Distinta (NNVD). Se aplican esquemas de Bootstrap, incluyendo algoritmos de \textcite{wu-1986}, \textcite{liu-1988}, \textcite{zacarias-2023} y \textcite{balam-2012}, utilizando distintas técnicas de remuestreo y estimadores robustos según el cumplimiento de supuestos.\\
+En este trabajo se propone un método que permite evaluar la precisión de un modelo con la técnica de regresión lineal; y se basa en implementar diversos esquemas de remuestreos y estimar la precisión, a través de intervalos de confianza Bootstrap para el coeficiente de determinación $R^2$, del modelo de regresión entre los valores reales y predichos del modelo que se desea evaluar.\\
 
-La metodología se valida mediante la simulación de 24,000 modelos distribuidos en 48 escenarios, cada uno con 500 modelos y 5 réplicas. Se consideran factores como el tamaño de muestra, precisión y supuestos. Se construyen intervalos Bootstrap (Percentil y BCa) para determinar la precisión de \(R^2\), evaluando su eficacia mediante la frecuencia con la que los intervalos contienen el valor verdadero y analizando su ancho. Se realiza un análisis ANOVA factorial para identificar diferencias significativas entre los intervalos, complementado con pruebas de Tukey. Las simulaciones y análisis se implementan en el lenguaje R.
+Se consideraron cuatro escenarios posibles con respecto al cumplimiento o no de los supuestos de normalidad y de varianza constante para un modelo a evaluar: NVC, NNVC, NVD y NNVD. Para estimar la distribución del coeficiente de determinación $R^2$, se implementan ocho esquemas de remuestreos: el Bootstrap simple; el Wild Bootstrap robusto propuesto en Sohel et al. (2012) con los tres esquemas de remuestreo propuestos por Wu (1986), y los dos esquemas propuestos por Liu (1988); el Bootstrap de residuales balanceado y el Bootstrap pareado balanceado. Se proponen los intervalos percentiles y el Bca para estimar $R^2$ y para su cómputo se utilizan $B=1,000$ remuestras para cada uno de los esquemas Bootstrap.\\ 
+
+Se realizó un estudio de simulación para comparar las eficacias de los intervalos de confianza para los diferentes esquemas Bootstrap, tamaños de muestra y tipo de modelo; se simularon y evaluaron un total de 120,000 modelos, de los cuales 60,000 modelos fueron Exactos-Precisos (EP) y 60,000 fueron Exactos-Imprecisos (EI); para cada uno de los modelos se identificaron las $R^2$ de origen utilizadas para su simulación. Se simularon modelos de tamaños $n=10, 15, 20, 25, 30, 35$ para cada uno de los supuestos y tipo de modelo.\\  
+
+Se consideraron tres criterios para determinar las eficacias de los intervalos para cada esquema Bootstrap, el primer criterio determina la eficacia como el porcentaje de las veces en que el intervalo contiene a la $R^2$ de origen para los modelos EP simulados; y viceversa, para los modelos IP la eficacia se determinó como el porcentaje de las veces en que el intervalo de confianza no contiene a la $R^2$ de origen. El segundo criterio determina la eficacia como el porcentaje de las veces en que ambos intervalos contienen de manera simultánea a la $R^2$ de origen para los modelos EP y de manera viceversa cuando ambos no la contienen para los modelos EI; y el tercer criterio determina la eficacia como el porcentaje de las veces en que uno de los intervalos es más estrecho que el otro cuando ambos intervalos contienen simultáneamente la $R^2$ de origen para los modelos EP y de manera viceversa uno de los intervalos es más estrecho que el otro cuando ambos no la contienen simultáneamente para los modelos EI.\\
+
+Se analizaron las eficacias de los intervalos para cada tipo de supuesto a través de un ANOVA factorial para identificar diferencias significativas entre los tipos de intervalos, tipos de esquemas y tamaños de muestra; complementándolo con pruebas de Tukey. De acuerdo al análisis de los resultados se consideró una propuesta final para la evaluación de la precisión de un modelo, la cual se implementó en el lenguaje R \parencite{R-2024}; y se ilustra con dos modelos correspondientes a casos reales que se ajustaron a cada uno los diferentes escenarios.
+
+
 
 
 \subsection{Una Propuesta para Evaluar la Precisión de un Modelo}
@@ -29,7 +37,7 @@ Es necesario construir los intervalos de confianza con los métodos: Percentil y
 
 
 
-\textit{Bootstrap robusto y Bootstrap de Residuales Balanceados para todos los casos}. Para todos los casos se propone utilizar siete esquemas Bootstrap a los residuales dependiendo sus caso, los siguientes esquemas robustos: los tres de Wu , los dos de Liu y el Robusto simple. Adicionalmente, se propone implementar justo a los seis esquemas robustos, el Bootstrap de Residuales Balanceados. \\
+\textit{Bootstrap robusto y Bootstrap de Residuales Balanceados para todos los casos}. Para todos los casos se propone utilizar siete esquemas Bootstrap a los residuales dependiendo sus caso, los siguientes esquemas robustos: los tres de Wu , los dos de Liu y el Bootstrap simple. Adicionalmente, se propone implementar justo a los seis esquemas robustos, el Bootstrap de Residuales Balanceados. \\
 
 
 \textit{Bootstrap Pareado Balanceado para todos los casos}. El \textit{Algoritmo de pareado} al aplicar el remuestreo sobre una muestra pareada de las observaciones con su respectiva predicha y no depender de los estimadores al uno utilizar los residuales, se implementa sin importar el tipo de caso, con las $z$ y $y$ proporcionadas.\\
@@ -38,60 +46,17 @@ Este proceso que permite desarrollar los esquemas Bootstrap dependiendo del caso
 
  
 
-\begin{figure}
+\begin{figure}[ht!]
 	\centering 
 	\includegraphics[width=0.4\linewidth]{img/metodologia_v4.png} 
 	\caption{Algoritmo para los diferentes esquemas Bootstrap.}
 	\label{fig:AlgDifEsqBoots}
 \end{figure}
+\FloatBarrier
 
 \subsubsection{Intervalos de Confianza para la $R^{2}$}
 
-Para evaluar la precisión del modelo se propone utilizar los intervalos de confianza Percentil y BCa para cada una de las muestras de $R^{2}s$ obtenidas en el procedimiento anterior por esquema Bootstrap. Para ello se realizan las siguientes modificaciones a los algortimos de percentil y BCa: \\
-
-
-\textbf{Algoritmo - Intervalo de Confianza Percentil}
-
-\begin{enumerate}
-	
-	\item Se obtienen las muestras $\hat{R}^{2*}_{1} , \hat{R}^{2*}_{2}, \dots,\hat{R}^{2*}_{B}$.
-	
-	\item Las $B$ muestras $\hat{R}^{2*}_{1} , \hat{R}^{2*}_{2}, \dots,\hat{R}^{*}_{B}$ se ordenan de manera ascendente, tal que $\hat{R}^{2*}_{1} \leq \hat{R}^{2*}_{2} \leq \dots \leq \hat{R}^{2*}_{B} $.
-	
-	\item Determinar los cuantiles \( LI_{P} \) y \( LS_{P} \), para el nivel de confianza del \( (1-\alpha)\% \) en la muestra ordenada, con \( LI_{P} = \hat{R}^{2*}_{ ( \alpha/2 ) \times B} \) y \( LS_{P} = \hat{R}^{2*}_{ (1 - \alpha/2) \times B} \).
-	
-	\item El intervalo de confianza está dado por: \( [LI_{P}, LS_{P}] \).
-\end{enumerate}
-
-
-\textbf{Algoritmo - Intervalo de Confianza BCa}
-
-\begin{enumerate}
-	
-	\item Se obtienen las muestras $\hat{R}^{2*}_{1} , \hat{R}^{2*}_{2}, \dots,\hat{R}^{2*}_{B}$.
-	
-	\item Obtener la estimación de $\hat{R}^{2}$ a partir de los datos originales con una regresión lineal simple.
-	
-	\item Se determina la proporción $p$ de las  $\hat{R}^{2*}_{i}$ que son mayores o iguales a $\hat{R}^{2}$.
-	
-	\item  Determinar $Z_{0} = Z_{p}$ donde $Z_{p}$ es el cuantil en la distribución normal estándar tal que $P(Z > Z_{p}) = p$.
-	
-	\item  Obtener la constante de aceleración $a$ dada por:
-	\begin{center}
-		\Large $ a = \frac{\sum_{i=1}^{n}  (\hat{R}^{2}_{-iprom}  - \hat{R}^{2}_{-i})^{3} }{ 6 \; (\; \sum_{i=1}^{n}  ( \hat{R}^{2}_{-iprom}  - \hat{R}^{2}_{-i} \;)^{2} \; )^{3/2}} $
-	\end{center}
-	
-	donde: $\hat{R}^{2}_{-i}$ es la estimación con los datos originales quitando la $i$-esima observación y {\normalsize $\hat{R}^{2}_{-iprom} = \frac{1}{n} \sum_{i=1}^{n}\hat{R}^{2}_{-i}$}
-	
-	\item Obtener {\large $Z_{L} = \frac{Z_{0} - Z_{\alpha/2}}{ 1- \alpha ( Z_{0} - Z_{\alpha/2})} + Z_{0}  $}   y {\large $Z_{U} = \frac{Z_{0} + Z_{\alpha/2}}{ 1- \alpha ( Z_{0} - Z_{\alpha/2})} + Z_{0}  $}  donde: $Z_{\alpha /2}$ es el cuantil en la
-	distribución normal estándar tal que $P(Z > Z_{\alpha / 2}) = \frac{\alpha}{2}$.
-	
-	\item Determinar \( LI_{BCa} = \text{INVCDF}(\Phi(Z_{L})) \) y \( LS_{BCa} = \text{INVCDF}(\Phi(Z_{U})) \), donde \( \text{INVCDF} \) es el cuantil en la muestra Bootstrap \( \hat{R}^{2*}_{1}, \hat{R}^{2*}_{2}, \dots, \hat{R}^{2*}_{B} \) con probabilidad \( \Phi(Z_{L}) \) y \( \Phi(Z_{U}) \) respectivamente.
-	
-	\item El intervalo de confianza está dado por: \( [LI_{BCa}, LS_{BCa}] \).
-
-\end{enumerate}
-
+Para evaluar la precisión del modelo se propone utilizar los intervalos de confianza Percentil y BCa para cada una de las muestras de $R^{2}s$ obtenidas en el procedimiento anterior por esquema Bootstrap. Debido a que las muestra Bootstrap de $R^{2}s$ ya se tiene, para el computo del I.C Percentil el Algoritmo 3.6.1 se comienza desde el paso 3. Y para el computó del I.C BCa se realiza el paso 1 del algoritmo 3.6.2 en el cual se obtiene la estimación de la $R^{2}$ a partir de los datos originales del modelo, y se omiten los pasos 2 y 3 de dicho algoritmo ya que como en el caso anterior la muestra Bootstrap de $R^{2}s$ ya se tiene.\\
 
 
 
@@ -110,8 +75,8 @@ A continuación se describe el algoritmo para evaluar la precisión de un modelo
 	
 	\item Para cada columna \( k \) (\( k = 1, 2, \dots, 8 \)) en la matriz de remuestras \( RsBoot \):
 	\begin{itemize}
-		\item Construir el intervalo de confianza Percentil \( [LI_{P_k}, LS_{P_k}] \) utilizando el Algoritmo Percentil.
-		\item Construir el intervalo de confianza BCa \( [LI_{BCa_k}, LS_{BCa_k}] \) utilizando el Algoritmo BCa.
+		\item Construir el intervalo de confianza Percentil \( [LI_{P_k}, LS_{P_k}] \) utilizando el Algoritmo 3.6.1 modificado previamente.
+		\item Construir el intervalo de confianza BCa \( [LI_{BCa_k}, LS_{BCa_k}] \) utilizando el Algoritmo 3.6.2 modificado previamente.
 	\end{itemize}
 \end{enumerate}
 
@@ -119,36 +84,129 @@ A continuación se describe el algoritmo para evaluar la precisión de un modelo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	 
-	 
-\subsection{Estudio de simulación para la evaluación de la propuesta}
-\vspace{1.5cm}
+\subsection{Estudio de Simulación para la Evaluación de la Propuesta}
 
-\subsubsection{Simulación de modelo}
-Simular modelos exactos-precisos (EP) y modelos exactos-imprecisos (EI) mediante la propuesta de Febles (2014) y Zacarías (2023); cuando se cumplan o no los supuestos de normalidad e igualdad de varianzas.
+Para evaluar la eficacia de los intervalos de confianza con los diferentes esquemas Bootstrap, realizo un estudio de simulación donde se simularon modelos con la propuesta de Febles (2014) y las mejoras establecidas en Zacarías (2023); para ello los modelos simulados se consideraron los siguientes factores: Precisión (EP, EI) con los supuesto (NVC, NVD, NNVC, NNVD). Tanto para los modelos EP y EI se utilizarán números aleatorios para $R^{2}$.
 
-%aqui va el diagrama
-Diseñar e implementar un estudio de simulación para evaluar la eficacia de la metodología propuesta.
-	 \vspace{1.5cm}
-	 	 
-	 	 
-	 	 
-	 	 
+
+
+\subsubsection{Simulación de los Modelos}
+Para la simulación de los modelos se utilizaron los simuladores $ModNVC()$, $ModNNVC()$, $ModNNVD()$ y$ ModNVD()$ descritos en la sección 3.7. Para este trabajo se simularon modelos de tipo EP y EI, por lo que se consideraron valores a priori fijos para el intercepto y la pendiente con b0=0 y b1=1; lo cual implicó que para el uso de los simuladores solo se tuviera que especificar tres argumentos: n, R2 y muz.\\
+
+Los modelos se simularon para tamaños de muestra n=10, 15, 20, 25, 30, 35; para los valores hipotéticos de R2, se seleccionaron números aleatorios en el intervalo (0.8, 0.99) para los modelos EP y números aleatorios en el intervalo (0.1, 0.3) para los modelos EI, en ambos casos los números se redondearon a cuatro decimales. Para la especificación de muz se consideraron número aleatorios en el intervalo (5,100).\\
+ 
+
+\subsubsection{Generación y respaldo de los modelos simulados}
+
+Para la simulación y el respaldo de todos los modelos utilizados para evaluar la propuesta de este trabajo, se desarrolló la función SimMod(N,n,r,TipoPres,TipoSupues); la cual tiene como argumentos el número de modelos que se desean simular (N); el tamaño de la muestra (n); el número de réplicas para cada modelo (r);  la precisión deseada (TipoPres; 1: Preciso, 2:Impreciso); y tipo de supuesto que debe cumplir el modelo simulado (TipoSupues; 1:NVC, 2:NVD, 3:NNVC, 4:NNVD). Para todos los tipos de modelos simulados se consideraron r=5 réplicas para N=500 modelos; de tal forma que, para un tamaño de muestra fijo, un tipo de precisión fijo y un tipo de supuesto fijo se simularon 2,500 modelos; por lo que en total se simularon y respaldaron 120,000 modelos (2500x6x2x4), la mitad fueron modelos EP y la otra mitad modelos EI.
+La función SimEP() ejecuta para cada réplica, el simulador correspondiente (ModNVC(), ModNVD(), ModNNVC(), ModNNVD())  N veces para la simulación de los modelos correspondientes a cada tipo de supuesto. Al final, la función SimEP() guarda los modelos simulados por cada tamaño de muestra, tipo de precisión y tipo de supuesto en una matriz de tamaño $rn \times 2N$ y también guarda en otra matriz de tamaño $r \times N$ a las $R^2$ correspondientes a cada uno de los modelos simulados, en total se respaldaron 48 matrices que contienen los 120,000 modelos y 48 matrices que contienen las $R^2$ correspondiente a cada modelo simulado. Las matrices se utilizaron para determinar las eficacias de los métodos Bootstrap propuestos para la medición de la precisión de un modelo. Para más detalle sobre la función SimEP () ver Anexo ¿?.\\
+
+
+A continuación, se muestran las ejecuciones realizadas a la función SimEP () para la simulación y respaldo de los 120,000 modelos utilizados. \\
+
+
+\textbf{Modelos EPNVC}\\
+SimMod(N=500,n=10,r=5,TipoPres=1,TipoSupues=1)\\
+SimMod(N=500,n=15,r=5,TipoPres=1,TipoSupues=1)\\
+SimMod(N=500,n=20,r=5,TipoPres=1,TipoSupues=1)\\
+SimMod(N=500,n=25,r=5,TipoPres=1,TipoSupues=1)\\
+SimMod(N=500,n=30,r=5,TipoPres=1,TipoSupues=1)\\
+SimMod(N=500,n=35,r=5,TipoPres=1,TipoSupues=1)\\
+
+\textbf{Modelos EPNVD}\\
+SimMod(N=500,n=10,r=5,TipoPres=1,TipoSupues=2)\\
+SimMod(N=500,n=15,r=5,TipoPres=1,TipoSupues=2)\\
+SimMod(N=500,n=20,r=5,TipoPres=1,TipoSupues=2)\\
+SimMod(N=500,n=25,r=5,TipoPres=1,TipoSupues=2)\\
+SimMod(N=500,n=30,r=5,TipoPres=1,TipoSupues=2)\\
+SimMod(N=500,n=35,r=5,TipoPres=1,TipoSupues=2)\\
+
+\textbf{Modelos EPNNVC}\\
+SimMod(N=500,n=10,r=5,TipoPres=1,TipoSupues=3)\\
+SimMod(N=500,n=15,r=5,TipoPres=1,TipoSupues=3)\\
+SimMod(N=500,n=20,r=5,TipoPres=1,TipoSupues=3)\\
+SimMod(N=500,n=25,r=5,TipoPres=1,TipoSupues=3)\\
+SimMod(N=500,n=30,r=5,TipoPres=1,TipoSupues=3)\\
+SimMod(N=500,n=35,r=5,TipoPres=1,TipoSupues=3)\\
+
+\textbf{Modelos EPNNVD}\\
+SimMod(N=500,n=10,r=5,TipoPres=1,TipoSupues=4)\\
+SimMod(N=500,n=15,r=5,TipoPres=1,TipoSupues=4)\\
+SimMod(N=500,n=20,r=5,TipoPres=1,TipoSupues=4)\\
+SimMod(N=500,n=25,r=5,TipoPres=1,TipoSupues=4)\\
+SimMod(N=500,n=30,r=5,TipoPres=1,TipoSupues=4)\\
+SimMod(N=500,n=35,r=5,TipoPres=1,TipoSupues=4)\\
+
+\textbf{Modelos IPNVC}\\
+SimMod(N=500,n=10,r=5,TipoPres=2,TipoSupues=1)\\
+SimMod(N=500,n=15,r=5,TipoPres=2,TipoSupues=1)\\
+SimMod(N=500,n=20,r=5,TipoPres=2,TipoSupues=1)\\
+SimMod(N=500,n=25,r=5,TipoPres=2,TipoSupues=1)\\
+SimMod(N=500,n=30,r=5,TipoPres=2,TipoSupues=1)\\
+SimMod(N=500,n=35,r=5,TipoPres=2,TipoSupues=1)\\
+
+\textbf{Modelos IPNVD}\\
+SimMod(N=500,n=10,r=5,TipoPres=2,TipoSupues=2)\\
+SimMod(N=500,n=15,r=5,TipoPres=2,TipoSupues=2)\\
+SimMod(N=500,n=20,r=5,TipoPres=2,TipoSupues=2)\\
+SimMod(N=500,n=25,r=5,TipoPres=2,TipoSupues=2)\\
+SimMod(N=500,n=30,r=5,TipoPres=2,TipoSupues=2)\\
+SimMod(N=500,n=35,r=5,TipoPres=2,TipoSupues=2)\\
+
+\textbf{Modelos IPNNVC}\\
+SimMod(N=500,n=10,r=5,TipoPres=2,TipoSupues=3)\\
+SimMod(N=500,n=15,r=5,TipoPres=2,TipoSupues=3)\\
+SimMod(N=500,n=20,r=5,TipoPres=2,TipoSupues=3)\\
+SimMod(N=500,n=25,r=5,TipoPres=2,TipoSupues=3)\\
+SimMod(N=500,n=30,r=5,TipoPres=2,TipoSupues=3)\\
+SimMod(N=500,n=35,r=5,TipoPres=2,TipoSupues=3)\\
+
+\textbf{Modelos IPNNVD}\\
+SimMod(N=500,n=10,r=5,TipoPres=2,TipoSupues=4)\\
+SimMod(N=500,n=15,r=5,TipoPres=2,TipoSupues=4)\\
+SimMod(N=500,n=20,r=5,TipoPres=2,TipoSupues=4)\\
+SimMod(N=500,n=25,r=5,TipoPres=2,TipoSupues=4)\\
+SimMod(N=500,n=30,r=5,TipoPres=2,TipoSupues=4)\\
+SimMod(N=500,n=35,r=5,TipoPres=2,TipoSupues=4)\\
+
+
+\subsubsection{Evaluación de la Precisión de los Modelos}
+Pendiente
+
+\subsubsection{Eficacia de los Intervalos y Esquemas}
+
+Con los modelos simulados y sus valores de $R^{2}$ originales respectivos, se evaluó la precisión de cada uno de los modelos con los diferentes esquemas Bootstrap y la construcción de los I.C Percentil e I.C. BCa a través del algoritmo de evaluar precisión.\\
+
+
+Para determinar la eficiencia de los intervalos Bootstrap y la eficacia de los esquemas Bootstrap, se considera el número de modelos que fue posible evaluar en el esquema, si la muestra generada permitió construir ambos intervalos (Percentil y BCa).\\
+
+
+La eficacia de los intervalos de confianza para un esquema Bootstrap especifico, se considera como el porcentaje de las veces en que contuvo la $R^{2}$ utilizada para generar el modelo, con respecto al número de modelos que pudieron evaluarse. Adicionalmente para evaluar cuál de los dos intervalos es más eficaz, se consideraron dos escenarios: 
+
+\begin{description}
+
+	\item[Ganador por Defecto] Cuando solo uno de los intervalos logró contener la \( R^2 \), se consideró ganador por defecto y la eficacia se calculó como el porcentaje de veces en que solo uno de los intervalos incluyó la \( R^2 \)
+	con respecto a los modelos evaluados.
+	
+	
+	\item[Ganador en Empate] Cuando ambos intervalos contuvieron la \( R^2 \), se consideró más eficiente el intervalo con menor amplitud, ya que proporciona una estimación más precisa. La eficacia en este caso se calculó como el porcentaje de veces que ambos intervalos incluyeron la \( R^2 \), pero uno de ellos fue más estrecho, con respecto a los modelos evaluados.
+	
+\end{description}
+
+ 
+La eficacia de los esquema Bootstrap, se determinó como el porcentaje de veces que logra que ambos intervalos contengan a la \( R^2 \) original con respecto a los modelos evaluados.\\
+
+
+
+	 	
+	 	
+	 	
+	 	
+	 	
+	 	
+	 	
+	 	
 \subsection{Análisis estadísticos}
 Para cada supuesto (NVC, NNVC, NVD, NNVD) se utilizó ANOVA en un arreglo factorial de tres factores seguido de la comparación múltiple de Tukey (Montgomery, 2017), para determinar el comportamiento de la eficacia de dos ICB en la evaluación de la precisión, bajo ocho esquemas de remuestreo, seis tamaños de muestra y dos tipos de modelo. Cabe señalar que, en cuatro de los ocho análisis de varianza realizados se eliminaron valores atípicos para el logro del cumplimiento de los supuestos del ANOVA.
 Las pruebas estadísticas se consideraron significativas cuando  y se utilizó el paquete estadístico STATGRAPHICS Centurion 19 (Statgraphics, 2024).
