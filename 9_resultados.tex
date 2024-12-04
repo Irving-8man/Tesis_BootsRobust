@@ -369,3 +369,72 @@ Cuando se tiene NNVD y se utilizó el ICB-BCa para evaluar la precisión, se obt
 
 
 
+\newpage
+
+\subsection{Propuesta Final}
+
+Con base en los resultados de los análisis estadísticos, cuando se tenga NVC, NNVC o NVD y se evalué la precisión el ICB a utilizar sería Percentil con esquema de remuestreo Liu2. Y cuando se tenga NNVD y se evalué la precisión, el ICB a utilizar sería BCa con esquema de remuestreo Pareado Balanceado.
+
+
+\subsubsection{Implementación}
+
+
+Para la propuesta final de este trabajo, dado los resultado estadísticos, para los diferentes casos NVC ,NNVC y NVD, se calcula el ICB Percentil para evaluar la precisión con el esquema de Liu2, ya que este obtuvo en el estudio de simulación una eficacia al menos del 95\%; con las diferencias en la implementación de los residuales: sea el caso 1 (NVC) utilizó los residuales al correr una regresión lineal simple, para el caso 2 (NVD) utilizó residuales robustos ponderados y el caso 3 (NNVC) los residuales robustos sin ponderar para la evaluación de precisión con un ICB. Ademas, cuando se tenga el caso 4 (NNVD) se evalúa la precisión con ICB BCa con el esquema de Remuestreo Balanceado que obtuvo una eficiencia al menos del 88.8\%.\\
+
+La propuesta final se implemento en el lenguaje R, de tal forma que la evaluación de la precisión se realiza de manera automática dependiendo del
+cumplimiento de los supuestos el resultados de las pruebas con una conclusión respectiva, los resultados estadísticos del ICB con el esquema Bootstrap y la conclusión si es un modelo preciso o impreciso dado: $\left( LI \leq 0.7 \leq LS \right) \; \text{o} \; \left( LI \geq 0.7 \right)$.\\
+
+Solo es necesario proporcionar la muestra bivariada $(z_1, y_1), (z_2, y_2), \dots, (z_n, y_n)$ formada por los predichos $z_i$ y por los observados $y_i$ del modelo a evaluar y un nivel del confianza $1-\alpha$ para el ICB. Con un nivel de significancia $\alpha$ para el cumplimiento de los supuestos determinado por el nivel de confianza. La figura \ref{fig:propuestaFinal}  muestra el diagrama como funciona la propuesta final y en el Anexo C se encuentra el script R correspondiente a la función \textit{PropFCalcPrecModl()}.
+
+\begin{figure}[ht!]
+	\centering 
+	\includegraphics[width=0.9\linewidth]{img/propuestaFinalv7.png} 
+	\caption{Propuesta final para evaluar la precisión de un modelo.}
+	\label{fig:propuestaFinal}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Aplicación}
+
+
+
+\textbf{Caso 1 - NVC}
+
+Para este caso se consideraron los datos experimentales de la ganancia diaria de peso (GDP); datos experimentales vs. modelo de simulación para estimar la ganancia diaria de peso (GDP) \parencite{osorio-2011}. Estos datos se encuentran en el apéndice B de \textcite{balam-2012}.\\
+
+
+Con base en los resultados de verificación de los supuestos (Figura \ref{fig:final_NVC_resultados}) se obtuvo que corresponde al caso NVC. Por lo tanto para la evaluación de la precisión se aplicó el ICB Percentil con el esquema de remuestreo Liu2, dando como resultado que el modelo evaluado es preciso considerando un $R^2 \geq 70\%$.
+
+
+\begin{figure}[ht!]
+	\centering 
+	\includegraphics[width=0.85\linewidth]{img/Uso_NVC_PropuestaFinal.png} 
+	\caption{Resultados del caso NVC.}
+	\label{fig:final_NVC_resultados}
+\end{figure}
+\FloatBarrier
+
+
+
+
+
+
+
+\textbf{Caso 2 - NNVD}\\
+
+Se aplico a los datos experimentales del volumen de una parcela en metros cúbicos a un diámetro superior $(n = 63)$ de 10cm y los simulados con el modelo PTAEDA \parencite{chung-1987}, el cual es un modelo estocástico. Cada simulación 86 con el modelo PTAEDA corresponde a la media de 10 corridas del modelo para cada parcela. En cada parcela se mide la edad, el indice de sitio y el número de arboles por hectárea.Estos datos se encuentran en el apéndice B de \textcite{balam-2012}.\\
+
+
+Con base en los resultados de verificación de los supuestos (Figura \ref{fig:final_NNVD_resultados}) se obtuvo que corresponde al caso NNVD. Por lo tanto para la evaluación de la precisión se aplicó el ICB BCa con el esquema de remuestreo Pareado Balanceado, dando como resultado que el modelo evaluado es preciso considerando un $R^2 \geq 70\%$.
+
+\begin{figure}[ht!]
+	\centering 
+	\includegraphics[width=0.85\linewidth]{img/Uso_NNVD_PropuestaFinal.png} 
+	\caption{Resultados del caso NNVD.}
+	\label{fig:final_NNVD_resultados}
+\end{figure}
+\FloatBarrier
+
+
+
+

@@ -195,15 +195,15 @@ Los estadísticos más utilizados para contrastar estas hipótesis son el de Dur
 Sea un modelo $Y = H(\Theta )$, con una muestra pareada $(z_{1}, y_{1}), (z_{2}, y_{2}) , \dots , (z_{n}, y_{n})$ de valores observados y predichos respectivamente por el modelo. Bajo estas condiciones, se considera el modelo de regresión lineal: $y_{i}= \beta_{0} + \beta_{1}z_{i}$, donde $ 1 \leq i \leq n$. Donde  los estimadores de mínimos cuadrados para $\beta_{0}$,  $\beta_{1}$ y el coeficiente de determinación $R^{2}$ son respectivamente: \\
 
 \begin{center}
-	$\hat{\beta_{0}} = \hat{y} - \hat{\beta_{1}} \bar{z} $, \\
+{\large$\hat{\beta_{0}} = \hat{y} - \hat{\beta_{1}} \bar{z}$} ,\\
 \end{center}
 
 \begin{center}
-	$ \hat{\beta_{1}} = \frac{\sum_{i=1}^{n} (z_{i} - \bar{z} ) (y_{i} - \bar{y})} {  \sum_{i=1}^{n} (z_{i} - \bar{z} )^{2} }$, \\
+{\Large$ \hat{\beta_{1}} = \frac{\sum_{i=1}^{n} (z_{i} - \bar{z} ) (y_{i} - \bar{y})} {  \sum_{i=1}^{n} (z_{i} - \bar{z} )^{2} }$} \\
 \end{center}
 
 \begin{center}
-	$R^{2} = \frac{ \sum_{i=1}^{n} ( \hat{y}_{i} - \bar{y})^{2}} { \sum_{i=1}^{n} ( y_{i} - \bar{y})^{2}  }$  y  $ 0 \leq R^{2} \leq 1$,
+{\Large $R^{2} = \frac{ \sum_{i=1}^{n} ( \hat{y}_{i} - \bar{y})^{2}} { \sum_{i=1}^{n} ( y_{i} - \bar{y})^{2}  }$ }  y  $ 0 \leq R^{2} \leq 1$,
 \end{center}
 
 
@@ -309,10 +309,10 @@ $y_{i}= \beta_{0} + \beta_{1}z_{i}$, $1 \leq i \leq n, $
 	\item Si $\rho(u) < a $ y $0 \leq  u < v $, entonces  $\rho(u) <  \rho(v)$.
 \end{enumerate}
 
-Dada una muestra de tamaño $n$, $ \mathbf{u} = (u_{1}, u_{2}, \dots , u_{n})$,  el estimador M, $s(\mathbf{u})$ está de nido como el valor de s que es la solución de\\
+Dada una muestra de tamaño $n$, $ \mathbf{u} = (u_{1}, u_{2}, \dots , u_{n})$,  el estimador M, $s(\mathbf{u})$ está de nido como el valor de $s$ que es la solución de\\
 
 \begin{center}
-	$\frac{1}{n} \sum_{i=1}^{n} \rho( \frac{u_{i}}{s}) = b$,\\
+	{\Large	$\frac{1}{n} \sum_{i=1}^{n} \rho( \frac{u_{i}}{s}) = b$ },\\
 \end{center}
 
 donde $b$ puede de definirse como $E_{\Phi}(\rho(u)) = b$, donde $\Phi$ denota la distribución normal estándar.\\
@@ -322,7 +322,7 @@ Se cumple que si $c(\mathbf{u}) = \#\{i : 1 \leq i \leq n, u_{i}=0\} / n < 1- (b
 Luego, el estimador MM se define en tres etapas de la siguiente manera:\\
 
 \begin{enumerate}
-	\item Sean $ \beta_{0}^{'}$ y $ \beta_{1}^{'}$ estimaciones de los parámetros$ \beta_{0}$ y $ \beta_{1}$ respectivamente con un alto punto de ruptura, posiblemente 0.5.
+	\item Sean $ \beta_{0}^{'}$ y $ \beta_{1}^{'}$ estimaciones de los parámetros $\beta_{0}$ y $ \beta_{1}$ respectivamente con un alto punto de ruptura, posiblemente 0.5.
 	\item  Calcular los residuales\\
 	\begin{center}
 		 $ \epsilon_{i} = y_{i} -\beta_{0}^{'} -\beta_{1}^{'} z_{i}  $, $1 \leq i \leq n $.\\
@@ -340,7 +340,7 @@ Luego, el estimador MM se define en tres etapas de la siguiente manera:\\
 	
 	Sea $\psi_{1} = \rho_{1}^{'}$. Entonces el estimador MM, se define como cualquier solución de\\
 	\begin{center}
-		$\sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i} = 0$\\
+	{\large	$\sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i} = 0$}\\
 	\end{center}
 
 \end{enumerate}
@@ -359,11 +359,11 @@ $w_{i}(t) = \psi_{1} (\epsilon_{i} /s_{n}) /(\epsilon_{i} /s_{n})$. También se 
 
 
 \begin{center}
-	$g(t) = \frac{1}{s_{n}^{2}} \sum_{i=1}^{n} w_{i}( t )\epsilon_{i} z_{i} =  \frac{1}{s_{n}}  \sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i} $, y \\	
+	{\large $g(t) = \frac{1}{s_{n}^{2}} \sum_{i=1}^{n} w_{i}( t )\epsilon_{i} z_{i} =  \frac{1}{s_{n}}  \sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i}$}, y \\	
 \end{center}
 
 \begin{center}
-	$ M(t) = \frac{1}{s_{n}^{2}}  \sum_{i=1}^{n}  w_{i}( t ) z_{i}^{2} $.\\
+	{\large$ M(t) = \frac{1}{s_{n}^{2}}  \sum_{i=1}^{n}  w_{i}( t ) z_{i}^{2} $}.\\
 \end{center}
 
 
@@ -379,21 +379,21 @@ Si $t^{(i)}$ es el valor de la estimación en la j-esima iteración, entonces $t
 Sea $0< \delta  < 1$  y $-g(t)$ el gradiente de $S(t)$, donde \\
 
 \begin{center}
-	$S(t) = \sum_{i=1}^{n} \rho_{1} ( \frac{\epsilon_{i}}{s_{n}})$. \\
+	{\large$S(t) = \sum_{i=1}^{n} \rho_{1} ( \frac{\epsilon_{i}}{s_{n}})$}. \\
 \end{center}
 
 
 Es posible encontrar un entero $k$ \parencite{yohai-1987} tal que\\
 
 \begin{center}
-	$ S(t^{(j)} + \Delta(t^{(j)} )/2^{k}) \leq S(t^{(j)}) - \delta( \Delta(t^{(j)} )/2^{k} ) g(t^{(j)})$. \\
+{\large	$ S(t^{(j)} + \Delta(t^{(j)} )/2^{k}) \leq S(t^{(j)}) - \delta( \Delta(t^{(j)} )/2^{k} ) g(t^{(j)})$}. \\
 \end{center}
 
 
 Sea $k_{1,j}$ el mínimo de dichas $k$ y sea $k_{2,j}$ el valor de $k, 0 \leq k  \leq k_{1,j}$, lo que da el mínimo de $S(t^{(j)} + \Delta(t^{(j)} )/2^{k})$. Entonces se define el paso recursivo mediante\\
 
 \begin{center}
-	$ t^{(t+1)} = (t^{j} + (1/2^{k_{2,j}}) \Delta(t^{(j)} )$.\\
+{\large	$ t^{(t+1)} = (t^{j} + (1/2^{k_{2,j}}) \Delta(t^{(j)} )$}.\\
 \end{center}
 
 comenzando $t_{(0)} $ las estimaciones de los parámetros de regresión $\beta_{0}$ y $\beta_{1}$.\\
@@ -562,7 +562,7 @@ Se asume que los errores \( \epsilon_{i} \) en el modelo
 
 
 \subsubsection{Algoritmo Bootstrap Robusto Simple \parencite{zacarias-2023} }
-El algoritmo Bootstrap para generar muestras Bootstrap robustas para $\hat{R}^{2}$ es el siguiente:
+El algoritmo Bootstrap para generar muestras Bootstrap Robustas para $\hat{R}^{2}$ es el siguiente:
 
 \begin{enumerate}
 	\item Obtener el MM-Estimador $\hat{B}^{MM}$ de $B$ ... y con este  obtener los ajustados $ \hat{y}^{MM}_{i} = z_{i}B^{MM},i=1,2,..., n$.
@@ -610,20 +610,20 @@ propuestas en \textcite{liu-1988}.
 	
 	\item  Calcular los residuales $ \hat{e}^{MM}_{i} = y_{i}-\hat{y}_{i},i = 1,2, \dots, n$, y obtener los residuales ponderados
 	\begin{center}
-	\[
+	{\large\[
 	\hat{e}^{WMM}_{i} =
 	\begin{cases}
 		e^{MM}_{i}, & \text{si } \frac{|e^{MM}_{i}|}{\sigma_{MM}} \leq c \\ \\
 		\frac{c \times e^{MM}_{i}}{ | \hat{e}^{MM}_{i} | /\sigma_{MM}},     & \text{si } \frac{|e^{MM}_{i}|}{\sigma_{MM}} > c
 	\end{cases}
-	\]
+	\]}
 	\end{center} 
 	donde $c$ es una constante arbitraria que se elige entre 2 y 3; mientras que $\sigma_{MM}$ es la
 	raíz cuadrada del cuadrado medio del error del modelo robusto $\sigma_{MM} = \sqrt{CME}$.
 
 	\item Obtener una muestra Bootstrap $y^{*}_{i}$, tal que 
 	\begin{center}
-		$y^{*}_{i} =z_{i}\hat{\beta}_{MM} + \frac{t^{*}_{i}\hat{e}^{WMM}_{i}}{\sqrt{1-h_{ii}}} $,
+		{\large$y^{*}_{i} =z_{i}\hat{\beta}_{MM} + \frac{t^{*}_{i}\hat{e}^{WMM}_{i}}{\sqrt{1-h_{ii}}} $},
 	\end{center}
 	donde $h_{ii}$ es el i-ésimo elemento de la matriz diag$(Z(Z^{T}Z)^{-1} Z^{T})$ y el valor $t^{*}_{i}$ es el
 	i-ésimo elemento de una muestra aleatoria de tamaño $n$ de una $N(0,1)$.
@@ -646,7 +646,7 @@ propuestas en \textcite{liu-1988}.
 	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra con reemplazo con probabilidades iguales de los residuos normalizados $a_{1},a_{2}, \dots,a_{n}$, donde
 	
 	\begin{center}
-		$a_{i} = \frac{\hat{e}_{i}-\bar{\hat{ e}}_{i}}{ \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (\hat{e}_{i}-\bar{\hat{e}})^{2} } }$ con $ \bar{\hat{e}}= \frac{1}{n} \sum_{i=1}^{n} \hat{e}_{i} $.
+		{\Large $a_{i} = \frac{\hat{e}_{i}-\bar{\hat{ e}}_{i}}{ \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (\hat{e}_{i}-\bar{\hat{e}})^{2} } }$} con {\large $ \bar{\hat{e}}= \frac{1}{n} \sum_{i=1}^{n} \hat{e}_{i} $}.
 	\end{center}
 	
 	\item Repetir los pasos 4 y 5 del Algoritmo Wu 1.
@@ -663,7 +663,7 @@ propuestas en \textcite{liu-1988}.
 	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra con reemplazo con probabilidades iguales del vector de residuales transformado:
 	
 	\begin{center}
-		$R_{ai} = \frac{\hat{e}^{WMM}_{i} - Mediana(\hat{e}^{WMM}_{i})}{ NMAD(\hat{e}^{WMM}_{i})  }$ ,
+		{\large $R_{ai} = \frac{\hat{e}^{WMM}_{i} - Mediana(\hat{e}^{WMM}_{i})}{ NMAD(\hat{e}^{WMM}_{i})  }$} ,
 	\end{center}
 	donde $NMAD = \frac{1}{0.6745} Mediana\{ | \hat{e}^{WMM}_{i} - Mediana(\hat{e}^{WMM}_{i}) | \}$.
 	
@@ -792,7 +792,7 @@ A continuación, se hace una descripción de la funcionalidad de los simuladores
 
 \subsubsection{Simulador de modelos que cumplen el supuesto normalidad y varianza constante (NVC)}
 
-Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad y varianza constante se utilizó el simulador $ModNVC(n,b0,b1,R2,muz)$, el cual implementa dos funciones principales para la simulación de dichos modelos, la función $Datoszy(n,R2,SCE,muz)$ y la función $PruebaVarIndep(Datos)$. La función $Datoszy()$ implementa el método de la transformación para retornar un vector normal bi-variado $(z_i,y_i)$ de tamaño $n$, cuyos residuales $e_i$ del  modelo de regresión  entre $y_i$ y $z_i$ cumplen el supuesto de normalidad con las estadística de Shapiro-Wilk y con Lilliefors al 5\%; siempre que los valores a priori determinados generen una matriz de varianzas y covarianzas positiva definida (PD), en caso de que no la función retorna un vector nulo.\\
+Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad y varianza constante se utilizó el simulador $ModNVC(n,b0,b1,R2,muz)$, el cual implementa dos funciones principales para la simulación de dichos modelos, la función dada por \newline $Datoszy(n, R2, SCE, muz)$ y la función $PruebaVarIndep(Datos)$. La función $Datoszy()$ implementa el método de la transformación para retornar un vector normal bi-variado $(z_i,y_i)$ de tamaño $n$, cuyos residuales $e_i$ del  modelo de regresión  entre $y_i$ y $z_i$ cumplen el supuesto de normalidad con las estadística de Shapiro-Wilk y con Lilliefors al 5\%; siempre que los valores a priori determinados generen una matriz de varianzas y covarianzas positiva definida (PD), en caso de que no la función retorna un vector nulo.\\
 
 
 La función $PruebaVarIndep()$ implementa el método propuesto en \textcite{febles-2014} para lograr el cumplimiento de varianza constante y verifica que se cumpla dicho supuesto con la estadística de Breusch-Pagan y también se verifica el supuesto de independencia con la estadística de Durbin-Watson ambas pruebas al 5\%. Para garantizar el supuesto de varianza constante, en \textcite{febles-2014} se consideró como criterio que los puntos entre los ajustados y los residuales del modelo simulado deberán estar distribuidos aleatoriamente en una banda horizontal, donde el ancho de la banda está determinado por $a=2*sqrt(SCE/(n-2))$, de tal forma que para que las observaciones $(z_i, y_i)$ simuladas caigan dentro de la banda deberán cumplir la condición $\hat{y}_i - a \leq y_i \leq \hat{y}_i + a $, donde $\hat{y}_i=\hat{\beta}_0+\hat{\beta}_1 z_i$ . La función $PruebaVarIndep()$ llama tantas veces como sea necesario a la función $Datoszy()$ hasta que el simulador $ModEPNVC()$  retorna un vector bi-variado simulado cuyos residuales del modelo de regresión entre los simulados reales y los simulados predichos cumplen con los supuestos de normalidad, varianza constante e independencia con nivel de significancia del 5\%.\\ 
@@ -810,17 +810,17 @@ La función $PruebaVarIndep()$ garantiza el cumplimiento de varianza constante y
 Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad, pero no el de varianza constante se utilizó el simulador $ModNVD(n,b0,b1,R2,muz)$, el cual implementa la función $Datoszy(n,R2,SCE,muz)$ que garantiza el supuesto de normalidad y verifica que se cumpla dicho supuesto con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento del script $Datoszy(n,R2,SCE,muz)$ es exactamente igual al caso NVC para garantizar normalidad.\\
 
 
-Para garantizar el incumplimiento del supuesto de varianza constante, en el simulador $ModNVD(n,b0,b1,R2,muz)$, se consideró como criterio que los puntos entre los ajustados y los residuales del modelo simulado deberán estar distribuidos aleatoriamente en un cono, de tal manera que las fronteras del cono estén limitadas por una recta superior $l_1$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_1$ y una recta inferior $l_2$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_2$, donde  $\alpha_1$ y $\alpha_2$, son respectivamente, los ángulos de inclinación de $l_1$ y $l_2$. Por lo tanto, si el residual $e_i=y_i - \hat{y}_i > 0$ , entonces $y_i$ y $\hat{y}_i$ deben cumplir la condición $\hat{y}_i \leq y_i \leq \hat{y}_i (1+tan \alpha_1)$ para que el punto $(z_i,y_i)$ simulado caiga dentro del cono; de igual forma, si $e_i=y_i - \hat{y}_i < 0$ , se debe garantizar la condición $\hat{y}_i (1+tan \alpha_2) \leq y_i \leq \hat{y}_i $ para que el punto simulado correspondiente caiga dentro del cono. Para la simulación de estos tipos de modelos se consideró un cono simétrico determinado por $\alpha_1=\pi / 9$ y $\alpha_2=\pi/9$ radianes. \\
+Para garantizar el incumplimiento del supuesto de varianza constante, en el simulador \newline $ModNVD(n,b0,b1,R2,muz)$, se consideró como criterio que los puntos entre los ajustados y los residuales del modelo simulado deberán estar distribuidos aleatoriamente en un cono, de tal manera que las fronteras del cono estén limitadas por una recta superior $l_1$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_1$ y una recta inferior $l_2$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_2$, donde  $\alpha_1$ y $\alpha_2$, son respectivamente, los ángulos de inclinación de $l_1$ y $l_2$. Por lo tanto, si el residual $e_i=y_i - \hat{y}_i > 0$ , entonces $y_i$ y $\hat{y}_i$ deben cumplir la condición $\hat{y}_i \leq y_i \leq \hat{y}_i (1+tan \alpha_1)$ para que el punto $(z_i,y_i)$ simulado caiga dentro del cono; de igual forma, si $e_i=y_i - \hat{y}_i < 0$ , se debe garantizar la condición $\hat{y}_i (1+tan \alpha_2) \leq y_i \leq \hat{y}_i $ para que el punto simulado correspondiente caiga dentro del cono. Para la simulación de estos tipos de modelos se consideró un cono simétrico determinado por $\alpha_1=\pi / 9$ y $\alpha_2=\pi/9$ radianes. \\
 
 
 El simulador$ ModNVD(n,b0,b1,R2,muz)$ realiza el proceso iterativamente hasta que el vector bi-variado, cuyos residuales del modelo de regresión entre los reales simulados y los predichos simulados cumplen el supuesto de normalidad con las estadísticas de Shapiro-Wilk y Lilliefors, el de independencia con la estadística de Durbin-Watson, pero no cumplen el supuesto de varianza constante con la estadística de Breusch-Pagan; todas las pruebas son realizadas al 5\%. 
 
 \subsubsection{Simulador de modelos que no cumplen los supuestos normalidad y varianza constante (NNVD)}
 
-Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad ni tampoco el de varianza constante se utilizó el simulador $ModNNVD(n,b0,b1,R2,muz)$, el cual implementa la función $Datoszy(n,R2,SCE,muz)$ que garantiza el incumplimiento del supuesto de normalidad y lo verifica con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento de la función $Datoszy(n,R2,SCE,muz)$ es exactamente igual al caso NNVC donde se garantiza el incumplimiento del supuesto de normalidad por medio del método de simulación de Gammas bivariadas propuesto por \textcite{cheng-2011}.\\
+Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad ni tampoco el de varianza constante se utilizó el simulador $ModNNVD(n,b0,b1,R2,muz)$, el cual implementa la función $Datoszy(n,R2,SCE,muz)$ que garantiza el incumplimiento del supuesto de normalidad y lo verifica con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento de la función dada por \newline $Datoszy(n,R2,SCE,muz)$ es exactamente igual al caso NNVC donde se garantiza el incumplimiento del supuesto de normalidad por medio del método de simulación de Gammas bivariadas propuesto por \textcite{cheng-2011}.\\
 
 
-Para garantizar el incumplimiento del supuesto de varianza constante, el simulador $ModNVD(n,b0,b1,R2,muz)$, realiza el proceso iterativo equivalente al descrito en el caso NVD hasta que el vector bi-variado, cuyos residuales del modelo de regresión entre los reales simulados y los predichos simulados cumplen el supuesto de independencia con la estadística de Durbin-Watson, pero no cumplen los supuestos de normalidad con las estadísticas de Shapiro-Wilk y Lilliefors, ni tampoco el de varianza constante con la estadística de Breusch-Pagan; todas las pruebas se realizan al 5\%.\\ 
+Para garantizar el incumplimiento del supuesto de varianza constante, el simulador con \newline $ModNVD(n,b0,b1,R2,muz)$, realiza el proceso iterativo equivalente al descrito en el caso NVD hasta que el vector bi-variado, cuyos residuales del modelo de regresión entre los reales simulados y los predichos simulados cumplen el supuesto de independencia con la estadística de Durbin-Watson, pero no cumplen los supuestos de normalidad con las estadísticas de Shapiro-Wilk y Lilliefors, ni tampoco el de varianza constante con la estadística de Breusch-Pagan; todas las pruebas se realizan al 5\%.\\ 
 
 
 Todos los simuladores generan un vector bivariado, donde la primera columna corresponden a los valores predichos del modelo simulado y la segunda columna a los valores reales del modelo simulado.\\
@@ -872,7 +872,7 @@ Donde:
 
 
 \textbf{Supuestos del modelo}\\
- $\epsilon_{ijkl} NI (0, \sigma^{2})$
+ $\epsilon_{ijkl} NI (0, \sigma^{2})$\\
 
 \textbf{Hipótesis}\\
 Para los factores
@@ -892,25 +892,25 @@ Para las interacciones
 
 \textbf{Suma de cuadrados}\\
 Las fórmulas de cálculo para las sumas de cuadrados son:\\
-$ SC_{total} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \sum_{l=1}^{n} y_{ijkl}^{2} - \frac{y_{....}^{2}}{abcn} $\\
+{\large$ SC_{total} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \sum_{l=1}^{n} y_{ijkl}^{2} - \frac{y_{....}^{2}}{abcn} $}\\
 
-$ SC_{A} = \sum_{i=1}^{a} \frac{y_{i...}^{2}}{bcn}  - \frac{y_{....}^{2}}{abcn} $\\
+{\large $ SC_{A} = \sum_{i=1}^{a} \frac{y_{i...}^{2}}{bcn}  - \frac{y_{....}^{2}}{abcn} $}\\
 
-$ SC_{B} = \sum_{j=1}^{b} \frac{y_{.j..}^{2}}{acn}  - \frac{y_{....}^{2}}{abcn} $\\
+{\large$ SC_{B} = \sum_{j=1}^{b} \frac{y_{.j..}^{2}}{acn}  - \frac{y_{....}^{2}}{abcn} $} \\
 
-$ SC_{C} = \sum_{k=1}^{c} \frac{y_{..k.}^{2}}{abn} - \frac{y_{....}^{2}}{abcn} $\\
+{\large$ SC_{C} = \sum_{k=1}^{c} \frac{y_{..k.}^{2}}{abn} - \frac{y_{....}^{2}}{abcn} $} \\
 
 
 \textbf{Las sumas de cuadrados para las interacciones son:}\\
 
-$ SC_{AB} = \sum_{i=1}^{a} \sum_{j=1}^{b}  \frac{y_{ij..}^{2}}{cn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B}  $\\
+{\large$ SC_{AB} = \sum_{i=1}^{a} \sum_{j=1}^{b}  \frac{y_{ij..}^{2}}{cn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B} $} \\
 
-$ SC_{AC} = \sum_{i=1}^{a} \sum_{k=1}^{c}  \frac{y_{i.k.}^{2}}{bn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{C}  $\\
+{\large$ SC_{AC} = \sum_{i=1}^{a} \sum_{k=1}^{c}  \frac{y_{i.k.}^{2}}{bn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{C} $} \\
 
-$ SC_{BC} = \sum_{j=1}^{b} \sum_{k=1}^{c}  \frac{y_{.jk.}^{2}}{an}  - \frac{y_{....}^{2}}{abcn} - SC_{C} -SC_{B}  $\\
+{\large$ SC_{BC} = \sum_{j=1}^{b} \sum_{k=1}^{c}  \frac{y_{.jk.}^{2}}{an}  - \frac{y_{....}^{2}}{abcn} - SC_{C} -SC_{B} $} \\
 
 
-$ SC_{ABC} =  \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \frac{y_{ijk.}^{2}}{n}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B} - SC_{C} -SC_{AB} -SC_{AC} -SC_{BC}  $\\
+$ SC_{ABC} =  \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \frac{y_{ijk.}^{2}}{n}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B} - SC_{C} -SC_{AB} -SC_{AC} -SC_{BC}  $ \\
 
 
 La suma de cuadrados del error puede encontrarse restando la suma de cuadrados de cada efecto principal e interacción de la suma de cuadrados total:\\
@@ -926,7 +926,7 @@ O bien,
 
 Donde
 \begin{center}
-	$ SC_{Sub(ABC)} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c} \frac{y_{ijk.}^{2}}{n} - \frac{y_{....}^{2}}{abcn}  $\\
+$$ SC_{Sub(ABC)} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c} \frac{y_{ijk.}^{2}}{n} - \frac{y_{....}^{2}}{abcn}  $$\\
 \end{center}
 
 
@@ -1000,7 +1000,7 @@ $H_{0}:\mu_{i} = \mu_{j}$ vs $H_{1}:\mu_{i} \neq \mu_{j}$ para toda $i \neq j$\\
  $\mu_{i} \neq \mu_{j}$ si $| \bar{Y}_{i} -\bar{Y}_{j} | > q_{\alpha} (p,f) \: \sqrt{\frac{CM_{E}}{n}} = T_{\alpha}$ (tamaños de las muestras iguales).\\
  
 
-La tabla V del apéndice en \textcite{montgomery-2017} contiene $q_{\alpha} (p,f)$, valor del punto porcentual $\alpha$ superior del estadístico del rango estudentizado $q=\frac{ \bar{Y}_{max} -\bar{Y}_{min}}{ \sqrt{\frac{CM_{E}}{n}}}$, donde $\bar{Y}_{max}$ y $\bar{Y}_{min}$ son las medias muestrales mayor y menor respectivamente de un grupo de $p$ medias muestrales, $f$ son los gl asociados con $CM_{E}$.\\
+La tabla V del apéndice en \textcite{montgomery-2017} contiene $q_{\alpha} (p,f)$, valor del punto porcentual $\alpha$ superior del estadístico del rango estudentizado {\large $q=\frac{ \bar{Y}_{max} -\bar{Y}_{min}}{ \sqrt{\frac{CM_{E}}{n}}}$}, donde $\bar{Y}_{max}$ y $\bar{Y}_{min}$ son las medias muestrales mayor y menor respectivamente de un grupo de $p$ medias muestrales, $f$ son los gl asociados con $CM_{E}$.\\
  
 Intervalo de confianza del  $(1-\alpha)100\%$ para $\mu_{i} - \mu_{j}$:\\
  
@@ -1011,7 +1011,7 @@ Intervalo de confianza del  $(1-\alpha)100\%$ para $\mu_{i} - \mu_{j}$:\\
 Para tamaños de muestras desiguales, en la prueba de hipótesis se utiliza:\\
 
 \begin{center}
-	$ T_{\alpha} = \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  $ \\
+	$$ T_{\alpha} = \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  $$ \\
 \end{center}
 
 
