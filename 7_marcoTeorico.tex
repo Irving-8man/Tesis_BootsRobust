@@ -1,6 +1,6 @@
 \section{Marco Teórico}
 
-\subsection{Validación de Modelos}
+\subsection{Validación de modelos}
 Los modelos son representaciones matemáticas de los mecanismos que rigen los fenómenos naturales \parencite{tedeschi-2006} o como una construcción matemática diseñada para estudiar un sistema del mundo real o fenómeno \parencite{giordano-1997}.\\
 
 \textcite{medina-peralta-2017} indican que la validación de un modelo en la predicción del sistema implica la comparación, por medio de algún método, de las predicciones del modelo con los valores observados del sistema real para determinar su capacidad predictiva.\\
@@ -40,7 +40,7 @@ Por su parte, \textcite{mayer-butler-1993} indican que la prueba $t$ paramétric
 
 
 
-\subsection{Regresión Lineal Simple}
+\subsection{Regresión lineal simple}
 Una de las técnicas mas comunes en la validación de modelos es la de Regresión Lineal Simple de los observados sobre los predichos \parencites{analla-1998, mayer-1994, tedeschi-2006}.\\
 
 El análisis de regresión lineal tiene como objetivo modelar en forma matemática el comportamiento de una variable de respuesta en función de una o mas variables independientes \parencite{gutierrez-2012}. Por lo tanto, se ajusta el modelo  $ y_{i} = \beta_{0} + \beta_{1}z_{i} +\epsilon $ donde $ 1 \leq i \leq n$, $ y_{i}$ es el valor real observado en la i-esima unidad experimental, $ z_{i}$ es el correspondiente valor predicho por el modelo a validar, $\epsilon_{i}$ es el componente aleatorio o error, $\beta_{0}$ es la ordenada al origen y $\beta_{1}$ la pendiente \parencite{zacarias-2023}.\\
@@ -48,7 +48,7 @@ El análisis de regresión lineal tiene como objetivo modelar en forma matemáti
 Esta técnica se encuentra principalmente sujeta al cumplimiento de sus supuestos. Cuando los residuales son independientes, se ajustan a una distribución normal y tienen varianza común, se aplican pruebas de hipótesis estadísticas para evaluar la exactitud, intercepto cero y pendiente uno, ya sea mediante pruebas t de Student, o bien, mediante una prueba F para determinar si el intercepto y la pendiente son simultáneamente cero y uno respectivamente \parencite{balam-2012}.
 
 
-\subsubsection{Verificación de los Supuestos de Normalidad, Varianza constante e independencia para los residuales de un modelo de regresión}
+\subsubsection{Verificación de los supuestos de normalidad, varianza constante e independencia para los residuales de un modelo de regresión}
 
 
 \textbf{Supuesto de normalidad}\\
@@ -188,7 +188,7 @@ $H_0:\;$ Los $e_i$ no están correlacionados vs. $H_1:\;$ Los $e_i$ sí están c
 Los estadísticos más utilizados para contrastar estas hipótesis son el de Durbin-Watson y el de Breusch-Godfrey. Si no se rechaza la hipótesis $H_0$ para un nivel de significancia $\alpha$ se dice que se cumple este supuesto. La verificación de este supuesto también se realiza con el gráfico de dispersión entre el orden de entrada de los datos y los residuales; si en este gráfico es posible identificar alguna relación entre el orden de entrada y los residuales, se dice que el supuesto de independencia no se cumple, mientras que, si se observa que los puntos están distribuidos al azar, esto indica que hay independencia entre los residuales.
 
 
-\subsubsection{Validación de Modelos con la Técnica de Regresión Lineal Simple \parencite{febles-2014}}
+\subsubsection{Validación de modelos con la técnica de regresión lineal simple \parencite{febles-2014}}
 
 \textcite{febles-2014}, describe la validación de modelos con la técnica de regresión lineal simple que se centra en determinar el grado de exactitud y precisión del modelo basándose en el trabajo previo de \textcite{balam-2012}.\\
 
@@ -213,7 +213,7 @@ Donde $ \bar{z}$ y $ \bar{y}$ son las medias muéstrales de los valores observad
 Los residuales $\epsilon_{i} = y_{i} - \bar{y}_{i}$ son estimaciones de los errores $i$ en el modelo, verificando el  supuesto de normalidad en los residuales $\epsilon_{1}, \epsilon_{2} , \dots, \epsilon_{n} $, con pruebas de bondad de ajuste, como la de Kolmogorov-Smirnov y Shapiro Wilk. El supuesto de varianza constante se verifica con el grafico de dispersión entre los predichos $y_{i}$ y los residuales $\epsilon_{i}$ del modelo. Con todas las combinaciones de los supuestos de normalidad y varianza constante, la evaluación de la exactitud y precisión del modelo $Y = H(\Theta )$ se analizan en los siguientes tres casos: cuando la muestra de residuales es independiente con distribución normal y varianza constante (NVC); cuando la muestra de residuales es independiente con distribución no normal y varianza constante (NNVC) y cuando la muestra
 de residuales es independiente con varianza no constante (NVD - NNVD).
 
-\subsubsection{Evaluación de la Exactitud de un Modelo}
+\subsubsection{Evaluación de la exactitud de un modelo}
 
 Cuando se cumplen los supuestos de la Regresión, la verificación de la exactitud de un modelo puede llevarse a cabo vía dos pruebas t de Student, o bien, mediante una prueba F \parencite{balam-2012}.\\
 
@@ -226,14 +226,14 @@ La Prueba F Conjunta considera un sólo procedimiento que nos permite establecer
 \textcite{zacarias-2023}, para evaluar la exactitud de un modelo ante los escenarios NNVC, NVD y NNVD, implemento un método que consiste en estimar la distribución de la estadística F a través de muestras Bootstrap robustas propuestas en \textcite{rana-2012}, en donde dependiendo del caso que se presente se implementan los distintos tipos de remuestreos propuestos por \textcite{wu-1986} y \textcite{liu-1988} y a partir de estas construir una región de confianza para el vector de parámetros $ \mathbf{\beta} = (\beta_{0}, \beta_{1})$.\\
 
 
-\subsubsection{Evaluación de la Precisión de un Modelo}
+\subsubsection{Evaluación de la precisión de un modelo}
 
 \textcite{zacarias-2023}, menciona que una parte importante del método de regresión lineal, es que estudia si dicha relación permite realizar estimaciones con una precisión aceptable; por lo que también se considera como un criterio cuantitativo relevante para evaluar la calidad de ajuste de la regresión, el coeficiente de determinación $R^{2}$, que en general se interpreta como la proporción de la variabilidad en los datos observados $y_{i}$, que es explicada por el modelo.\\
 
 
-\textcite{balam-2012}, utilizó un intervalo de confianza Bootstrap para medir la precisión de un modelo, donde el esquema de remuestreo propuesto depende del cumplimiento o no del supuesto de varianza constante. Cuando se cumple dicho supuesto se emplea un intervalo de confianza Bootstrap de residuales balanceado por el método percentil con sesgo corregido acelerado para evaluar la precisión de un modelo; y cuando no se cumple el supuesto de varianza constante se emplea un intervalo de confianza Bootstrap pareado balanceado por el método percentil con sesgo corregido acelerado.\\
+\textcite{balam-2012}, utilizó un intervalo de confianza Bootstrap para medir la precisión de un modelo, donde el esquema de remuestreo propuesto depende del cumplimiento o no del supuesto de varianza constante. Cuando se cumple dicho supuesto se emplea un intervalo de confianza Bootstrap de residuales balanceado por el método Percentil con sesgo corregido acelerado para evaluar la precisión de un modelo; y cuando no se cumple el supuesto de varianza constante se emplea un intervalo de confianza Bootstrap pareado balanceado por el método Percentil con sesgo corregido acelerado.\\
 
-\subsubsection{El Coeficiente de Determinación $R^{2}$}
+\subsubsection{El coeficiente de determinación $R^{2}$}
 
 El coeficiente de determinación $R^{2}$ se utiliza cuando las variables de estudio son cuantitativas y están medidas en una escala de intervalo o razón, siendo una herramienta común para medir el ajuste del modelo a los datos. El valor de $R^{2}$
 se interpreta frecuentemente como la proporción de la variación de la variable dependiente explicada por el modelo de regresión lineal simple \parencite{balam-2012}. Sin embargo, es importante señalar que $R^{2}$
@@ -276,7 +276,7 @@ Adicionalmente, \textcite{christou-2005} explica la distribución del coeficient
 
 
 
-\subsection{Regresión Lineal Robusta}
+\subsection{Regresión lineal robusta}
 En un modelo de regresión lineal, los supuestos de normalidad y homocedasticidad son fundamentales para garantizar la validez de los estimadores obtenidos por mínimos cuadrados ordinarios (OLS). Sin embargo, en la práctica, estos supuestos rara vez se cumplen debido a la presencia de valores atípicos, heterocedasticidad o discrepancias en las hipótesis del modelo. En estos casos, los estimadores de regresión robusta se presentan como una alternativa confiable, ya que están diseñados para ser menos sensibles a dichas anomalías y proporcionar inferencias más confiables sobre los parámetros del modelo \parencite{zacarias-2023}.\\
 
 \textcite{annalisa-2024}, menciona que la regresión robusta ofrece ventajas significativas frente a métodos como la regresión ponderada basada en mínimos cuadrados iterativamente reponderados (IRWLS), especialmente en contextos con patrones heterocedásticos en los residuos. No solo permite gestionar de manera óptima los valores atípicos, sino que también proporciona un enfoque más eficaz para manejar la heterocedasticidad y las desviaciones de los supuestos clásicos del modelo.\\
@@ -346,7 +346,7 @@ Luego, el estimador MM se define en tres etapas de la siguiente manera:\\
 \end{enumerate}
 
 
-\subsubsection{ Algoritmo MM-Estimador \parencite{zacarias-2023} }
+\subsubsection{ Algoritmo de MM-Estimador \parencite{zacarias-2023} }
 Como se presenta en la tesis de \textcite{zacarias-2023}, el algoritmo MM-Estimador es un enfoque robusto que mejora la estimación de los coeficientes en presencia de valores atípicos. A continuación, se describe el algoritmo:\\
 
 Sea\\
@@ -422,7 +422,7 @@ que corresponde a la función $\psi$ bicuadrada
 
 
 
-\subsection{La Técnica Bootstrap}
+\subsection{La técnica Bootstrap}
 
 La Técnica Bootstrap es un método computacional intensivo que permite simular la distribución de una estadística. La idea es maestrear repetidamente los datos observados, produciendo cada vez una función de distribución empírica a partir de los datos remuestreo dos \parencite{zacarias-2023}. El Bootstrap se desarrollo por primera vez para datos independientes y distribuidos de manera idéntica, pero esta suposición se puede relajar para que sea posible realizar estimaciones de Bootstrap a partir de datos dependientes, como los residuos de regresión o los datos de series de tiempo \parencite{givens-2013}.\\
 
@@ -444,7 +444,7 @@ Segun \textcite{hesterberg-2003} las ventajas del Bootstrap son:
 \end{enumerate}
 
 
-\subsubsection{El Principio Bootstrap}
+\subsubsection{El principio Bootstrap}
 Sea $\theta =T(F)$ una característica de interés de una distribución $F$ desconocida. Sea $x_{1}, x_{2}, \dots, x_{n}$ aleatoria independiente e idénticamente distribuida de la distribución $F$, sea $\chi =\{ x_{1}, x_{2}, \dots, x_{n} \}$ junto de datos y sea $\hat{F}(x) = \frac{1}{n} \sum_{i=1}^{n} I _{(-\infty, x)} (x_{i})$ la distribución empírica de la muestra. Entonces un estimador de $\theta$ es $\hat{\theta} = T(\hat{F})$ \parencite{givens-2013} .\\
 
 Suponga que se desea estimar la distribución $F$ de $\hat{\theta}$ la distribución $F_{R}$ de algún estadístico de prueba $R( \chi, F)$. Por ejemplo, un estadístico de prueba es\\
@@ -457,7 +457,7 @@ donde $S(\hat{F})$ estima la desviación estándar de $T(\hat{F})$. La distribuc
 
 A continuación, se detallan algoritmos Bootstrap implementados por \textcite{balam-2012}:\\
 
-\subsubsection{Algoritmo de Remuestreo Simple \parencite{balam-2012}}
+\subsubsection{Algoritmo de remuestreo simple \parencite{balam-2012}}
 
 Se asume una muestra de $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida.
 
@@ -482,7 +482,7 @@ Las estimaciones para  $F_{\hat{\theta}}, \theta^{*}$ y $ \sigma_{\theta^{*}} $ 
 
 
 
-\subsubsection{Algoritmo de Remuestreo Balanceado \parencite{balam-2012}}
+\subsubsection{Algoritmo de remuestreo balanceado \parencite{balam-2012}}
 \textcite{balam-2012}, menciona que el Bootstrap Balanceado al ser una modificación a la forma del muestreo del Bootstrap básico garantiza que los datos correspondientes a cada individuo de la muestra aparezcan el mismo numero de veces, incrementando con esto la eficiencia.\\
 
 Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticamente distribuida y supongamos que se desean obtener $B$ muestras Bootstrap.
@@ -509,15 +509,15 @@ Se asume una muestra  $ x_{1}, x_{2},  \dots,  x_{n}$ independiente e idénticam
 
 
 
-\subsubsection{Bootstrap en Regresión Lineal}
+\subsubsection{Bootstrap en regresión lineal}
 
 Sea $(y_{i}, z_{i}),  1 \leq  i \leq n$; una muestra pareada entre observados y predichos, se define el modelo de regresión lineal, $ y_{i} = \beta_{0} + \beta_{1}z_{i} +\epsilon $, teniendo con Bootstrap la idea de  estimar la distribución de la estadística $R( \chi, \theta)$ que esta en función de $\theta = (\beta_{0}, \beta_{1}) $ y de $\hat{\theta}$ \parencite{zacarias-2023}. Hay dos maneras de aplicar el Bootstrap
 en un modelo de regresión: aplicando Bootstrap a la muestra de residuales o aplicando Bootstrap a la muestra Pareada entre Y y Z \parencite{balam-2012}.\\
 
-Los siguientes algoritmos son adaptaciones de los propuestos por \textcite{balam-2012}, específicamente el Bootstrap de Residuales Balanceados y el Bootstrap Pareado Balanceado. Ambas técnicas emplean el \textbf{Algoritmo de Remuestreo Balanceado} para controlar la aleatoriedad en el proceso de remuestreo, asegurando que cada observación aparezca el mismo número de veces en todas las muestras.\\
+Los siguientes algoritmos son adaptaciones de los propuestos por \textcite{balam-2012}, específicamente el Bootstrap de Residuales Balanceados y el Bootstrap Pareado Balanceado. Ambas técnicas emplean el \textbf{Algoritmo de remuestreo balanceado} para controlar la aleatoriedad en el proceso de remuestreo, asegurando que cada observación aparezca el mismo número de veces en todas las muestras.\\
 
 
-\subsubsection{Algoritmo Bootstrap de Residuales Balanceado}
+\subsubsection{Algoritmo Bootstrap de residuales balanceados}
 
 Se asume que los \( \epsilon_{i} \) son independientes e idénticamente distribuidos. El algoritmo Bootstrap para generar muestras de \( R^{2} \) es el siguiente:
 
@@ -561,7 +561,7 @@ Se asume que los errores \( \epsilon_{i} \) en el modelo
 
 
 
-\subsubsection{Algoritmo Bootstrap Robusto Simple \parencite{zacarias-2023} }
+\subsubsection{Algoritmo Bootstrap robusto simple \parencite{zacarias-2023} }
 El algoritmo Bootstrap para generar muestras Bootstrap Robustas para $\hat{R}^{2}$ es el siguiente:
 
 \begin{enumerate}
@@ -601,7 +601,7 @@ propuestas en \textcite{liu-1988}.
 
 
 
-\subsubsection{Técnica Robusta Basada en el Esquema Wild Bootstrap}
+\subsubsection{Técnica robusta basada en el esquema Wild Bootstrap}
 
 \textbf{Algoritmo 3.5.1.1 - Esquema Bootstrap de Wu 1}
 
@@ -705,7 +705,7 @@ propuestas en \textcite{liu-1988}.
 
 
 
-\subsection{Intervalos de Confianza Bootstrap}
+\subsection{Intervalos de confianza Bootstrap}
 Las muestras Bootstrap se pueden utilizar para calcular intervalos de confianza mas aproximados. Cuando $n \rightarrow \infty$, el Bootstrap y el intervalo estándar convergen el uno al otro; en algunas situaciones se pueden hacer correcciones al sesgo. Estas correcciones pueden significativamente mejorar la exactitud inferencial de la estimación de un intervalo \parencite{efron-tibs-1993}.\\
 
 
@@ -726,7 +726,7 @@ Motivos por los que en \textcite{balam-2012} se implementa dos métodos para cor
 
 A continuación se presentan los algoritmos para al construcción de intervalos de confianza Bootstrap con el método Percentil de \textcite{efron-1982} y Bootstrap con sesgo corregido acelerado BCa implementado en \textcite{balam-2012}.\\
 
-\subsubsection{Algoritmo Intervalo de Confianza Bootstrap Método Percentil}
+\subsubsection{Algoritmo intervalo de confianza Bootstrap Método Percentil}
 
 Para calcular un intervalo de confianza Bootstrap Percentil de $\hat{\theta}$ a partir de un muestra $x_{1}, x_{2}, \dots, x_{n}$ con probabilidad $(1-\alpha)$\% y con $B$ muestras.
 
@@ -747,7 +747,7 @@ Para calcular un intervalo de confianza Bootstrap Percentil de $\hat{\theta}$ a 
 
 
 
-\subsubsection{Algoritmo Intervalo de Confianza Bootstrap BCa}
+\subsubsection{Algoritmo intervalo de confianza Bootstrap BCa}
 
 Para calcular un intervalo de confianza Bootstrap BCa de $\hat{\theta}$ a partir de un muestra $x_{1}, x_{2}, \dots, x_{n}$ con probabilidad $(1-\alpha)$\% y con $B$ muestras.
 
@@ -780,7 +780,7 @@ Para calcular un intervalo de confianza Bootstrap BCa de $\hat{\theta}$ a partir
 \end{enumerate}
 
 
-\subsection{Simulación de Modelos}
+\subsection{Simulación de modelos}
 
 En \textcite{febles-2014} se hizo una propuesta para simular modelos que cumplen ciertos supuestos establecidos de manera \textit{a priori}. Se crearon los siguientes 4 simuladores: $ModNVC()$, $ModNNVC()$, $ModNNVD()$ y$ ModNVD()$, los cuales en su versión actual contienen las mejoras realizadas en \textcite{zacarias-2023}; dichos simuladores están implementados en el lenguaje R y dependen de los siguientes cinco argumentos que el usuario deberá especificar de manera a priori: n el tamaño de la muestra deseada, b0 y b1 el intercepto y la pendiente deseada respectivamente del modelo de regresión entre los reales y los predichos, R2 el coeficiente de determinación deseado para el modelo de regresión entre los reales y los predichos, y muz la media deseada para los predichos. \\
 
@@ -792,7 +792,7 @@ A continuación, se hace una descripción de la funcionalidad de los simuladores
 
 \subsubsection{Simulador de modelos que cumplen el supuesto normalidad y varianza constante (NVC)}
 
-Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad y varianza constante se utilizó el simulador $ModNVC(n,b0,b1,R2,muz)$, el cual implementa dos funciones principales para la simulación de dichos modelos, la función dada por \newline $Datoszy(n, R2, SCE, muz)$ y la función $PruebaVarIndep(Datos)$. La función $Datoszy()$ implementa el método de la transformación para retornar un vector normal bi-variado $(z_i,y_i)$ de tamaño $n$, cuyos residuales $e_i$ del  modelo de regresión  entre $y_i$ y $z_i$ cumplen el supuesto de normalidad con las estadística de Shapiro-Wilk y con Lilliefors al 5\%; siempre que los valores a priori determinados generen una matriz de varianzas y covarianzas positiva definida (PD), en caso de que no la función retorna un vector nulo.\\
+Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad y varianza constante se utiliza el simulador $ModNVC(n,b0,b1,R2,muz)$, el cual implementa dos funciones principales para la simulación de dichos modelos, la función dada por \newline $Datoszy(n, R2, SCE, muz)$ y la función $PruebaVarIndep(Datos)$. La función $Datoszy()$ implementa el método de la transformación para retornar un vector normal bi-variado $(z_i,y_i)$ de tamaño $n$, cuyos residuales $e_i$ del  modelo de regresión  entre $y_i$ y $z_i$ cumplen el supuesto de normalidad con las estadística de Shapiro-Wilk y con Lilliefors al 5\%; siempre que los valores a priori determinados generen una matriz de varianzas y covarianzas positiva definida (PD), en caso de que no la función retorna un vector nulo.\\
 
 
 La función $PruebaVarIndep()$ implementa el método propuesto en \textcite{febles-2014} para lograr el cumplimiento de varianza constante y verifica que se cumpla dicho supuesto con la estadística de Breusch-Pagan y también se verifica el supuesto de independencia con la estadística de Durbin-Watson ambas pruebas al 5\%. Para garantizar el supuesto de varianza constante, en \textcite{febles-2014} se consideró como criterio que los puntos entre los ajustados y los residuales del modelo simulado deberán estar distribuidos aleatoriamente en una banda horizontal, donde el ancho de la banda está determinado por $a=2*sqrt(SCE/(n-2))$, de tal forma que para que las observaciones $(z_i, y_i)$ simuladas caigan dentro de la banda deberán cumplir la condición $\hat{y}_i - a \leq y_i \leq \hat{y}_i + a $, donde $\hat{y}_i=\hat{\beta}_0+\hat{\beta}_1 z_i$ . La función $PruebaVarIndep()$ llama tantas veces como sea necesario a la función $Datoszy()$ hasta que el simulador $ModEPNVC()$  retorna un vector bi-variado simulado cuyos residuales del modelo de regresión entre los simulados reales y los simulados predichos cumplen con los supuestos de normalidad, varianza constante e independencia con nivel de significancia del 5\%.\\ 
@@ -800,14 +800,14 @@ La función $PruebaVarIndep()$ implementa el método propuesto en \textcite{febl
 \subsubsection{Simulador de modelos que no cumplen el supuesto de normalidad, pero sí el de varianza constante (NNVC)}
 
 
-Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad, pero sí el de varianza constante se utilizó el simulador $ModNNVC(n,b0,b1,R2,muz)$, el cual implementa dos funciones principales para la simulación de dichos modelos, la función $Datoszy(n,R2,SCE,muz)$ y la función $PruebaVarIndep(Datos)$. La función $Datoszy()$ implementa el método de simulación propuesto por \textcite{cheng-2011} , el cual se encuentra descrito en \textcite{febles-2014}; con este método se genera un vector aleatorio $(z_i, y_i)$ con distribución Gamma bivariada de tamaño $n$; este vector se genera con cuatro valores a priori: las medias $\mu_z$ y $\mu_y$; y las desviaciones estándar $\sigma_z$ y $\sigma_y$; con este método se resuelve un polinomio cúbico cuya incógnita es el coeficiente de correlación $\rho$ entre $z$ y $y$, los coeficientes del polinomio dependen a su vez de los coeficientes de asimetría $\gamma_z=2\sigma_z/ \mu_z$ y $\gamma_y=2\sigma_y/ \mu_y$. Este método se aplica hasta que el vector generado no cumple el supuesto de normalidad con las estadísticas de Shapiro-Wilk y con Lilliefors al 5\%.\\
+Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad, pero sí el de varianza constante se utiliza el simulador $ModNNVC(n,b0,b1,R2,muz)$, el cual implementa dos funciones principales para la simulación de dichos modelos, la función $Datoszy(n,R2,SCE,muz)$ y la función $PruebaVarIndep(Datos)$. La función $Datoszy()$ implementa el método de simulación propuesto por \textcite{cheng-2011} , el cual se encuentra descrito en \textcite{febles-2014}; con este método se genera un vector aleatorio $(z_i, y_i)$ con distribución Gamma bivariada de tamaño $n$; este vector se genera con cuatro valores a priori: las medias $\mu_z$ y $\mu_y$; y las desviaciones estándar $\sigma_z$ y $\sigma_y$; con este método se resuelve un polinomio cúbico cuya incógnita es el coeficiente de correlación $\rho$ entre $z$ y $y$, los coeficientes del polinomio dependen a su vez de los coeficientes de asimetría $\gamma_z=2\sigma_z/ \mu_z$ y $\gamma_y=2\sigma_y/ \mu_y$. Este método se aplica hasta que el vector generado no cumple el supuesto de normalidad con las estadísticas de Shapiro-Wilk y con Lilliefors al 5\%.\\
 
 
 La función $PruebaVarIndep()$ garantiza el cumplimiento de varianza constante y verifica que se cumpla dicho supuesto con la estadística de Breusch-Pagan y también el supuesto de independencia con la estadística de Durbin-Watson ambas pruebas al 5\%. La descripción y el funcionamiento de $PruebaVarIndep()$ es exactamente igual al caso NVC para garantizar varianza constante; con la diferencia de que la función $PruebaVarIndep()$ llama tantas veces como sea necesario a la función $Datoszy()$ hasta que el simulador $ModNNVC()$  retorna un vector bi-variado simulado cuyos residuales del modelo de regresión entre los simulados reales y los simulados predichos no cumplen con el supuesto de normalidad pero sí con el de varianza constante e independencia con un nivel de significancia del 5\%.\\ 
 
 \subsubsection{Simulador de modelos que cumplen el supuesto normalidad, pero no el de varianza constante (NVD)}
 
-Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad, pero no el de varianza constante se utilizó el simulador $ModNVD(n,b0,b1,R2,muz)$, el cual implementa la función $Datoszy(n,R2,SCE,muz)$ que garantiza el supuesto de normalidad y verifica que se cumpla dicho supuesto con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento del script $Datoszy(n,R2,SCE,muz)$ es exactamente igual al caso NVC para garantizar normalidad.\\
+Para la simulación de modelos cuyos residuales cumplen el supuesto de normalidad, pero no el de varianza constante se utiliza el simulador $ModNVD(n,b0,b1,R2,muz)$, el cual implementa la función $Datoszy(n,R2,SCE,muz)$ que garantiza el supuesto de normalidad y verifica que se cumpla dicho supuesto con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento del script $Datoszy(n,R2,SCE,muz)$ es exactamente igual al caso NVC para garantizar normalidad.\\
 
 
 Para garantizar el incumplimiento del supuesto de varianza constante, en el simulador \newline $ModNVD(n,b0,b1,R2,muz)$, se consideró como criterio que los puntos entre los ajustados y los residuales del modelo simulado deberán estar distribuidos aleatoriamente en un cono, de tal manera que las fronteras del cono estén limitadas por una recta superior $l_1$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_1$ y una recta inferior $l_2$ con ecuación $y_i-\hat{y}=\hat{y}tan \alpha_2$, donde  $\alpha_1$ y $\alpha_2$, son respectivamente, los ángulos de inclinación de $l_1$ y $l_2$. Por lo tanto, si el residual $e_i=y_i - \hat{y}_i > 0$ , entonces $y_i$ y $\hat{y}_i$ deben cumplir la condición $\hat{y}_i \leq y_i \leq \hat{y}_i (1+tan \alpha_1)$ para que el punto $(z_i,y_i)$ simulado caiga dentro del cono; de igual forma, si $e_i=y_i - \hat{y}_i < 0$ , se debe garantizar la condición $\hat{y}_i (1+tan \alpha_2) \leq y_i \leq \hat{y}_i $ para que el punto simulado correspondiente caiga dentro del cono. Para la simulación de estos tipos de modelos se consideró un cono simétrico determinado por $\alpha_1=\pi / 9$ y $\alpha_2=\pi/9$ radianes. \\
@@ -817,7 +817,7 @@ El simulador$ ModNVD(n,b0,b1,R2,muz)$ realiza el proceso iterativamente hasta qu
 
 \subsubsection{Simulador de modelos que no cumplen los supuestos normalidad y varianza constante (NNVD)}
 
-Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad ni tampoco el de varianza constante se utilizó el simulador $ModNNVD(n,b0,b1,R2,muz)$, el cual implementa la función $Datoszy(n,R2,SCE,muz)$ que garantiza el incumplimiento del supuesto de normalidad y lo verifica con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento de la función dada por \newline $Datoszy(n,R2,SCE,muz)$ es exactamente igual al caso NNVC donde se garantiza el incumplimiento del supuesto de normalidad por medio del método de simulación de Gammas bivariadas propuesto por \textcite{cheng-2011}.\\
+Para la simulación de modelos cuyos residuales no cumplen el supuesto de normalidad ni tampoco el de varianza constante se utiliza el simulador $ModNNVD(n,b0,b1,R2,muz)$, el cual implementa la función $Datoszy(n,R2,SCE,muz)$ que garantiza el incumplimiento del supuesto de normalidad y lo verifica con las estadísticas de Shapiro-Wilk y Lilliefors, ambas pruebas al 5\%. La descripción y el funcionamiento de la función dada por \newline $Datoszy(n,R2,SCE,muz)$ es exactamente igual al caso NNVC donde se garantiza el incumplimiento del supuesto de normalidad por medio del método de simulación de Gammas bivariadas propuesto por \textcite{cheng-2011}.\\
 
 
 Para garantizar el incumplimiento del supuesto de varianza constante, el simulador con \newline $ModNVD(n,b0,b1,R2,muz)$, realiza el proceso iterativo equivalente al descrito en el caso NVD hasta que el vector bi-variado, cuyos residuales del modelo de regresión entre los reales simulados y los predichos simulados cumplen el supuesto de independencia con la estadística de Durbin-Watson, pero no cumplen los supuestos de normalidad con las estadísticas de Shapiro-Wilk y Lilliefors, ni tampoco el de varianza constante con la estadística de Breusch-Pagan; todas las pruebas se realizan al 5\%.\\ 
