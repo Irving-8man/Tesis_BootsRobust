@@ -5,6 +5,8 @@
 *.toc
 *.synctex.gz
 *.pdf
+!TesisFinal_IrvingCupul_9-12-2024.pdf
+
 
 # Ignorar otros archivos generados por LaTeX
 *.bbl

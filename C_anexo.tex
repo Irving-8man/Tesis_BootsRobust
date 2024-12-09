@@ -28,14 +28,11 @@ CalcularR2Bootstrap <- function(y, z, yAjRob, residuales,
 					residualesRob, residualesRP, hii, n, B, tipo) {
 	sqrt_hii <- sqrt(1 - hii)
 	RsBoot <- numeric(B)
-	
 	if((tipo == 7) || (tipo ==8)){
 		N     <- rep(1:n,B)
 		NPerm <- sample(N)
 	}
-	
 	for (i in 1:B) {
-		
 		residualBT <- switch(
 		tipo,
 		{
@@ -94,7 +91,6 @@ CalcularR2Bootstrap <- function(y, z, yAjRob, residuales,
 		
 		RsBoot[i] <- summary(modeloBoots)$r.squared
 	}
-	
 	return(RsBoot)
 }
 \end{verbatim}
@@ -116,16 +112,13 @@ En este anexo se muestra el script en R \parencite{R-2024}, el cual se utilizó 
 # B <- repeticiones Bootstrap, nivConfianza<- nivel de confianza,
 #tipo<- sea el tipo de intervalo de confiaza que desea construir,opciones:
 #1<- percentil, 2<-BCa
-
 ContruirIntervBoot <- function(data, R2, muestrasR2Boot, B, 
 								nivConfianza, tipo){
-	
 	intervalo <- numeric(2) 
 	alpha <- 1-nivConfianza
 	z <- as.numeric(data[[1]])
 	y <- as.numeric(data[[2]])
 	vectorR2Bootstrap <- muestrasR2Boot
-	
 	intervalo <- switch(
 	tipo,
 	{
@@ -155,14 +148,12 @@ ContruirIntervBoot <- function(data, R2, muestrasR2Boot, B,
 		z_alfa2 <- qnorm(1 - alpha / 2)
 		alfa1 <- pnorm(z0 + (z0 + z_alfa1) / (1 - a * (z0 + z_alfa1)))
 		alfa2 <- pnorm(z0 + (z0 + z_alfa2) / (1 - a * (z0 + z_alfa2)))
-		
 		ICInfBootBCa <- quantile(muestrasR2Boot, alfa1)
 		ICSupBootBCa <- quantile(muestrasR2Boot, alfa2)
 		as.vector(c(ICInfBootBCa, ICSupBootBCa))
 	},
 	stop("Intervalo no válido")
 	)
-	
 	return (intervalo)
 }
 \end{verbatim}
@@ -848,7 +839,6 @@ EvaluaPrecICB <- function(data, nivConfianza=0.95){
 			IC_proces <- 2
 		}
 	}
-	
 	RsBoot <<- numeric(B)#Remuestra de R^2
 	#Comienza remuestreos Bootstrap para el coeficiente de determinación
 	{
@@ -942,7 +932,6 @@ EvaluaPrecICB <- function(data, nivConfianza=0.95){
 		stop("Intervalo no válido")
 		)
 	}
-	
 	#Resultado final
 	{
 		resultado <- switch(
@@ -957,7 +946,6 @@ EvaluaPrecICB <- function(data, nivConfianza=0.95){
 		},
 		stop("Prueba invalida")
 		)
-		
 		Atributos <- c("R2","R2BootMedia","DesvEstR2Boots","LIR2","LSR2")
 		Valores <- c(R2,mean(RsBoot),sd(RsBoot),intervalo[1],intervalo[2])
 		tabla_IC <-data.frame(Atributos,Valores)
@@ -966,7 +954,6 @@ EvaluaPrecICB <- function(data, nivConfianza=0.95){
 		R2_preciso <- ifelse( (limite_precision>=intervalo[1]
 			 & limite_precision <= intervalo[2]) ||
 			 	 (intervalo[1] >= limite_precision) , 1, 0)
-		
 		conclusion <- switch(
 		IC_proces,
 		{
@@ -991,6 +978,5 @@ EvaluaPrecICB <- function(data, nivConfianza=0.95){
 				está contenido en el ICB o es mayor
 					 igual al limite inferior del ICB.\n")
 	}#Fin de bloque final
-	
 }#Fin propuesta final	
 \end{verbatim}
