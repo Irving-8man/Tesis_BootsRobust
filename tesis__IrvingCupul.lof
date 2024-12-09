@@ -1,0 +1,42 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Esquematización de Exactitud y Precisión. Fuente: \blx@tocontentsinit {0}\textcite {tedeschi-2006}.}}{6}{}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Comparación de las medidas de Exactitud y Precisión. Fuente: Tedeschi (2006).}}{6}{}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Disposición general para un diseño factorial con tres factores de efectos fijos.}}{35}{}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de flujo para los diferentes esquemas Bootstrap.}}{44}{}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EP-NVC.}}{51}{}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EP-NVC.}}{52}{}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EP-NNVC.}}{53}{}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EP-NNVC.}}{54}{}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EP-NVD.}}{56}{}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EP-NVD.}}{57}{}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EP-NNVD.}}{59}{}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EP-NNVD.}}{60}{}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Eficiencia promedio por supuesto para el caso EP.}}{61}{}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Eficiencia promedio por supuesto para el caso EI.}}{62}{}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Comparación de eficiencias promedio del ICB Percentil cuando se tiene NVC.}}{63}{}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Comparación de eficiencias promedio del ICB BCa cuando se tiene NVC.}}{64}{}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Comparación de eficiencias promedio del ICB Percentil cuando se tiene NNVC.}}{65}{}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Comparación de eficiencias promedio del ICB BCa cuando se tiene NNVC.}}{66}{}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Comparación de eficiencias promedio del ICB Percentil cuando se tiene NVD.}}{67}{}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Comparación de eficiencias promedio del ICB BCa cuando se tiene NVD.}}{68}{}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Comparación de eficiencias promedio del ICB Percentil cuando se tiene NNVD.}}{69}{}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Comparación de eficiencias promedio del ICB BCa cuando se tiene NNVD.}}{70}{}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Diagrama de flujo de la propuesta final para evaluar la precisión de un modelo.}}{72}{}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Resultados del caso NVC.}}{73}{}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Resultados del caso NNVD.}}{74}{}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EI-NVC.}}{83}{}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EI-NVC.}}{84}{}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EI-NNVC.}}{86}{}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EI-NNVC.}}{88}{}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EI-NVD.}}{89}{}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EI-NVD.}}{91}{}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Eficiencia promedio de los intervalos Bootstrap por tamaño de muestra y esquema de remuestreo para el caso EI-NNVD.}}{92}{}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Eficiencia promedio de los esquemas por tamaño de muestra para el caso EI-NNVD.}}{93}{}%
+\contentsline {figure}{\numberline {34}{\ignorespaces ANOVA para la eficiencia del ICB Percentil cuando se tiene NVC.}}{94}{}%
+\contentsline {figure}{\numberline {35}{\ignorespaces ANOVA para la eficiencia del ICB BCa cuando se tiene NVC.}}{94}{}%
+\contentsline {figure}{\numberline {36}{\ignorespaces ANOVA para la eficiencia del ICB Percentil cuando se tiene NNVC.}}{95}{}%
+\contentsline {figure}{\numberline {37}{\ignorespaces ANOVA para la eficiencia del ICB BCa cuando se tiene NNVC.}}{95}{}%
+\contentsline {figure}{\numberline {38}{\ignorespaces ANOVA para la eficiencia del ICB Percentil cuando se tiene NVD.}}{96}{}%
+\contentsline {figure}{\numberline {39}{\ignorespaces ANOVA para la eficiencia del ICB BCa cuando se tiene NVD.}}{96}{}%
+\contentsline {figure}{\numberline {40}{\ignorespaces ANOVA para la eficiencia del ICB Percentil cuando se tiene NNVD.}}{97}{}%
+\contentsline {figure}{\numberline {41}{\ignorespaces ANOVA para la eficiencia del ICB BCa cuando se tiene NNVD.}}{97}{}%

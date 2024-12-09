@@ -43,13 +43,14 @@ Por su parte, \textcite{mayer-butler-1993} indican que la prueba $t$ paramétric
 \subsection{Regresión lineal simple}
 Una de las técnicas mas comunes en la validación de modelos es la de Regresión Lineal Simple de los observados sobre los predichos \parencites{analla-1998, mayer-1994, tedeschi-2006}.\\
 
-El análisis de regresión lineal tiene como objetivo modelar en forma matemática el comportamiento de una variable de respuesta en función de una o mas variables independientes \parencite{gutierrez-2012}. Por lo tanto, se ajusta el modelo  $ y_{i} = \beta_{0} + \beta_{1}z_{i} +\epsilon $ donde $ 1 \leq i \leq n$, $ y_{i}$ es el valor real observado en la i-esima unidad experimental, $ z_{i}$ es el correspondiente valor predicho por el modelo a validar, $\epsilon_{i}$ es el componente aleatorio o error, $\beta_{0}$ es la ordenada al origen y $\beta_{1}$ la pendiente \parencite{zacarias-2023}.\\
+El análisis de regresión lineal tiene como objetivo modelar en forma matemática el comportamiento de una variable de respuesta en función de una o mas variables independientes \parencite{gutierrez-2012}. Por lo tanto, se ajusta el modelo  $ y_{i} = \beta_{0} + \beta_{1}z_{i} +\epsilon $ donde $ 1 \leq i \leq n$, $ y_{i}$ es el valor real observado en la $i$-ésima unidad experimental, $ z_{i}$ es el correspondiente valor predicho por el modelo a validar, $\epsilon_{i}$ es el componente aleatorio o error, $\beta_{0}$ es la ordenada al origen y $\beta_{1}$ la pendiente \parencite{zacarias-2023}.\\
 
 Esta técnica se encuentra principalmente sujeta al cumplimiento de sus supuestos. Cuando los residuales son independientes, se ajustan a una distribución normal y tienen varianza común, se aplican pruebas de hipótesis estadísticas para evaluar la exactitud, intercepto cero y pendiente uno, ya sea mediante pruebas t de Student, o bien, mediante una prueba F para determinar si el intercepto y la pendiente son simultáneamente cero y uno respectivamente \parencite{balam-2012}.
 
 
 \subsubsection{Verificación de los supuestos de normalidad, varianza constante e independencia para los residuales de un modelo de regresión}
 
+\vspace{.8cm}
 
 \textbf{Supuesto de normalidad}\\
 
@@ -57,7 +58,7 @@ Para la verificación del supuesto de normalidad de los residuales $\epsilon_i$ 
 
 
 \begin{center}
-	$$\hat{F}(x)=\frac{\sum_{i=1}^n I_{(- \infty,x)}(e_i)}{n}  \;\; \forall \;\; x \;\; \in \Re$$.
+	$$\hat{F}(x)=\frac{\sum_{i=1}^n I_{(- \infty,x)}(e_i)}{n}  \;\; \forall \;\; x \;\; \in \Re.$$
 \end{center}
 
 Se contrastan las siguientes hipótesis:\\
@@ -81,7 +82,7 @@ Donde:\\
 $\Phi (x) =$ Es la función acumulada de la distribución Normal Estándar.\\
 $k =$ Es el menor de los enteros mayor o igual a $n/2$.\\
 $a_i =$ Coeficientes que son calculados para un tamaño de muestra $n$ y se obtienen de la tabla A17: Coeficientes de la prueba de Shapiro-Wilk \parencite{conover-1999}.\\
-$e_{(i)} =$ Es el i-ésimo menor de la muestra $e_1, e_2, \cdots , e_n$.\\\\
+$e_{(i)} =$ Es el $i$-ésimo menor de la muestra $e_1, e_2, \cdots , e_n$.\\\\
 Se rechaza la hipótesis de normalidad $H_0$ con nivel de significancia $\alpha$ si $SW$ es mayor que el cuantil $W_{\alpha}$ correspondiente al tamaño de muestra $n$ y al nivel de significancia $\alpha$ proporcionado en la tabla A17 \parencite{conover-1999}, o bien, si $p-valor \leq \alpha$.\\
 
 
@@ -96,7 +97,7 @@ Se rechaza la hipótesis de normalidad $H_0$ con nivel de significancia $\alpha$
 
 Donde:
 $\Phi (x) =$  Es la función acumulada de la distribución Normal Estándar.\\
-$e_{(i)} =$ Es el i-ésimo menor de la muestra $e_1, e_2, \cdots , e_n$.\\
+$e_{(i)} =$ Es el $i$-ésimo menor de la muestra $e_1, e_2, \cdots , e_n$.\\
 
 Se rechaza a hipótesis de normalidad $H_0$ con nivel de significancia $\alpha$ si $D$ es mayor que el cuantil $D_\alpha$ correspondiente al tamaño de muestra $n$ y al nivel de significancia $\alpha$ proporcionado en la tabla A.19(a), A.19(b), o bien, A.19(c) de \textcite{daniel-1990} dependiendo si únicamente $E(\epsilon)$ es desconocida, sólo $\sigma ^2$ o ambos parámetros son desconocidos, o bien, si $p-valor \leq \alpha$. El supuesto de normalidad también se verifica con el gráfico de probabilidad normal, si los puntos en dicha gráfica mantienen una forma semejante a una línea recta, entonces el supuesto de normalidad se cumple.\\
 
@@ -119,7 +120,7 @@ A continuación, se describen las pruebas de Breusch-Pagan y la de White.\\
 La prueba de Breusch-Pagan sólo detecta formas lineales de heterocedasticidad; por lo que consiste en ajustar el modelo de regresión lineal entre los residuales al cuadrado y las variables independientes:
 
 \begin{center}
-	$${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _k X_k  + u$$
+	$${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _k X_k  + u \; .$$
 \end{center}
 
 Se contrastan las hipótesis:\\
@@ -133,11 +134,11 @@ En $H_0$ se establece que los residuales no son función de las covariables del 
 
 
 \begin{center}
-	$$B=n R ^2 \sim \chi_k ^2$$
+	$$B=n R ^2 \sim \chi_k ^2 \; ,$$
 \end{center}
 
 
-Donde $R^2$ es el coeficiente de determinación del modelo de regresión en ${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _k X_k  + u$ y la estadística $B$ se distribuye asintóticamente Ji-cuadrada con $k$ grados de libertad.\\
+donde $R^2$ es el coeficiente de determinación del modelo de regresión en ${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _k X_k  + u$ y la estadística $B$ se distribuye asintóticamente Ji-cuadrada con $k$ grados de libertad.\\
 
 Si el estadístico de prueba $B$ tiene un valor $p-valor$  por debajo del valor $\alpha$ establecido, entonces se rechaza la hipótesis nula de homocedasticidad y se asume heterocedasticidad; esta prueba solo detecta formas lineales de heterocedasticidad. Algunos autores (incluidos \textcite{bickel-1978} y \textcite{koenker-1981}) han sugerido que la prueba estadística de Breusch-Pagan puede no ser precisa para datos no normales.\\
 
@@ -148,18 +149,18 @@ A diferencia de la prueba de Breush-Pagan que sólo detecta formas lineales de h
 
 
 \begin{center}
-	$${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _{k} X_k + \delta _{k+1} X_1 X_2+ \cdots +\delta _l X_{k-1} X_k+  \delta _{l+1} X_1 ^2 + \cdots  + \delta _{l+k} X_k ^2 + u(i)$$
+	$${e_i} ^2=\delta _0 + \delta _1 X_1+ \cdots + \delta _{k} X_k + \delta _{k+1} X_1 X_2+ \cdots +\delta _l X_{k-1} X_k+  \delta _{l+1} X_1 ^2 + \cdots  + \delta _{l+k} X_k ^2 + u(i) \; , $$
 \end{center}
 
 
-donde  $l=\frac{k(k-1)}{2}$.\\
+donde {\large $l=\frac{k(k-1)}{2}$}.\\ \\
 Se contrastan las hipótesis:\\
 $H_0: \delta _1 =  \cdots =\delta _k=\delta _{k+1} =  \cdots =\delta _l= \cdots=\delta_{l+k} =0 $  vs.  $H_a: \delta_i \neq 0$ para alguna $i$.\\
 
 El estadístico de prueba dado por:
 
 \begin{center}
-	$$W=n R^2 \sim \chi_r ^2$$
+	$$W=n R^2 \sim \chi_r ^2 \; ,$$
 \end{center}
 
 
@@ -167,14 +168,15 @@ donde $R^2$ es el coeficiente de determinación del modelo de regresión en (i);
 
 
 La prueba de White es extremadamente general y su potencia puede ser bastante baja frente a ciertas alternativas, particularmente si el número de observaciones es pequeño; en esta prueba se relaja la suposición de normalidad. \\
-El supuesto de homocedasticidad también se verifica mediante el grafico de dispersión entre los valores predichos  contra los residuales ; y se utiliza el siguiente criterio:\\
+
+El supuesto de homocedasticidad también se verifica mediante el grafico de dispersión entre los valores predichos  contra los residuales; y se utiliza el siguiente criterio:\\
 
 \begin{itemize}
 	\item[a)] Si los puntos forman algo similar a un cono o embudo, la varianza no es constante.
 	
 	\item[b)] Si los puntos sugieren algún patrón, no se asegura que la varianza sea constante.
 	
-	\item[c)] Los puntos permanecen dentro de una banda horizontal (sugeridas por los datos), o bien, los puntos se encuentran en posiciones al azar, se dice que la varianza es constante. 
+	\item[c)] Los puntos permanecen dentro de una banda horizontal (sugeridas por los datos), o bien, los puntos se encuentran en posiciones al azar, se dice que la varianza es constante. \\
 \end{itemize}
 
 
@@ -199,7 +201,7 @@ Sea un modelo $Y = H(\Theta )$, con una muestra pareada $(z_{1}, y_{1}), (z_{2},
 \end{center}
 
 \begin{center}
-{\Large$ \hat{\beta_{1}} = \frac{\sum_{i=1}^{n} (z_{i} - \bar{z} ) (y_{i} - \bar{y})} {  \sum_{i=1}^{n} (z_{i} - \bar{z} )^{2} }$} \\
+{\Large$ \hat{\beta_{1}} = \frac{\sum_{i=1}^{n} (z_{i} - \bar{z} ) (y_{i} - \bar{y})} {  \sum_{i=1}^{n} (z_{i} - \bar{z} )^{2} }$} , \\
 \end{center}
 
 \begin{center}
@@ -207,7 +209,7 @@ Sea un modelo $Y = H(\Theta )$, con una muestra pareada $(z_{1}, y_{1}), (z_{2},
 \end{center}
 
 
-Donde $ \bar{z}$ y $ \bar{y}$ son las medias muéstrales de los valores observados y predichos respectivamente por el modelo; la evaluación estadístico de la exactitud y precisión depende del cumplimiento de los supuestos de normalidad y de varianza constante de los errores i en el modelo. \\
+donde $ \bar{z}$ y $ \bar{y}$ son las medias muéstrales de los valores observados y predichos respectivamente por el modelo; la evaluación estadístico de la exactitud y precisión depende del cumplimiento de los supuestos de normalidad y de varianza constante de los errores i en el modelo. \\
 
 
 Los residuales $\epsilon_{i} = y_{i} - \bar{y}_{i}$ son estimaciones de los errores $i$ en el modelo, verificando el  supuesto de normalidad en los residuales $\epsilon_{1}, \epsilon_{2} , \dots, \epsilon_{n} $, con pruebas de bondad de ajuste, como la de Kolmogorov-Smirnov y Shapiro Wilk. El supuesto de varianza constante se verifica con el grafico de dispersión entre los predichos $y_{i}$ y los residuales $\epsilon_{i}$ del modelo. Con todas las combinaciones de los supuestos de normalidad y varianza constante, la evaluación de la exactitud y precisión del modelo $Y = H(\Theta )$ se analizan en los siguientes tres casos: cuando la muestra de residuales es independiente con distribución normal y varianza constante (NVC); cuando la muestra de residuales es independiente con distribución no normal y varianza constante (NNVC) y cuando la muestra
@@ -221,9 +223,9 @@ La Prueba F Conjunta que considera el intercepto y la pendiente de manera conjun
 
 Para la aplicación de la F conjunta se ajusta el modelo de regresión lineal a simple con los supuestos de que los residuos ajustados se distribuyan normal, son independientes y tienen varianza constante \parencite{ayala-2024}.\\
 
-La Prueba F Conjunta considera un sólo procedimiento que nos permite establecer si un modelo es exacto considerando simultáneamente el intercepto \(\beta_0\) y la pendiente \(\beta_1\), es decir, se prueba si  {\Large $\bigl(\begin{smallmatrix} \beta_{0} \\ \beta_{1} \end{smallmatrix}\bigr) = \bigl(\begin{smallmatrix}0  \\  1\end{smallmatrix}\bigr) $} estadísticamente \parencite{zacarias-2023}.\\
+La Prueba F Conjunta considera un sólo procedimiento que nos permite establecer si un modelo es exacto considerando simultáneamente el intercepto \(\beta_0\) y la pendiente \(\beta_1\), es decir, se prueba estadísticamente si  {\Large $\bigl(\begin{smallmatrix} \beta_{0} \\ \beta_{1} \end{smallmatrix}\bigr) = \bigl(\begin{smallmatrix}0  \\  1\end{smallmatrix}\bigr) $} \parencite{zacarias-2023}.\\
 
-\textcite{zacarias-2023}, para evaluar la exactitud de un modelo ante los escenarios NNVC, NVD y NNVD, implemento un método que consiste en estimar la distribución de la estadística F a través de muestras Bootstrap robustas propuestas en \textcite{rana-2012}, en donde dependiendo del caso que se presente se implementan los distintos tipos de remuestreos propuestos por \textcite{wu-1986} y \textcite{liu-1988} y a partir de estas construir una región de confianza para el vector de parámetros $ \mathbf{\beta} = (\beta_{0}, \beta_{1})$.\\
+\textcite{zacarias-2023}, para evaluar la exactitud de un modelo ante los escenarios NNVC, NVD y NNVD, implemento un método que consiste en estimar la distribución de la estadística F a través de muestras Bootstrap robustas propuestas en \textcite{rana-2012}, en donde dependiendo del caso que se presente se implementan los distintos tipos de remuestreo propuestos por \textcite{wu-1986} y \textcite{liu-1988} y a partir de estas construir una región de confianza para el vector de parámetros $ \mathbf{\beta} = (\beta_{0}, \beta_{1})$.\\
 
 
 \subsubsection{Evaluación de la precisión de un modelo}
@@ -325,7 +327,7 @@ Luego, el estimador MM se define en tres etapas de la siguiente manera:\\
 	\item Sean $ \beta_{0}^{'}$ y $ \beta_{1}^{'}$ estimaciones de los parámetros $\beta_{0}$ y $ \beta_{1}$ respectivamente con un alto punto de ruptura, posiblemente 0.5.
 	\item  Calcular los residuales\\
 	\begin{center}
-		 $ \epsilon_{i} = y_{i} -\beta_{0}^{'} -\beta_{1}^{'} z_{i}  $, $1 \leq i \leq n $.\\
+		 $ \epsilon_{i} = y_{i} -\beta_{0}^{'} -\beta_{1}^{'} z_{i}  $, $1 \leq i \leq n $\\
 	\end{center}
 	
 	y calcular $s_{n} = s(\epsilon_{i})$, el estimador M definido previamente, usando una función $\rho_{0}$ que satisface los supuestos (A1) y considerando una constante $b$ tal que $b/a = 0.5$, donde$ a = $ máx $ \rho_{0}(u)$, lo cual implica que para esta escala la estimación tiene un
@@ -333,8 +335,8 @@ Luego, el estimador MM se define en tres etapas de la siguiente manera:\\
 	
 	\item  Sea $\rho_{1}$ otra función que satisfaga los supuestos (A1) y tal que\\
 	\begin{center}
-		$\rho_{1}(u) \leq \rho_{0}(u)$\\
-		sup $\rho_{1}(u)$  = sup $ \rho_{0}(u) = a$\\
+		$\rho_{1}(u) \leq \rho_{0}(u)$ y\\
+		sup $\rho_{1}(u)$  = sup $ \rho_{0}(u) = a$.\\
 	\end{center}
 
 	
@@ -359,7 +361,7 @@ $w_{i}(t) = \psi_{1} (\epsilon_{i} /s_{n}) /(\epsilon_{i} /s_{n})$. También se 
 
 
 \begin{center}
-	{\large $g(t) = \frac{1}{s_{n}^{2}} \sum_{i=1}^{n} w_{i}( t )\epsilon_{i} z_{i} =  \frac{1}{s_{n}}  \sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i}$}, y \\	
+	{\large $g(t) = \frac{1}{s_{n}^{2}} \sum_{i=1}^{n} w_{i}( t )\epsilon_{i} z_{i} =  \frac{1}{s_{n}}  \sum_{i=1}^{n} \psi_{1} (\frac{\epsilon_{i}}{s_{n}}) z_{i}$} y \\	
 \end{center}
 
 \begin{center}
@@ -370,7 +372,7 @@ $w_{i}(t) = \psi_{1} (\epsilon_{i} /s_{n}) /(\epsilon_{i} /s_{n})$. También se 
 
 
 
-Si $t^{(i)}$ es el valor de la estimación en la j-esima iteración, entonces $t^{(j+1)}$ está definido por $t^{(j+1)} = t^{(j)} + \Delta ( t^{(j)})$, donde,\\
+Si $t^{(i)}$ es el valor de la estimación en la $j$-ésima iteración, entonces $t^{(j+1)}$ está definido por $t^{(j+1)} = t^{(j)} + \Delta ( t^{(j)})$, donde \\
 
 \begin{center}
 	$\Delta ( t) = M^{-1}(t)g(t)$.\\
@@ -379,7 +381,7 @@ Si $t^{(i)}$ es el valor de la estimación en la j-esima iteración, entonces $t
 Sea $0< \delta  < 1$  y $-g(t)$ el gradiente de $S(t)$, donde \\
 
 \begin{center}
-	{\large$S(t) = \sum_{i=1}^{n} \rho_{1} ( \frac{\epsilon_{i}}{s_{n}})$}. \\
+	{\large $S(t) = \sum_{i=1}^{n} \rho_{1} ( \frac{\epsilon_{i}}{s_{n}})$}. \\
 \end{center}
 
 
@@ -393,7 +395,7 @@ Es posible encontrar un entero $k$ \parencite{yohai-1987} tal que\\
 Sea $k_{1,j}$ el mínimo de dichas $k$ y sea $k_{2,j}$ el valor de $k, 0 \leq k  \leq k_{1,j}$, lo que da el mínimo de $S(t^{(j)} + \Delta(t^{(j)} )/2^{k})$. Entonces se define el paso recursivo mediante\\
 
 \begin{center}
-{\large	$ t^{(t+1)} = (t^{j} + (1/2^{k_{2,j}}) \Delta(t^{(j)} )$}.\\
+{\large	$ t^{(t+1)} = (t^{j} + (1/2^{k_{2,j}}) \Delta(t^{(j)} )$} \\
 \end{center}
 
 comenzando $t_{(0)} $ las estimaciones de los parámetros de regresión $\beta_{0}$ y $\beta_{1}$.\\
@@ -404,8 +406,8 @@ Los estimadores MM considerados se basan en la función $\rho$ bicuadrada dada p
 \[
 \rho(u) =
 \begin{cases}
-	u^{2}/2 -u^{4}/2 + u^{6}/6	, & \text{si } |u| \leq 1 \\ \\
-	1/6,     & \text{si } | u | > 1\\
+	u^{2}/2 - u^{4}/2 + u^{6}/6, & \text{si } |u| \leq 1 \\ \\
+	1/6, & \text{si } |u| > 1 \; ,
 \end{cases}
 \]
 
@@ -416,7 +418,7 @@ que corresponde a la función $\psi$ bicuadrada
 \psi(u) =
 \begin{cases}
 	u(1- u^{2})^{2}	, & \text{si } |u| \leq 1 \\ \\
-	0,     & \text{si } | u | > 1
+	0,     & \text{si } | u | > 1 \; .
 \end{cases}
 \]
 
@@ -476,7 +478,7 @@ Las estimaciones para  $F_{\hat{\theta}}, \theta^{*}$ y $ \sigma_{\theta^{*}} $ 
 \[
 \hat{F}_{\hat{\theta}^{*}} \approx F_{\hat{\theta}}, 
 \hspace{.5cm} \hat{\theta}^{*} = \frac{1}{B} \sum_{i=1}^{B}  \hat{\theta}^{*}_{i} \approx \theta,
-\hspace{.5cm} Var(\hat{\theta}^{*}) = \frac{1}{B-1} \sum_{i=1}^{B}(\hat{\theta}^{*}_{i}-\hat{\theta}^{*})^2
+\hspace{.5cm} Var(\hat{\theta}^{*}) = \frac{1}{B-1} \sum_{i=1}^{B}(\hat{\theta}^{*}_{i}-\hat{\theta}^{*})^2 \; .
 \]
 
 
@@ -534,7 +536,7 @@ Se asume que los \( \epsilon_{i} \) son independientes e idénticamente distribu
 	
 	\item Obtener las muestras Bootstrap:
 	\[
-	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
+	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B} \; .
 	\]
 \end{enumerate}
 
@@ -555,7 +557,7 @@ Se asume que los errores \( \epsilon_{i} \) en el modelo
 	
 	\item Obtener las muestras Bootstrap:
 	\[
-	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
+	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B} \; .
 	\]
 \end{enumerate}
 
@@ -578,7 +580,7 @@ El algoritmo Bootstrap para generar muestras Bootstrap Robustas para $\hat{R}^{2
 	\item Repetir los pasos 3 a 5, $(B-1)$ veces para obtener las muestras Bootstrap:
 	
 	\[
-	\hat{R}^{2*MM}_{1} \hspace{.5cm} \hat{R}^{2*MM}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*MM}_{B}
+	\hat{R}^{2*MM}_{1} \hspace{.5cm} \hat{R}^{2*MM}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*MM}_{B} \; .
 	\]
 \end{enumerate}
 
@@ -614,7 +616,7 @@ propuestas en \textcite{liu-1988}.
 	\hat{e}^{WMM}_{i} =
 	\begin{cases}
 		e^{MM}_{i}, & \text{si } \frac{|e^{MM}_{i}|}{\sigma_{MM}} \leq c \\ \\
-		\frac{c \times e^{MM}_{i}}{ | \hat{e}^{MM}_{i} | /\sigma_{MM}},     & \text{si } \frac{|e^{MM}_{i}|}{\sigma_{MM}} > c
+		\frac{c \times e^{MM}_{i}}{ | \hat{e}^{MM}_{i} | /\sigma_{MM}},     & \text{si } \frac{|e^{MM}_{i}|}{\sigma_{MM}} > c \; ,
 	\end{cases}
 	\]}
 	\end{center} 
@@ -625,14 +627,14 @@ propuestas en \textcite{liu-1988}.
 	\begin{center}
 		{\large$y^{*}_{i} =z_{i}\hat{\beta}_{MM} + \frac{t^{*}_{i}\hat{e}^{WMM}_{i}}{\sqrt{1-h_{ii}}} $},
 	\end{center}
-	donde $h_{ii}$ es el i-ésimo elemento de la matriz diag$(Z(Z^{T}Z)^{-1} Z^{T})$ y el valor $t^{*}_{i}$ es el
-	i-ésimo elemento de una muestra aleatoria de tamaño $n$ de una $N(0,1)$.
+	donde $h_{ii}$ es el $i$-ésimo elemento de la matriz diag$(Z(Z^{T}Z)^{-1} Z^{T})$ y el valor $t^{*}_{i}$ es el
+	$i$-ésimo elemento de una muestra aleatoria de tamaño $n$ de una $N(0,1)$.
 	
 	\item  Ajustar una regresión simple $ y^{*}_{1i} = \beta^{*}_{10} +\beta^{*}_{11}x_{i} + \epsilon^{*}_{1i} $ para obtener $ \hat{R}^{2*}_{1} $.
 	
 		\item Repetir $B - 1$ veces veces los pasos 3 y 4 para obtener las muestras:
 	\[
-	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B}
+	\hat{R}^{2*}_{1} \hspace{.5cm} \hat{R}^{2*}_{2} \hspace{.5cm} \dots \hspace{.5cm} \hat{R}^{2*}_{B} \; .
 	\]
 \end{enumerate}
 
@@ -643,7 +645,7 @@ propuestas en \textcite{liu-1988}.
 	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
 	
 	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
-	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra con reemplazo con probabilidades iguales de los residuos normalizados $a_{1},a_{2}, \dots,a_{n}$, donde
+	pero el valor $t^{*}_{i}$ es el $i$-ésimo elemento de una muestra con reemplazo con probabilidades iguales de los residuos normalizados $a_{1},a_{2}, \dots,a_{n}$, donde
 	
 	\begin{center}
 		{\Large $a_{i} = \frac{\hat{e}_{i}-\bar{\hat{ e}}_{i}}{ \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (\hat{e}_{i}-\bar{\hat{e}})^{2} } }$} con {\large $ \bar{\hat{e}}= \frac{1}{n} \sum_{i=1}^{n} \hat{e}_{i} $}.
@@ -660,7 +662,7 @@ propuestas en \textcite{liu-1988}.
 	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
 	
 	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
-	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra con reemplazo con probabilidades iguales del vector de residuales transformado:
+	pero el valor $t^{*}_{i}$ es el $i$-ésimo elemento de una muestra con reemplazo con probabilidades iguales del vector de residuales transformado:
 	
 	\begin{center}
 		{\large $R_{ai} = \frac{\hat{e}^{WMM}_{i} - Mediana(\hat{e}^{WMM}_{i})}{ NMAD(\hat{e}^{WMM}_{i})  }$} ,
@@ -677,7 +679,7 @@ propuestas en \textcite{liu-1988}.
 	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
 	
 	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
-	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra aleatoria de tamaño $n$ de una distribución Gamma$(\alpha = 4,\beta = 1/2)$ con función de densidad $ gz(x) = [\frac{2^{4}}{3!}]x^{3}e^{-2x}I_{(x>0)}$ 
+	pero el valor $t^{*}_{i}$ es el $i$-ésimo elemento de una muestra aleatoria de tamaño $n$ de una distribución Gamma$(\alpha = 4,\beta = 1/2)$ con función de densidad $ gz(x) = [\frac{2^{4}}{3!}]x^{3}e^{-2x}I_{(x>0)}$.
 
 	
 	\item Repetir los pasos 4 y 5 del Algoritmo Wu 1.
@@ -691,13 +693,13 @@ propuestas en \textcite{liu-1988}.
 	\item Repetir los pasos 1 y 2 del Algoritmo Wu 1.
 	
 	\item  Similar al paso 3 del Algoritmo Wu 1,se obtiene una muestra Bootstrap;
-	pero el valor $t^{*}_{i}$ es el i-ésimo elemento de una muestra aleatoria de tamaño $n$ obtenida por 
+	pero el valor $t^{*}_{i}$ es el $i$-ésimo elemento de una muestra aleatoria de tamaño $n$ obtenida por 
 	
 	\begin{center}
-		$t^{*}_{i} = H_{i}D_{i}- E(H_{i})E(D_{i})$,\hspace{.5cm} $i = 1,2, \dots, n$
+		$t^{*}_{i} = H_{i}D_{i}- E(H_{i})E(D_{i})$,\hspace{.5cm} $i = 1,2, \dots, n$ ,
 	\end{center}
 	
-	donde$ H_{1},H_{2}, \dots,H_{n}$ son variables aleatorias independientes, idénticamente normalmente distribuidas con media $(1/2)( \sqrt{17/6})+ \sqrt{1/6}$ y varianza $1/2$. De igual manera,$ D_{1},D_{2}, \dots,D_{n}$ también se distribuyen normal, son independientes e idénticamente
+	donde $ H_{1},H_{2}, \dots,H_{n}$ son variables aleatorias independientes, idénticamente normalmente distribuidas con media $(1/2)( \sqrt{17/6})+ \sqrt{1/6}$ y varianza $1/2$. De igual manera,$ D_{1},D_{2}, \dots,D_{n}$ también se distribuyen normal, son independientes e idénticamente
 	distribuidas con media $(1/2)( \sqrt{17/6})- \sqrt{1/6}$ y varianza  $1/2$. Tanto $ H_{i}$ y las $ D_{i}$ son independientes entre sí.
 	
 	\item Repetir los pasos 4 y 5 del Algoritmo Wu 1.
@@ -765,16 +767,16 @@ Para calcular un intervalo de confianza Bootstrap BCa de $\hat{\theta}$ a partir
 
 \item  Obtener la constante de aceleración $a$ dada por:
 \begin{center}
- \Large $ a = \frac{\sum_{i=1}^{n}  (\hat{\theta}_{-iprom}  - \hat{\theta}_{-i})^{3} }{ 6 \; (\; \sum_{i=1}^{n}  ( \hat{\theta}_{-iprom}  - \hat{\theta}_{-i})^{2} \; )^{3/2}} $
+ \Large $ a = \frac{\sum_{i=1}^{n}  (\hat{\theta}_{-iprom}  - \hat{\theta}_{-i})^{3} }{ 6 \; (\; \sum_{i=1}^{n}  ( \hat{\theta}_{-iprom}  - \hat{\theta}_{-i})^{2} \; )^{3/2}} $ ,
 \end{center}
 
- donde: $\hat{\theta}_{-i}$ es la estimación con los datos originales quitando la $i$-esima observación y {\normalsize $\hat{\theta}_{-iprom} = \frac{1}{n} \sum_{i=1}^{n}\hat{\theta}_{-i}$}
+ donde: $\hat{\theta}_{-i}$ es la estimación con los datos originales quitando la $i$-ésima observación y {\normalsize $\hat{\theta}_{-iprom} = \frac{1}{n} \sum_{i=1}^{n}\hat{\theta}_{-i}$} .
  
  \item Obtener {\large $Z_{L} = \frac{Z_{0} - Z_{\alpha/2}}{ 1- \alpha ( Z_{0} - Z_{\alpha/2})} + Z_{0}  $}   y {\large $Z_{U} = \frac{Z_{0} + Z_{\alpha/2}}{ 1- \alpha ( Z_{0} - Z_{\alpha/2})} + Z_{0}  $}  donde: $Z_{\alpha /2}$ es el cuantil en la
  distribución normal estándar tal que $P(Z > Z_{\alpha / 2}) = \frac{\alpha}{2}$.
  
  
- \item Encontrar $LI = INVCDF( \Phi(Z_{L}))$ y $LS = INVCDF( \Phi(Z_{U}))$ donde $INVCDF$ es el cuantil en la muestra bootstrap con probabilidad $ \Phi(Z_{L})$ y $ \Phi(Z_{U})$ respectivamente y $\Phi$ es la distribución acumulada de la normal estándar, siendo $P(\hat{\theta}^{*} < LI) = \Phi(Z_{L})$ y$P(\hat{\theta}^{*} < LS) = \Phi(Z_{U})$.
+ \item Encontrar $LI = INVCDF( \Phi(Z_{L}))$ y $LS = INVCDF( \Phi(Z_{U}))$ donde $INVCDF$ es el cuantil en la muestra Bootstrap con probabilidad $ \Phi(Z_{L})$ y $ \Phi(Z_{U})$ respectivamente y $\Phi$ es la distribución acumulada de la normal estándar, siendo $P(\hat{\theta}^{*} < LI) = \Phi(Z_{L})$ y$P(\hat{\theta}^{*} < LS) = \Phi(Z_{U})$.
  
 \item El intervalo de confianza esta dado por: $[LI, LS]$.
 \end{enumerate}
@@ -834,12 +836,13 @@ Cuando se quiere investigar la influencia de tres factores $(A, B$ y $C)$ sobre 
 
 Debido a que son tres factores, las posibles interacciones son:
 \begin{itemize}
-	\item Tres interacciones de primer orden ( $A \times B $,  $A \times C $,  $B \times C $)
+	\item Tres interacciones de primer orden ( $A \times B $,  $A \times C $,  $B \times C $).
 	\item Una interacción de segundo orden ( $A \times B \times C $).
 \end{itemize}
 
 \textbf{Estructura de los datos, modelo y análisis}\\
-Sea $y_{ijkl}$ la respuesta observada $l$-ésima cuando el factor $A$ se encuentra en el $i$-ésimo nivel, el factor $B$ en el $j$-ésimo nivel y el factor $C$ en el $k$-ésimo nivel, donde  $i = 1,2, \dots, a$, $j = 1,2, \dots, b$, $k = 1,2, \dots, c$  y $l = 1,2, \dots, n$. En general, los datos observados se verán como en la tabla siguiente.
+
+Sea $y_{ijkl}$ la respuesta observada $l$-ésima cuando el factor $A$ se encuentra en el $i$-ésimo nivel, el factor $B$ en el $j$-ésimo nivel y el factor $C$ en el $k$-ésimo nivel, donde  $i = 1,2, \dots, a$, $j = 1,2, \dots, b$, $k = 1,2, \dots, c$  y $l = 1,2, \dots, n$. En general, los datos observados se verán como en la tabla siguiente:
 
 
 \begin{figure}[H] 
@@ -851,10 +854,11 @@ Sea $y_{ijkl}$ la respuesta observada $l$-ésima cuando el factor $A$ se encuent
 \FloatBarrier
 
 \textbf{El modelo para un diseño de tres factores es:}\\
-	\begin{center}
+
+\begin{center}
 	$y_{ijkl}=\mu + \tau_{i} + \beta_{j} + \gamma_{k} + (\tau \beta)_{ij} +(\tau \gamma)_{ik} + (\beta \gamma)_{jk} + (\tau \beta \gamma)_{ijk} + \epsilon_{ijkl} $
 
-	$i = 1,2, \dots, a$, $j = 1,2, \dots, b$, $k = 1,2, \dots, c$  y $l = 1,2, \dots, n$
+	$i = 1,2, \dots, a$, $j = 1,2, \dots, b$, $k = 1,2, \dots, c$  y $l = 1,2, \dots, n$.
  \end{center}
  
 Donde:
@@ -872,93 +876,97 @@ Donde:
 
 
 \textbf{Supuestos del modelo}\\
+
  $\epsilon_{ijkl} NI (0, \sigma^{2})$\\
 
 \textbf{Hipótesis}\\
-Para los factores
+
+Para los factores:
 \begin{center}
-	$H^{1}_{0} =\tau_{1} = \tau_{2} = \dots = \tau_{a} = 0$ vs $H^{1}_{1}$ : al menos una $\tau_{i} \neq 0$ , $i = 1,2, \dots, a$ \\
-	$H^{2}_{0} =\beta_{1} = \beta_{2} = \dots = \beta_{b} = 0 $ vs $H^{2}_{1}$ : al menos una $\beta_{j} \neq 0$ , $j = 1,2, \dots,b$ \\
-	$H^{3}_{0} =\gamma_{1} = \gamma_{2} = \dots = \gamma_{c} = 0 $ vs $H^{3}_{1}$ : al menos una $\gamma_{k} \neq 0$ , $k = 1,2, \dots,c$ \\
+	$H^{1}_{0} =\tau_{1} = \tau_{2} = \dots = \tau_{a} = 0$ vs $H^{1}_{1}$ : al menos una $\tau_{i} \neq 0$ , $i = 1,2, \dots, a$ .\\
+	$H^{2}_{0} =\beta_{1} = \beta_{2} = \dots = \beta_{b} = 0 $ vs $H^{2}_{1}$ : al menos una $\beta_{j} \neq 0$ , $j = 1,2, \dots,b$ .\\
+	$H^{3}_{0} =\gamma_{1} = \gamma_{2} = \dots = \gamma_{c} = 0 $ vs $H^{3}_{1}$ : al menos una $\gamma_{k} \neq 0$ , $k = 1,2, \dots,c$ .\\
 \end{center}
 
-Para las interacciones 
+Para las interacciones:
 \begin{center}
-	$H^{4}_{0} : (\tau \beta)_{ij} = 0$ $ \forall i,j$ vs $H^{4}_{1}$ : al menos una $(\tau \beta)_{ij} \neq 0$ , $i = 1,2, \dots, a; j = 1,2, \dots,b$ \\
-	$H^{5}_{0} : (\tau \gamma)_{ik} = 0$ $ \forall i,k$ vs $H^{5}_{1}$ : al menos una $(\tau \gamma)_{ik} \neq 0$ , $i = 1,2, \dots, a; k = 1,2, \dots,c$ \\
-	$H^{6}_{0} : (\beta \gamma)_{jk} = 0$ $ \forall j,k$ vs $H^{6}_{1}$ : al menos una $(\beta \gamma)_{jk} \neq 0$ , $j = 1,2, \dots, b; k = 1,2, \dots, c$ \\
-	$H^{7}_{0} : (\tau \beta \gamma)_{ijk} = 0$ $ \forall i,j,k$ vs $H^{7}_{1}$ : al menos una $(\tau \beta \gamma)_{ijk} \neq 0$ , $i = 1,2, \dots, a; j = 1,2, \dots, b; k = 1,2, \dots, c$ \\
+	$H^{4}_{0} : (\tau \beta)_{ij} = 0$ $ \forall i,j$ vs $H^{4}_{1}$ : al menos una $(\tau \beta)_{ij} \neq 0$ , $i = 1,2, \dots, a; j = 1,2, \dots,b$ .\\
+	$H^{5}_{0} : (\tau \gamma)_{ik} = 0$ $ \forall i,k$ vs $H^{5}_{1}$ : al menos una $(\tau \gamma)_{ik} \neq 0$ , $i = 1,2, \dots, a; k = 1,2, \dots,c$ .\\
+	$H^{6}_{0} : (\beta \gamma)_{jk} = 0$ $ \forall j,k$ vs $H^{6}_{1}$ : al menos una $(\beta \gamma)_{jk} \neq 0$ , $j = 1,2, \dots, b; k = 1,2, \dots, c$ .\\
+	$H^{7}_{0} : (\tau \beta \gamma)_{ijk} = 0$ $ \forall i,j,k$ vs $H^{7}_{1}$ : al menos una $(\tau \beta \gamma)_{ijk} \neq 0$ , $i = 1,2, \dots, a; j = 1,2, \dots, b; k = 1,2, \dots, c$ .\\
 \end{center}
 
 \textbf{Suma de cuadrados}\\
+
 Las fórmulas de cálculo para las sumas de cuadrados son:\\
-{\large$ SC_{total} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \sum_{l=1}^{n} y_{ijkl}^{2} - \frac{y_{....}^{2}}{abcn} $}\\
+{\large$ SC_{total} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \sum_{l=1}^{n} y_{ijkl}^{2} - \frac{y_{....}^{2}}{abcn} $} ,\\
 
-{\large $ SC_{A} = \sum_{i=1}^{a} \frac{y_{i...}^{2}}{bcn}  - \frac{y_{....}^{2}}{abcn} $}\\
+{\large $ SC_{A} = \sum_{i=1}^{a} \frac{y_{i...}^{2}}{bcn}  - \frac{y_{....}^{2}}{abcn} $} ,\\
 
-{\large$ SC_{B} = \sum_{j=1}^{b} \frac{y_{.j..}^{2}}{acn}  - \frac{y_{....}^{2}}{abcn} $} \\
+{\large$ SC_{B} = \sum_{j=1}^{b} \frac{y_{.j..}^{2}}{acn}  - \frac{y_{....}^{2}}{abcn} $}  ,\\
 
-{\large$ SC_{C} = \sum_{k=1}^{c} \frac{y_{..k.}^{2}}{abn} - \frac{y_{....}^{2}}{abcn} $} \\
+{\large$ SC_{C} = \sum_{k=1}^{c} \frac{y_{..k.}^{2}}{abn} - \frac{y_{....}^{2}}{abcn} $}.\\
 
 
 \textbf{Las sumas de cuadrados para las interacciones son:}\\
 
-{\large$ SC_{AB} = \sum_{i=1}^{a} \sum_{j=1}^{b}  \frac{y_{ij..}^{2}}{cn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B} $} \\
+{\large$ SC_{AB} = \sum_{i=1}^{a} \sum_{j=1}^{b}  \frac{y_{ij..}^{2}}{cn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B} $}, \\
 
-{\large$ SC_{AC} = \sum_{i=1}^{a} \sum_{k=1}^{c}  \frac{y_{i.k.}^{2}}{bn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{C} $} \\
+{\large$ SC_{AC} = \sum_{i=1}^{a} \sum_{k=1}^{c}  \frac{y_{i.k.}^{2}}{bn}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{C} $}, \\
 
-{\large$ SC_{BC} = \sum_{j=1}^{b} \sum_{k=1}^{c}  \frac{y_{.jk.}^{2}}{an}  - \frac{y_{....}^{2}}{abcn} - SC_{C} -SC_{B} $} \\
+{\large$ SC_{BC} = \sum_{j=1}^{b} \sum_{k=1}^{c}  \frac{y_{.jk.}^{2}}{an}  - \frac{y_{....}^{2}}{abcn} - SC_{C} -SC_{B} $}, \\
 
 
-$ SC_{ABC} =  \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \frac{y_{ijk.}^{2}}{n}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B} - SC_{C} -SC_{AB} -SC_{AC} -SC_{BC}  $ \\
+$ SC_{ABC} =  \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c}  \frac{y_{ijk.}^{2}}{n}  - \frac{y_{....}^{2}}{abcn} - SC_{A} -SC_{B} - SC_{C} -SC_{AB} -SC_{AC} -SC_{BC}  $ .\\
 
 
 La suma de cuadrados del error puede encontrarse restando la suma de cuadrados de cada efecto principal e interacción de la suma de cuadrados total:\\
 
 \begin{center}
-	$ SC_{E} = SC_{T} -SC_{A} - SC_{B}-SC_{C} -SC_{AB} -SC_{AC} -SC_{BC} -SC_{ABC} $\\
+	$ SC_{E} = SC_{T} -SC_{A} - SC_{B}-SC_{C} -SC_{AB} -SC_{AC} -SC_{BC} -SC_{ABC} $ .\\
 \end{center}
 
-O bien,
+O bien, 
 \begin{center}
-	$ SC_{E} = SC_{T} - SC_{Sub(ABC)} $\\
+	$ SC_{E} = SC_{T} - SC_{Sub(ABC)} $,\\
 \end{center}
 
-Donde
+donde
 \begin{center}
-$$ SC_{Sub(ABC)} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c} \frac{y_{ijk.}^{2}}{n} - \frac{y_{....}^{2}}{abcn}  $$\\
+$$ SC_{Sub(ABC)} = \sum_{i=1}^{a}  \sum_{j=1}^{b}  \sum_{k=1}^{c} \frac{y_{ijk.}^{2}}{n} - \frac{y_{....}^{2}}{abcn} .$$\\
 \end{center}
 
 
 \textbf{Estadísticos de prueba}\\
+
 Para probar la significación la fuente de variabilidad $X$, se divide $CM_{X}$ por el  $CM_{E}$; de modo que los valores grandes de este cociente implican que los datos no apoyan la hipótesis nula correspondiente:
 \begin{center}
-	$ F^{X} = \frac{CM_{X}}{CM_{E}} \sim F_{x,abc(n-1)}  $\\
+	$ F^{X} = \frac{CM_{X}}{CM_{E}} \sim F_{x,abc(n-1)} $,\\
 \end{center}
 
 
-Donde $x$ representa los grados de libertad asociados a la fuente de variabilidad $X$.\\
+donde $x$ representa los grados de libertad asociados a la fuente de variabilidad $X$.\\
 
 \textbf{Región de rechazo}\\
 
 Con un nivel de significación dado $\alpha$, la región de rechazo se encuentra en la cola superior de la distribución F correspondiente:
 
 \begin{center}
-	$ RR : F_{0}^{X} > F_{a;x,abc(n-1)} $\\
+	$ RR : F_{0}^{X} > F_{a;x,abc(n-1)} $,\\
 \end{center}
 
-$ F_{0}^{X} $ es el valor de la estadística de prueba correspondiente.
+donde $F_{0}^{X} $ es el valor de la estadística de prueba correspondiente.\\
 
 \textbf{Valor p}\\
 
-Se considera la fuente de variación $(X)$ con su correspondiente estadístico de prueba.
+Se considera la fuente de variación $(X)$ con su correspondiente estadístico de prueba:
 
 \begin{center}
-	$ P_{X} =  P( F_{a;x,abc(n-1)} \geq F_{0}^{X} ) $\\
+	$ P_{X} =  P( F_{a;x,abc(n-1)} \geq F_{0}^{X} ) $.\\
 \end{center}
 
 
-\begin{table}
+\begin{table}[ht]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
@@ -995,23 +1003,23 @@ Si el ANOVA indica que hay diferencia en el nivel medio de los factores resulta 
 Con la prueba de Tukey el nivel de significación global es exactamente  cuando los tamaños de las muestras son iguales y como máximo $\alpha$ cuando los tamaños de las muestras son desiguales. Este método también puede utilizarse para construir intervalos de confianza sobre las diferencias en todos los pares de medias. Para estos intervalos, el nivel de confianza simultáneo es del $(1-\alpha)100\%$ cuando los tamaños de las muestras son iguales y de al menos $(1-\alpha)100\%$  cuando los tamaños de las muestras son desiguales.\\
 %%%Revisar acentos
 
-$H_{0}:\mu_{i} = \mu_{j}$ vs $H_{1}:\mu_{i} \neq \mu_{j}$ para toda $i \neq j$\\
+$H_{0}:\mu_{i} = \mu_{j}$ vs $H_{1}:\mu_{i} \neq \mu_{j}$ para toda $i \neq j$.\\
 
  $\mu_{i} \neq \mu_{j}$ si $| \bar{Y}_{i} -\bar{Y}_{j} | > q_{\alpha} (p,f) \: \sqrt{\frac{CM_{E}}{n}} = T_{\alpha}$ (tamaños de las muestras iguales).\\
  
 
 La tabla V del apéndice en \textcite{montgomery-2017} contiene $q_{\alpha} (p,f)$, valor del punto porcentual $\alpha$ superior del estadístico del rango estudentizado {\large $q=\frac{ \bar{Y}_{max} -\bar{Y}_{min}}{ \sqrt{\frac{CM_{E}}{n}}}$}, donde $\bar{Y}_{max}$ y $\bar{Y}_{min}$ son las medias muestrales mayor y menor respectivamente de un grupo de $p$ medias muestrales, $f$ son los gl asociados con $CM_{E}$.\\
  
-Intervalo de confianza del  $(1-\alpha)100\%$ para $\mu_{i} - \mu_{j}$:\\
+Con intervalo de confianza del  $(1-\alpha)100\%$ para $\mu_{i} - \mu_{j}$:\\
  
 \begin{center}
-	$ \bar{Y}_{max} -\bar{Y}_{min} -  q_{\alpha} (p,f) \: \sqrt{\frac{CM_{E}}{n}} \leq \mu_{i} - \mu_{j} \leq \bar{Y}_{max} -\bar{Y}_{min} + q_{\alpha} (p,f) \: \sqrt{\frac{CM_{E}}{n}} $ \\
+	$ \bar{Y}_{max} -\bar{Y}_{min} -  q_{\alpha} (p,f) \: \sqrt{\frac{CM_{E}}{n}} \leq \mu_{i} - \mu_{j} \leq \bar{Y}_{max} -\bar{Y}_{min} + q_{\alpha} (p,f) \: \sqrt{\frac{CM_{E}}{n}} $. \\
 \end{center}
 
 Para tamaños de muestras desiguales, en la prueba de hipótesis se utiliza:\\
 
 \begin{center}
-	$$ T_{\alpha} = \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  $$ \\
+	$$ T_{\alpha} = \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  .$$ \\
 \end{center}
 
 
@@ -1019,7 +1027,7 @@ Los intervalos de confianza para la diferencia de los pares de medias se determi
 
 
 \begin{center}
-	$ \bar{Y}_{max} -\bar{Y}_{min} -  \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  \leq \mu_{i} - \mu_{j} \leq \bar{Y}_{max} -\bar{Y}_{min} + \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  $ \\
+	$ \bar{Y}_{max} -\bar{Y}_{min} -  \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  \leq \mu_{i} - \mu_{j} \leq \bar{Y}_{max} -\bar{Y}_{min} + \frac{q_{\alpha} (p,f)}{\sqrt{2}} \sqrt{CM_{E} (\frac{1}{n_{i}} + \frac{1}{n_{j}})}  $. \\
 \end{center}
 
-A la versión para tamaños de las muestras diferentes se llama el procedimiento de Tukey-Kramer.
+Donde la versión para tamaños de las muestras diferentes se llama el procedimiento de Tukey-Kramer.
