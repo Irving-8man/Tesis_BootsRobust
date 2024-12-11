@@ -2,13 +2,14 @@
 
 En este trabajo se propuso un método para evaluar la precisión de un modelo con la técnica de regresión lineal; basado en ocho esquemas de remuestreo, dos tipos de modelo y seis tamaños de muestra; a través de dos intervalos de confianza Bootstrap para el coeficiente de determinación $R^2$, del modelo de regresión que resulta entre los valores reales y predichos del modelo a evaluar.\\
 
-En la medición de la precisión, se consideraron cuatro escenarios posibles (NVC, NNVC, NVD y NNVD) para estimar la distribución del coeficiente de determinación $R^2$, mediante la implementación de los ocho esquemas de remuestreos: el Bootstrap simple, el Wild Bootstrap robusto con los tres esquemas propuestos por Wu (1986) y con los dos esquemas propuestos por Liu (1988), el Bootstrap de residuales balanceado y el Bootstrap pareado balanceado. Finalmente, por medio de los intervalos de confianza Bootstrap método percentil y Bca se estimó $R^2$ con $B=1,000$ remuestras para cada uno de los esquemas.\\
+En la medición de la precisión, se consideraron cuatro escenarios posibles (NVC, NNVC, NVD y NNVD) para estimar la distribución del coeficiente de determinación $R^2$, mediante la implementación de los ocho esquemas de remuestreos: el Bootstrap simple, el Wild Bootstrap robusto con los tres esquemas propuestos por Wu (1986) y con los dos esquemas propuestos por Liu (1988), el Bootstrap de residuales balanceados y el Bootstrap pareado balanceado. Finalmente, por medio de los intervalos de confianza Bootstrap método percentil y Bca se estimó $R^2$ con $B=1,000$ remuestras para cada uno de los esquemas.\\
 
 Se realizó un estudio de simulación para comparar las eficiencias de los intervalos de confianza para cada tipo de supuesto con respecto a los diferentes esquemas Bootstrap, tamaños de muestra y tipo de modelo; para ello se simularon mediante la propuesta de \textcite{febles-2014} y \textcite{zacarias-2023} , y evaluaron 60,000 modelos Exactos-Precisos (EP) y 60,000 modelos Exactos-Imprecisos (EI). Para cada modelo se identificó la $R^2$ de origen utilizada para su simulación.\\
 
 
 Se consideraron tres criterios principales para determinar las eficiencias de los intervalos de confianza para cada esquema Bootstrap, el primer criterio determinó la eficiencia como el porcentaje de las veces en que el intervalo de confianza contiene a la $R^2$ de origen para los modelos EP simulados; y viceversa, para los modelos EI la eficiencia se determinó como el porcentaje de las veces en que el intervalo de confianza no contiene a la $R^2$ de origen. El segundo criterio determinó la eficiencia como el porcentaje de las veces en que ambos intervalos contienen de manera simultánea a la $R^2$ de origen para los modelos EP y cuando ambos no la contienen para los modelos EI; y el tercer criterio determinó la eficiencia como el porcentaje de las veces en que uno de los intervalos de confianza es más estrecho que el otro cuando ambos intervalos contienen simultáneamente la $R^2$ de origen para los modelos EP y de manera viceversa uno de los intervalos es más estrecho que el otro cuando ambos no la contienen simultáneamente para los modelos EI.\\
-eficiencia
+
+
 Se analizaron los resultados del estudio de simulación a través de un ANOVA factorial y se determinó con al menos un 95\% que para los supuestos NVC, NNVC o NVD se utilice el ICB Percentil con el esquema de remuestreo Liu2 sin importar el tamaño de muestra. Y se determinó con al menos el 88.8\% que para el supuesto NNVD se utilice el ICB BCa con el esquema de remuestreo pareado balanceado; con la limitación de que para modelos EI con tamaños de muestra “pequeño” $n=10, 15, 20,$ no se obtuvo un buen desempeño.\\
 
 
@@ -20,7 +21,7 @@ En la aplicación de la propuesta final, para la ganancia diaria de peso en ovin
 Como trabajo futuro, se podría desarrollar una librería en el lenguaje R que contenga la propuesta de este trabajo para la evaluación de la precisión, junto con la propuesta desarrollada por \textcite{zacarias-2023} para la evaluación de la exactitud y de esta manera tener una herramienta integral para la evaluación de un modelo con la técnica de regresión lineal. También esta propuesta se podría integrar al Sistema de Validación de Modelos \parencite{mazun-2014}, contribuyendo con un módulo más para la validación de un modelo. \\
 
 
-Por ultimo, para otro trabajo futuro se propone evaluar otros ICB que requieren cómputos más exhaustivos pero utilizando la programación en paralelo.\\
+Por último, para otro trabajo futuro se propone evaluar otros ICB que requieren cómputos más exhaustivos pero utilizando la programación en paralelo.\\
 
 
 
